@@ -6,16 +6,15 @@
 
 # Nome do projeto
 
-## Nome do grupo
+## InPuT
 
 ## Integrantes: 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 1</a>
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 2</a>
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 3</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 4</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 5</a>
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 6</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 7</a>
+- <a href="https://www.linkedin.com/in/erik-batista-da-silva-455612215/">Erik Batista da Silva;</a> 
+- <a href="https://www.linkedin.com/in/gabriellediascartaxo">Gabrielle Dias Cartaxo;</a>
+- <a href="https://www.linkedin.com/in/gustavo-widman/">Gustavo Wagon Widman;</a>
+- <a href="https://www.linkedin.com/in/luiza-santana-30007a264/">Luiza Rodrigues Santana;</a> 
+- <a href="https://www.linkedin.com/in/murilo-prianti-0073111a1/">Murilo de Souza Prianti Silva;</a>
+- <a href="https://www.linkedin.com/in/pedro-faria-santos-10b4061b7/">Pedro Faria Santos;</a> 
 
 ## 📝 Descrição
 
@@ -23,22 +22,10 @@ Curta descrição sobre o que o seu projeto faz (problema a ser resolvido e solu
 
 ## 📁 Estrutura de pastas
 
-```
-Alunos inteli (remover essa observação do readme.md após leitura e execução):
-
-Supondo que você é da Turma 4 e Projeto 5, substitua:
-
-T(NUMERO_DA_TURMA)_G(NUMERO_DO_GRUPO)_V(VERSÃO)_Web_application_document.pdf
-por
-T4_G5_V01_Web_application_document.pdf
-
-Faça o mesmo para a documentação em formato DOCX.
-```
-
 |--> documentos<br>
   &emsp;| --> outros <br>
-  &emsp;| T(NUMERO_DA_TURMA)_G(NUMERO_DO_GRUPO)_V(VERSÃO)_Web_application_document.pdf<br>
-  &emsp;| T(NUMERO_DA_TURMA)_G(NUMERO_DO_GRUPO)_V(VERSÃO)_Web_application_document.docx<br>
+  &emsp;| T4_G5_V01_Web_application_document.pdf<br>
+  &emsp;| T4_G5_V01_Web_application_document.docx<br>
 |--> imagens<br>
 |--> src<br>
   &emsp;|--> Backend<br>

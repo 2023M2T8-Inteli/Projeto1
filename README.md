@@ -10,7 +10,7 @@
 
 ## Integrantes: 
 - <a href="https://www.linkedin.com/in/erik-batista-da-silva-455612215/">Erik Batista da Silva;</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Gabrielle Dias Cartaxo;</a>
+- <a href="https://www.linkedin.com/in/gabriellediascartaxo">Gabrielle Dias Cartaxo;</a>
 - <a href="https://www.linkedin.com/in/gustavo-widman/">Gustavo Wagon Widan;</a>
 - <a href="https://www.linkedin.com/in/luiza-santana-30007a264/">Luiza Rodrigues Santana;</a> 
 - <a href="https://www.linkedin.com/in/murilo-prianti-0073111a1/">Murilo de Souza Prianti Silva;</a>

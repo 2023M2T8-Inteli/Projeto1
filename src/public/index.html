@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='UTF-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>InPuT</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</head>
+<body>
+	<!-- NAVBAR -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">InPuT</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
+					<!-- if (locals.status == false) {  -->
+					<li class="nav-item"><a class="nav-link" href="/register" id="reg1">Register</a></li>
+					<li class="nav-item"><a class="nav-link" href="/login" id="log1">Login</a></li>
+					<!-- } else {  -->
+					<li class="nav-item"><a class="nav-link" href="/profile" id="prof1">Profile</a></li>
+					<li class="nav-item"><a class="nav-link" href="/logout" id="logout1">Logout</a></li>
+					<!-- } -->
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- END NAVBAR -->
+
+	<!-- WELCOME CONTAINER -->
+	<div class="mx-auto p-2" style="width: 50%">
+		<div class="containter my-5">
+			<div class="card">
+				<div class="card-body">
+					<!-- if (status == false) { -->
+					<h5 class="card-title" id="welcome1">Welcome to the site</h5>
+					<!--	 } else {  -->
+					<h5 class="card-title" id="welcome2">Placeholder</h5> <!-- THIS WILL BE CHANGED -->
+					<!--  }  -->
+					<h6 class="card-subtitle mb-2 text-body-secondary">Login or Register</h6>
+					<p class="card-text">Idk what to put here</p>
+					<!--  if (status == false) {  -->
+					<button class="btn btn-primary" id="log2"><a href="/login" style="color:white; text-decoration:none">Login</a></button>
+					<button class="btn btn-primary" id="reg2"><a href="/register" style="color:white; text-decoration:none">Register</a></button>
+					<!--	 } else {  -->
+					<button class="btn btn-primary" id="prof2"><a href="/profile" style="color:white; text-decoration:none">Profile</a></button>
+					<button class="btn btn-primary" id="logout2"><a href="/logout" style="color:white; text-decoration:none">Logout</a></button>
+					<!--  }  -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END WELCOME CONTAINER -->
+
+    <!-- SCRIPTS -->
+	<script src="js/index.js"></script>
+	<!-- END SCRIPTS -->
+</body>
+</html>

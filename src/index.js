@@ -1,17 +1,14 @@
 const express = require('express');
-// const db = require('./routes/db-config');
 const app = express();
 const cookie = require('cookie-parser');
 require('dotenv').config();
 const PORT = process.env.PORT || 5000;
-app.use('/js', express.static(__dirname + "/public/js"));
-app.use('/css', express.static(__dirname + "/public/css"));
+app.use('/js', express.static(__dirname + "/Frontend/public/js"));
+app.use('/css', express.static(__dirname + "/Frontend/public/css"));
+app.use('/assets', express.static(__dirname + "/Frontend/public/assets"))
 app.use(cookie());
 app.use(express.json());
-// db.connect((err) => {
-//     if(err)throw err;
-//     console.log("Connected to database");
-// });
-app.use('/', require('./routes/pages'));
-app.use('/api', require('./controllers/auth'));
+app.use('/', require('./Backend/routes/pages'));
+app.use('/api', require('./Backend/controllers/auth'));
 app.listen(PORT);
+console.log(`Listening on port ${PORT}`);

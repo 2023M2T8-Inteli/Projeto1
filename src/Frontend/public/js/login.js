@@ -4,17 +4,17 @@ form.addEventListener('submit', () => {
         body: JSON.stringify({
             username: username.value,
             password: password.value,
-            remember: remember.checked
+            remember: true // remember.checked
         }),
         headers: {'Content-Type': 'application/json'}
     }).then((res) => {
         return res.json();
-    }).then((data) => {
-        console.log(data);
-        if (data.status == "success") {
-            location.assign('/');
+    }).then((json) => {
+        console.log(json);
+        if (json.status == "success") {
+            window.location.href = "/";
         } else {
-            alert(data.text);
+            alert(json.text);
         }
     }).catch(err => {
         console.log(err);

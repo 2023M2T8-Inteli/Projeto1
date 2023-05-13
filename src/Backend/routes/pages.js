@@ -6,9 +6,11 @@ const loggedIn = require('../controllers/loggedIn');
 // Home Page Route
 router.get("/", loggedIn, (req, res) => {
     console.log(req.user)
-    if (req.user) {
+    if (req.cookies['remember-login']) {
+        console.log("User is logged in")
         res.sendFile('index.html', {root: './Frontend/public'});
     } else {
+        console.log("Tried to access home page without being logged in")
         res.redirect("/login")
     }
 })
@@ -18,16 +20,16 @@ router.get("/login", (req, res) => {
     res.sendFile('login.html', {root: './Frontend/public'});
 })
 
-router.get('/', (req,res) =>{
-    res.sendFile('index.html',{root: './Front End/public'})
-});
+router.get("/reports/:id", loggedIn, (req, res) => {
+    if (req.cookies['remember-login']) {
+        res.sendFile(`${req.params.id}.html`, {root: './Frontend/public/reports'});
+    } else {
+        res.redirect("/login")
+    }
+})
 
 router.get('/favoritos', (req,res) =>{
     res.sendFile('favoritos.html',{root: './Front End/public'})
-});
-
-router.get('/login', (req,res) =>{
-    res.sendFile('login.html',{root: './Front End/public'})
 });
 
 router.get('/relatorio', (req,res) =>{

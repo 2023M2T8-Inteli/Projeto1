@@ -39,20 +39,21 @@ const login = (req, res) => {
             var expiryDate = new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000);
 
             // This is to create a JWT token IF the box was ticked
-            if (remember) {
+            if (true) { // if (remember) {
                 // This is to create a JWT token
-                const token = jwt.sign({id: row.id}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRES_IN});
+                const token = jwt.sign({id: row.ID}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRES_IN});
 
                 // This is to create a cookie with the JWT token
                 res.cookie('remember-login', token, {
                     httpOnly: true,
                     expiresIn: expiryDate
                 });
+                console.log("cookie created")
             };
 
             // This is to send a response to the client
-            res.status(200).json({status:"success", text:"Login efetuado com sucesso"});
             console.log("Login efetuado com sucesso")
+            return res.json({status:"success", text:"Login efetuado com sucesso"});
         });
     });
 }

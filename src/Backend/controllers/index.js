@@ -1,30 +1,26 @@
-const express = require('express'); 
+const express = require('express');
 const app = express();
+const router = express.Router();
 const bodyParser = require('body-parser')
 const urlencoderParser = express.urlencoded({extended: false});
 
-//Conectar com banco de dados
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('../databases/Banco de dados.db', (err) =>{
-    if(err){
-        console.error(err.message)
-    }
-    console.log('Conectado à DB');
+const db = require('../routes/db-config')
+
+
+// Página inicial
+router.get("/", function(req,res){
+    res.sendFile("index.html", {root: './Frontend/public'});
 });
 
-app.use(express.static("Frontend/public/")) // Mostrando onde está todo o frontend
+router.get("/reports/:id", (req, res) => {
+    res.sendFile(`${req.params.id}.html`, {root: './Frontend/public/reports'});
+})
 
 
-//Página inicial
-app.get("/", function(req,res){
-    res.sendFile(__dirname+"index.html");
-});
-
-
-//Página das informações sobre o pico
-app.get('/graphPico/:id/:ocur', (req,res) =>{
-    const id = req.params.id;
-    const ocur = req.params.ocur;
+// Página das informações sobre o pico, podendo ser em relação à tabela E (com o ID 1), e à tabela F(com o ID 2).
+router.get('/graphPico/:id/:ocur', (req,res) =>{
+    const id = req.params.id; // Diferencia o E do F.
+    const ocur = req.params.ocur; //Escolhe a ocorrência específica (ACT, PEG_PSI, etc)
 
     if(id == 1){
         var table = "OCORRENCIAS_PICO1"
@@ -88,9 +84,10 @@ app.get('/graphPico/:id/:ocur', (req,res) =>{
     }
 })
 
-app.get('/graphsE/:ocur/:id', (req, res) => {
-    const id = req.params.id;
-    const ocur = req.params.ocur;
+// Pega e mostra dados específicos da Tabela E
+router.get('/graphsE/:ocur/:id', (req, res) => {
+    const id = req.params.id;// Diferencia entre CHOQUE 1 e 2
+    const ocur = req.params.ocur; // Escolhe uma ocorrência (ACT, PEG_PSI, etc).
 
     if(ocur == 1){
         var ocorrencia = "E_OCORRENCIAS_CHOQUE" + id
@@ -125,9 +122,11 @@ app.get('/graphsE/:ocur/:id', (req, res) => {
     }
 })
 
-app.get('/graphsF/:ocur/:id', (req, res) => {
-    const id = req.params.id;
-    const ocur = req.params.ocur;
+
+// Pega e mostra dados específicos da Tabela F
+router.get('/graphsF/:ocur/:id', (req, res) => {
+    const id = req.params.id; // Diferencia entre CHOQUE 1 e 2
+    const ocur = req.params.ocur; //Escolhe uma ocorrência (ACT, PEG_PSI, etc).
 
     if(ocur == 1){
         var ocorrencia = "F_OCORRENCIAS_CHOQUE" + id
@@ -162,8 +161,10 @@ app.get('/graphsF/:ocur/:id', (req, res) => {
     }
 })
 
-app.get('/tableE/:impact', (req,res)=>{
-    const impact = req.params.impact;
+
+// Mostra todos os dados da tabela E
+router.get('/tableE/:impact', (req,res)=>{
+    const impact = req.params.impact; // Seleciona entre CHOQUE 1 e 2
     var sql;
     if(impact == 1){
         sql = 'SELECT * FROM E_OCORRENCIAS_CHOQUE1 INNER JOIN E_IDENTIFICACAO ON E_OCORRENCIAS_CHOQUE1.ID_OCORRENCIA = E_IDENTIFICACAO.ID_IDENTIFICACAO'
@@ -179,8 +180,10 @@ app.get('/tableE/:impact', (req,res)=>{
     });
 })
 
-app.get('/tableF/:impact', (req,res)=>{
-    const impact = req.params.impact;
+
+// Seleciona todos os dados da tabela F
+router.get('/tableF/:impact', (req,res)=>{
+    const impact = req.params.impact; // Seleciona entre CHOQUE 1 e 2
     var sql;
     if(impact == 1){
         sql = 'SELECT * FROM F_OCORRENCIAS_CHOQUE1 INNER JOIN F_IDENTIFICACAO ON F_OCORRENCIAS_CHOQUE1.ID_OCORRENCIA = F_IDENTIFICACAO.ID_IDENTIFICACAO'
@@ -196,7 +199,9 @@ app.get('/tableF/:impact', (req,res)=>{
     });
 })
 
-app.post("/addFav",(req,res) => {
+
+// Adiciona um relatório aos favoritos
+router.post("/addFav",(req,res) => {
 
     const fav = req.body.relatorio
 
@@ -208,7 +213,28 @@ app.post("/addFav",(req,res) => {
     })
 })
 
+// Vizualiza os favoritos atuais.
+router.get("/seeFav", (req, res) => {
+    db.all("SELECT * FROM FAVORITOS", function(err, rows) {;
+        if(err) {
+            console.error(err.message);
+        }
 
-app.listen(3000, ()=>{
-    console.log("http://localhost:3000")
+        console.log("Favoritos retornados.");
+        res.json(rows);
+    })
 })
+
+// Deleta o registro de favorito selecionado.
+router.delete('/deleteFav/:id', (req,res) => {
+    const id = req.params.id; // Seleciona o favorito desejado
+
+    db.all("DELETE FROM FAVORITOS WHERE ID_FAV = ?", id, function(err, rows) {
+        if(err){
+            console.error(err.message);
+        }
+        console.log("Deleted")
+    })
+})
+
+module.exports = router;

@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const bodyParser = require('body-parser')
-const urlencoderParser = express.urlencoded({extended: false});
+// const bodyParser = require('body-parser')
+// const urlencoderParser = express.urlencoded({extended: false});
 
-const db = require('../routes/db-config');
+// const db = require('../routes/db-config');
 
 /////////////////////
 // PARTE DE LOGIN //
@@ -49,12 +49,13 @@ const deleteFav = require('./fav/deleteFav')
 const addFav = require('./fav/addFav')
 const seeFav = require('./fav/seeFav')
 
+const loggedIn = require('./login/loggedIn')
 
-router.post("/addFav", addFav) // Adiciona um relatório aos favoritos
+router.post("/addFav", loggedIn , addFav) // Adiciona um relatório aos favoritos
 
-router.get("/seeFav", seeFav) // Vizualiza os favoritos atuais.
+router.get("/seeFav", loggedIn ,seeFav) // Vizualiza os favoritos atuais.
 
-router.delete('/deleteFav/:id', deleteFav) // Deleta o registro de favorito selecionado.
+router.delete('/deleteFav/:id', loggedIn, deleteFav) // Deleta o registro de favorito selecionado.
 
 
 ////////////////////////

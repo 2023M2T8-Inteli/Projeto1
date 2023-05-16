@@ -5,7 +5,7 @@ const DB_PATH = require('path').resolve(__dirname, '../../routes/db-config.js')
 require('dotenv').config(); // This is to load the .env file
 
 const login = (req, res) => {
-    const db = require(DB_PATH).db();
+    const db = require(DB_PATH).db("userprefs.sqlite");
 
     // This is to get the username and password from the request body
     const { username, password, remember } = req.body;
@@ -16,7 +16,7 @@ const login = (req, res) => {
     }
 
     // This is to check if the username exists in the database
-    db.get("SELECT * FROM USERS WHERE EMAIL = ?", username, (err, row) => {
+    db.get("SELECT * FROM users WHERE username = ?", username, (err, row) => {
         if (err) {
             return res.status(500).json({status:"error", text:"Erro interno do servidor de database"});
         };
@@ -27,7 +27,7 @@ const login = (req, res) => {
         };
 
         // This is to check if the password is correct
-        bcrypt.compare(password, row.SENHA, (err, result) => {
+        bcrypt.compare(password, row.password, (err, result) => {
             if (err) {
                 return res.status(500).json({status:"error", text:"Erro interno do servidor de bcrypt"});
             };
@@ -43,7 +43,7 @@ const login = (req, res) => {
             // This is to create a JWT token IF the box was ticked
             if (true) { // if (remember) {
                 // This is to create a JWT token
-                const token = jwt.sign({id: row.ID_USER}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRES_IN});
+                const token = jwt.sign({id: row.id}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRES_IN});
 
                 // This is to create a cookie with the JWT token
                 res.cookie('remember-login', token, {

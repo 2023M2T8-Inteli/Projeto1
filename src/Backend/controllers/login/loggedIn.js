@@ -2,7 +2,7 @@ const DB_PATH = require('path').resolve(__dirname, '../../routes/db-config.js')
 const jwt = require('jsonwebtoken');
 
 const loggedIn = (req, res, next) => {
-    const db = require(DB_PATH).db();
+    const db = require(DB_PATH).db("userprefs.sqlite");
 
     if (req.cookies['remember-login'] == undefined) {
         next();
@@ -11,7 +11,7 @@ const loggedIn = (req, res, next) => {
 
         const decoded = jwt.verify(req.cookies['remember-login'], process.env.JWT_SECRET)
 
-        db.get("SELECT * FROM USERS WHERE ID_USER = ?", decoded.id, (err, row) => {
+        db.get("SELECT * FROM users WHERE id = ?", decoded.id, (err, row) => {
             if (err) {
                 return res.status(500).json({status:"error", text:"Erro interno do servidor"});
             };

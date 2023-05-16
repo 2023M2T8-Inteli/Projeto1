@@ -1,8 +1,8 @@
 // Conecta com o banco de dados
 const sqlite3 = require('sqlite3').verbose();
 
-function db() {
-    const db_path = require('path').resolve(__dirname, '../databases/Banco de dados.db');
+function db(db_name = "Banco de dados.db") {
+    const db_path = require('path').resolve(__dirname, `../databases/${db_name}`);
 
     return new sqlite3.Database(db_path, (err) => {
         if (err) {

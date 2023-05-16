@@ -1,16 +1,22 @@
+const { response } = require('express');
+
 const DB_PATH = require('path').resolve(__dirname, '../../routes/db-config.js')
 
 function seeFav (req, res) {
-    const db = require(DB_PATH).db();
+    const db = require(DB_PATH).db("userprefs.sqlite");
 
-    db.all("SELECT * FROM FAVORITOS", function(err, rows) {;
+    const id = req.user.id; // Seleciona o usuário logado
+
+    db.all(`SELECT * FROM favs WHERE id_user = ${id}`, function(err, rows) {;
         if(err) {
             res.json({status: "error", text: "Erro interno do servidor"})
             throw err
         }
 
         console.log("Favoritos retornados.");
-        res.json(rows);
+
+        res.json(rows)
+
     })
 
 

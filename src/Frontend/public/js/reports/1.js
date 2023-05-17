@@ -4,9 +4,35 @@ let map
 async function initMap () {
     const { Map } = await google.maps.importLibrary("maps");
     map = new Map(document.getElementById("map"), {
-        center: { lat: -14.766578, lng: -50.890985 },
+        center: { lat: -20.5, lng: -50.890985 },
         zoom: 6,
     });
+
+    var points = [
+      {lat: -20.4435,lng: -54.6478},
+      {lat: -21.2115, lng: -50.4261},
+      {lat: -22.0154, lng: -47.8911},
+      {lat: -22.9064, lng: -47.0616},
+      {lat: -23.5489, lng: -46.6388},
+      {lat: -23.9618, lng: -46.3322}
+  ];
+
+  var path = [];
+  for (var i = 0; i < points.length; i++) {
+    path.push(new google.maps.LatLng(points[i].lat, points[i].lng));
+}
+var polyline = new google.maps.Polyline({
+    path: path,
+    geodesic: true,
+    strokeColor: '#FF0000',
+    strokeOpacity: 1.0,
+    strokeWeight: 2
+});
+
+// Adicione a polilinha ao mapa
+polyline.setMap(map);
+
+
 }
 
 initMap();

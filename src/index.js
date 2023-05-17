@@ -19,6 +19,7 @@ app.use('/js', express.static(__dirname + "/Frontend/public/js")); // Pega os ar
 app.use('/css', express.static(__dirname + "/Frontend/public/css")); // Pega os arquivos CSS
 app.use('/assets', express.static(__dirname + "/Frontend/public/assets")); // Pega os arquivos de imagem
 
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT);

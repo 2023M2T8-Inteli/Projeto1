@@ -74,37 +74,13 @@
 		  </li>
 		</ul>
 
-		<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
-		  <span>Saved reports</span>
-		  <a class="link-secondary" href="#" aria-label="Add a new report">
-			<span data-feather="plus-circle" class="align-text-bottom"></span>
-		  </a>
-		</h6>
-		<ul class="nav flex-column mb-2">
-		  <li class="nav-item">
-			<a class="nav-link active" aria-current="page" href="#">
-				<span data-feather="file-text" class="align-text-bottom"></span>
-				Relatório #1
+		<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase me-1">
+			<span style="margin-bottom: 2px">Saved reports</span>
+			<a class="link-secondary mb-0" href="#" aria-label="Add a new report">
+			  <span data-feather="plus-circle" class="align-text-bottom"></span>
 			</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="#">
-				<span data-feather="file-text" class="align-text-bottom"></span>
-				Relatório #3
-			</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="#">
-				<span data-feather="file-text" class="align-text-bottom"></span>
-				Relatório #7
-			</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="#">
-				<span data-feather="file-text" class="align-text-bottom"></span>
-				Relatório #9
-			</a>
-		  </li>
+		  </h6>
+		<ul class="nav flex-column mb-2" id="fav-bar">
 		</ul>
 	  </div>
 	</nav>
@@ -302,5 +278,7 @@
 
 	<script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
 		({key: "AIzaSyC52kx_hADFDf9a5jb_BtIRaNaXS5aE9GA", v: "weekly"});</script>
+
+	<script src="../js/insert-favs.js" type="module"></script>
 </body>
 </html>

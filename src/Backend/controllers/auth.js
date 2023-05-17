@@ -29,6 +29,8 @@ const graphsF = require('./reports/graphsF');
 const tableE = require('./reports/tableE');
 const tableF = require('./reports/tableF');
 
+const mapE = require('./reports/mapE')
+
 
 router.get('/graphPico/:id/:ocur', graphPico); // Página das informações sobre o pico, podendo ser em relação à tabela E (com o ID 1), e à tabela F(com o ID 2).
 
@@ -39,6 +41,8 @@ router.get('/graphsF/:ocur/:id', graphsF) // Pega e mostra dados específicos da
 router.get('/tableE/:impact', tableE) // Mostra todos os dados da tabela E
 
 router.get('/tableF/:impact', tableF) // Seleciona todos os dados da tabela F
+
+router.get('/mapE/:id', mapE)
 
 
 ////////////////////////

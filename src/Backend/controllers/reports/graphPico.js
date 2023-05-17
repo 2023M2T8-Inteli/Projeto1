@@ -1,7 +1,7 @@
 const DB_PATH = require('path').resolve(__dirname, '../../routes/db-config.js')
 
 function graphPico (req,res) {
-    const db = require(DB_PATH).db();
+    const db = require(DB_PATH).db("Rel1.db");
 
     const id = req.params.id; // Diferencia o E do F.
     const ocur = req.params.ocur; //Escolhe a ocorrência específica (ACT, PEG_PSI, etc)

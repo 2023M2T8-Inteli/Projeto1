@@ -4,35 +4,54 @@ let map
 async function initMap () {
     const { Map } = await google.maps.importLibrary("maps");
     map = new Map(document.getElementById("map"), {
-        center: { lat: -20.5, lng: -50.890985 },
+        center: { lat: -11.455206520983609, lng: -34.499763669180325 },
         zoom: 6,
     });
 
-    var points = [
-      {lat: -20.4435,lng: -54.6478},
-      {lat: -21.2115, lng: -50.4261},
-      {lat: -22.0154, lng: -47.8911},
-      {lat: -22.9064, lng: -47.0616},
-      {lat: -23.5489, lng: -46.6388},
-      {lat: -23.9618, lng: -46.3322}
-  ];
+	var points
 
-  var path = [];
-  for (var i = 0; i < points.length; i++) {
-    path.push(new google.maps.LatLng(points[i].lat, points[i].lng));
-}
-var polyline = new google.maps.Polyline({
-    path: path,
-    geodesic: true,
-    strokeColor: '#FF0000',
-    strokeOpacity: 1.0,
-    strokeWeight: 2
-});
+    fetch('/api/mapE/1', {
+    	method: 'GET',
+		headers: {
+			'Content-Type': 'application/json'
+		  },
+    }).then(response=>{
+		return response.json()
+	}).then(json => {
 
-// Adicione a polilinha ao mapa
-polyline.setMap(map);
+	
+		points = json
+		console.log(points)
+		var path = []
+		for (var i = 0; i < points.length; i++) {
+			console.log(points[i].lat, points[i].lon)
+			path.push(new google.maps.LatLng(points[i].lat, points[i].lon));
+	}
+		var polyline = new google.maps.Polyline({
+			path: path,
+			geodesic: true,
+			strokeColor: '#FF0000',
+			strokeOpacity: 1.0,
+			strokeWeight: 2
+	});
+		for(var i = 0; i < points.length; i++){
+			var marker = new google.maps.Marker({
+                position: {lat: points[i].lat, lng: points[i].lon},
+                map: map,
+                title: 'Posição 1',
+                icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+            });
 
+		}
+		// Adicione a polilinha ao mapa
+		polyline.setMap(map);
 
+	
+	}).catch(err => {
+		throw err
+	})
+
+	//fetch('/api/')
 }
 
 initMap();
@@ -56,13 +75,16 @@ initMap();
           '---',
           '---',
           '---',
-          '---'
+          '---',
+		  '---'
         ],
+
+		
         datasets: [{
           data: [
             1,
             2,
-            6,
+            10,
             4,
             5,
             4,
@@ -87,3 +109,8 @@ initMap();
       }
     })
   })()
+
+
+function force(){
+	
+}

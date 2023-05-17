@@ -1,14 +1,13 @@
 const DB_PATH = require('path').resolve(__dirname, '../../routes/db-config.js')
 
 function graphsE (req, res) {
-    const db = require(DB_PATH).db();
+    const db = require(DB_PATH).db("Rel1.db");
 
     const id = req.params.id;// Diferencia entre CHOQUE 1 e 2
     const ocur = req.params.ocur; // Escolhe uma ocorrência (ACT, PEG_PSI, etc).
 
     if(ocur == 1){
-        var ocorrencia = "E_OCORRENCIAS_CHOQUE" + id
-        var sql = "SELECT F_MAX FROM " + ocorrencia + " INNER JOIN E_IDENTIFICACAO ON " + ocorrencia+ ".ID_OCORRENCIA = E_IDENTIFICACAO.ID_IDENTIFICACAO";
+        var sql = "SELECT f_max FROM CHOQUE INNER JOIN OCORRENCIA ON CHOQUE.ID_OC = OCORRENCIA.ID_OC WHERE tipo_choque = " + id + ' AND tipo_vagao = "E"';
         db.all(sql, function(err,rows){
             if(err){
                 throw err;
@@ -17,8 +16,7 @@ function graphsE (req, res) {
         })
     }
     if(ocur == 2){
-        var ocorrencia = "E_OCORRENCIAS_CHOQUE" + id
-        var sql = "SELECT ACT FROM " + ocorrencia + " INNER JOIN E_IDENTIFICACAO ON " + ocorrencia + ".ID_OCORRENCIA = E_IDENTIFICACAO.ID_IDENTIFICACAO";
+        var sql = "SELECT act FROM CHOQUE INNER JOIN OCORRENCIA ON CHOQUE.ID_OC = OCORRENCIA.ID_OC WHERE tipo_choque = " + id+ ' AND tipo_vagao = "E"';
         db.all(sql, function(err,rows){
             if(err){
                 throw err;
@@ -28,8 +26,7 @@ function graphsE (req, res) {
     }
 
     if(ocur == 3){
-        var ocorrencia = "E_OCORRENCIAS_CHOQUE" + id
-        var sql = "SELECT PEG_PSI FROM " + ocorrencia + " INNER JOIN E_IDENTIFICACAO ON " + ocorrencia + ".ID_OCORRENCIA = E_IDENTIFICACAO.ID_IDENTIFICACAO";
+        var sql = "SELECT peg_psi FROM CHOQUE INNER JOIN OCORRENCIA ON CHOQUE.ID_OC = OCORRENCIA.ID_OC WHERE tipo_choque = " + id+ ' AND tipo_vagao = "E"';
         db.all(sql, function(err,rows){
             if(err){
                 throw err;

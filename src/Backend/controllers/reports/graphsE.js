@@ -7,7 +7,7 @@ function graphsE (req, res) {
     const ocur = req.params.ocur; // Escolhe uma ocorrência (ACT, PEG_PSI, etc).
 
     if(ocur == 1){
-        var sql = "SELECT f_max FROM CHOQUE INNER JOIN OCORRENCIA ON CHOQUE.ID_OC = OCORRENCIA.ID_OC WHERE tipo_choque = " + id + ' AND tipo_vagao = "E"';
+        var sql = "SELECT f_max FROM CHOQUE INNER JOIN OCORRENCIA ON CHOQUE.ID_OC = OCORRENCIA.ID_OC WHERE tipo_choque = " + id + ' AND tipo_vagao = "E" ORDER BY "data/hora"';
         db.all(sql, function(err,rows){
             if(err){
                 throw err;

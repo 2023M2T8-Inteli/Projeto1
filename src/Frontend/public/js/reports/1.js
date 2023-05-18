@@ -11,20 +11,16 @@ async function initMap () {
 	var points
 
     fetch('/api/mapE/1', {
-    	method: 'GET',
-		headers: {
+      method: 'GET',
+		  headers: {
 			'Content-Type': 'application/json'
 		  },
     }).then(response=>{
 		return response.json()
 	}).then(json => {
-
-	
 		points = json
-		console.log(points)
 		var path = []
 		for (var i = 0; i < points.length; i++) {
-			console.log(points[i].lat, points[i].lon)
 			path.push(new google.maps.LatLng(points[i].lat, points[i].lon));
 	}
 		var polyline = new google.maps.Polyline({
@@ -58,59 +54,58 @@ initMap();
 
 
 (() => {
-    'use strict'
+  'use strict';
 
-    feather.replace({ 'aria-hidden': 'true' })
+  fetch('/api/graphsE/1/1', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(response => {
+      return response.json();
+    })
+    .then(json => {
+      const value = json;
+      const values = [];
+      const columns = [];
 
-    // Graphs
-    const ctx = document.getElementById('myChart')
-    // eslint-disable-next-line no-unused-vars
-    const myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: [
-          '---',
-          '---',
-          '---',
-          '---',
-          '---',
-          '---',
-          '---',
-		  '---'
-        ],
+      for (let i = 0; i < value.length; i++) {
+        values.push(value[i].f_max);
+        console.log(values)
+        columns.push('---');
+      }
 
-		
-        datasets: [{
-          data: [
-            1,
-            2,
-            10,
-            4,
-            5,
-            4,
-            3
-          ],
-          lineTension: 0,
-          backgroundColor: 'transparent',
-          borderColor: '#007bff',
-          borderWidth: 4,
-          pointBackgroundColor: '#007bff'
-        }]
-      },
-      options: {
-        plugins: {
-          legend: {
-            display: false
-          },
-          tooltip: {
-            boxPadding: 3
+      feather.replace({ 'aria-hidden': 'true' });
+
+      // Graphs
+      const ctx = document.getElementById('myChart');
+      const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: columns,
+          datasets: [
+            {
+              data: values,
+              lineTension: 0,
+              backgroundColor: 'transparent',
+              borderColor: '#007bff',
+              borderWidth: 4,
+              pointBackgroundColor: '#007bff'
+            }
+          ]
+        },
+        options: {
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              boxPadding: 3
+            }
           }
         }
-      }
-    })
-  })()
-
-
-function force(){
-	
-}
+      });
+    });
+})();
+    

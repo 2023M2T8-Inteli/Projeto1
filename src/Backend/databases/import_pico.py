@@ -1,10 +1,10 @@
 import pandas as pd
 import sqlite3
 
-id_oc = 124
-dados = pd.read_excel('Pico.xlsx', sheet_name='Sheet1')
+id_oc = 720
+dados = pd.read_excel('Backend/databases/Viagem_1/F/Pico/Pico.xlsx', sheet_name='Sheet1')
 
-connection = sqlite3.connect('Rel1.db')
+connection = sqlite3.connect('Backend/databases/Rel1.db')
 cursor = connection.cursor()
 
 for index, row in dados.iterrows():

@@ -67,13 +67,13 @@ initMap();
     })
     .then(json => {
       const value = json;
+
       const values = [];
       const columns = [];
 
       for (let i = 0; i < value.length; i++) {
         values.push(value[i].f_max);
-        console.log(values)
-        columns.push('---');
+        columns.push(value[i].data_hora);
       }
 
       feather.replace({ 'aria-hidden': 'true' });

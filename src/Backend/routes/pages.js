@@ -26,4 +26,8 @@ router.get("/reports/:id", loggedIn, (req, res) => {
     }
 })
 
+router.get("/relatorios", (req,res)=> {
+    res.sendFile('relatorios.html', {root:'./Frontend/public'})
+})
+
 module.exports = router

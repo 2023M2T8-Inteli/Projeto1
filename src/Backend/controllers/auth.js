@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const quantity = require('./reports/Rels')
 // const bodyParser = require('body-parser')
 // const urlencoderParser = express.urlencoded({extended: false});
 
@@ -44,6 +45,8 @@ router.get('/tableF/:impact', tableF) // Seleciona todos os dados da tabela F
 
 router.get('/mapE/:id', mapE)
 
+router.get('/quantity', quantity)//retorna o numero de relatórios existentes
+
 
 ////////////////////////
 // PARTE DE FAVORITOS //
@@ -55,7 +58,7 @@ const seeFav = require('./fav/seeFav')
 
 const loggedIn = require('./login/loggedIn')
 
-router.post("/addFav", loggedIn , addFav) // Adiciona um relatório aos favoritos
+router.post("/addFav/:rel", loggedIn , addFav) // Adiciona um relatório aos favoritos
 
 router.get("/seeFav", loggedIn ,seeFav) // Vizualiza os favoritos atuais.
 

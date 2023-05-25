@@ -3,8 +3,9 @@ const DB_PATH = require('path').resolve(__dirname, '../../routes/db-config.js')
 function addFav (req, res) {
     const db = require(DB_PATH).db("userprefs.sqlite");
 
-    const rel_num = req.body.relatorio
+    const rel_num = req.params.rel
     const id = req.user.id
+    
 
     // checks if this rel num is already inside the favs table for the user id
     db.all(`SELECT * FROM favs WHERE rel_num = ${rel_num} AND id_user = ${id}`, function(err, rows) {

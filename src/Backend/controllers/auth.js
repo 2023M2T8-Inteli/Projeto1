@@ -30,20 +30,26 @@ const graphsF = require('./reports/graphsF');
 const tableE = require('./reports/tableE');
 const tableF = require('./reports/tableF');
 
-const mapE = require('./reports/mapE')
+const mapE = require('./reports/mapE');
+const mapF = require('./reports/mapF');
+const path = require('./reports/path');
 
 
 router.get('/graphPico/:id/:ocur', graphPico); // Página das informações sobre o pico, podendo ser em relação à tabela E (com o ID 1), e à tabela F(com o ID 2).
 
-router.get('/graphsE/:ocur/:id', graphsE) // Pega e mostra dados específicos da Tabela E
+router.get('/graphsE/:ocur/:id', graphsE); // Pega e mostra dados específicos da Tabela E
 
-router.get('/graphsF/:ocur/:id', graphsF) // Pega e mostra dados específicos da Tabela F
+router.get('/graphsF/:ocur/:id', graphsF); // Pega e mostra dados específicos da Tabela F
 
-router.get('/tableE/:impact', tableE) // Mostra todos os dados da tabela E
+router.get('/tableE/:impact', tableE); // Mostra todos os dados da tabela E
 
-router.get('/tableF/:impact', tableF) // Seleciona todos os dados da tabela F
+router.get('/tableF/:impact', tableF); // Seleciona todos os dados da tabela F
 
-router.get('/mapE/:id', mapE)
+router.get('/mapE/:id', mapE);
+
+router.get('/mapF/:id', mapF);
+
+router.get('/path', path);
 
 router.get('/quantity', quantity)//retorna o numero de relatórios existentes
 

@@ -1,16 +1,16 @@
 import pandas as pd
 import sqlite3
 
-id_oc = 702
+id_oc = 1425
 
-dados = pd.read_excel('Backend/databases/Viagem_1/F/Choque1/Choque1.xlsx', sheet_name='Sheet1')
+dados = pd.read_excel('Backend/databases/imports/Choque2.xlsx', sheet_name='Sheet1')
 
 connection = sqlite3.connect('Backend/databases/Rel1.db')
 cursor = connection.cursor()
 
 for index, row in dados.iterrows():
     id_oc+=1
-    tipo_choque = 1
+    tipo_choque = 2
     peg_psi = row['PEG(PSI)']
     act = row['ACT(mm)']
     f_max = row['F máxima(tf)']

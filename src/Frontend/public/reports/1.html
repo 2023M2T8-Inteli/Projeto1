@@ -49,26 +49,8 @@
 		  </li>
 		  <li class="nav-item">
 			<a class="nav-link" href="#">
-			  <span data-feather="users" class="align-text-bottom"></span>
-			  Clientes
-			</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="#">
-			  <span data-feather="search" class="align-text-bottom"></span>
-			  Localizador de Relatórios
-			</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="#">
 			  <span data-feather="bar-chart-2" class="align-text-bottom"></span>
 			  Relatórios
-			</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="#">
-			  <span data-feather="layers" class="align-text-bottom"></span>
-			  Mapas
 			</a>
 		  </li>
 		</ul>
@@ -111,6 +93,7 @@
             #vagoesButtons{
                 padding-left: -30px;
             }
+
             section{
                 display: flex;
                 justify-content: flex-start;
@@ -118,33 +101,31 @@
                 width: 220px;
                 height: 10vh;
             }
+
             ul{
                 display: flex;
                 list-style: none;
                 gap: 12px;
                 padding: 0;
             }
+
             ul li button{
                 text-decoration: none;
-                color: #222529;
+                color: #f1f1f1;
+				background-color: #00b4e3;
                 font-size: 15px;
                 position: relative;
                 transition: 0.5s all linear;
                 padding: 5px 15px;
+				border-radius: 8px;
+				border-color: #00b4e3;
             }
+			
             ul li button:hover{
-                color: #F1F1F1;
+                color: #222529;
+				background-color: #f1f1f1;
             }
-            ul li button::before{
-                position: absolute;
-                content: '';
-                bottom: 0;
-                background-color: #00588E;
-                z-index: -3;
-            }
-            ul li button:hover::before{
-                animation: ani 1s cubic-bezier(0.86, 0, 0.07, 1) forwards;
-            }
+           
             @keyframes ani{
                 0% {
                     width: 0%;

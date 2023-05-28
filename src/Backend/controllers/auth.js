@@ -71,5 +71,5 @@ router.get("/seeFav", loggedIn ,seeFav) // Vizualiza os favoritos atuais.
 router.delete('/deleteFav/:id', loggedIn, deleteFav) // Deleta o registro de favorito selecionado.
 
 
-////////////////////////
+
 module.exports = router;

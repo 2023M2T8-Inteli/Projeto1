@@ -81,242 +81,377 @@
 				</button> -->
 			</div>
 		</div>
-		<section>
-            <nav id="vagoesButtons">
-                <ul class="menu-bar">
-                    <li><button onclick='vagoes("E")'>Vagão E</button></li>
-                    <li><button onclick='vagoes("F")'>Vagão F</button></li>
-                </ul>
-            </nav>
-        </section>
-        <style>
-            #vagoesButtons{
-                padding-left: -30px;
-            }
 
-            section{
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                width: 220px;
-                height: 10vh;
-            }
+		<!-- CRIA-SE O OBJETO DE ACCORDION OOOOOO -->
+		<div class="accordion" id="accordion1">
 
-            ul{
-                display: flex;
-                list-style: none;
-                gap: 12px;
-                padding: 0;
-            }
+			<!-- ITEM DE ACCORDION -->
+			<div class="accordion-item">
 
-            ul li button{
-                text-decoration: none;
-                color: #f1f1f1;
-				background-color: #00b4e3;
-                font-size: 15px;
-                position: relative;
-                transition: 0.5s all linear;
-                padding: 5px 15px;
-				border-radius: 8px;
-				border-color: #00b4e3;
-            }
-			
-            ul li button:hover{
-                color: #222529;
-				background-color: #f1f1f1;
-            }
-           
-            @keyframes ani{
-                0% {
-                    width: 0%;
-                    height: 1px;
-                    left: 50%;
-                }
-                50% {
-                    width: 100%;
-                    height: 1px;
-                    left: 0;
-                }
-                100% {
-                    width: 100%;
-                    height: 100%;
-                    left: 0;
-                }
-            }
-        </style>
-	  	<canvas class="my-4 w-100 pb-5" id="myChart" width="900" height="380"></canvas>
-		<div>
-			<button style="border: 0px; border-radius: 5px; height: 40px;width: 150px; background-color: #2482bc; font-family:Verdana, Geneva, Tahoma, sans-serif; margin-bottom: 20px; " onclick="choque(a=1)">Choque 1</button>
-			<button style="border: 0px; border-radius: 5px; height: 40px;width: 150px; background-color: #2482bc; font-family:Verdana, Geneva, Tahoma, sans-serif; margin-bottom: 20px; " onclick="choque(a=2)">Choque 2</button>
-			<button style="border: 0px; border-radius: 5px; height: 40px;width: 150px; background-color: #2482bc; font-family:Verdana, Geneva, Tahoma, sans-serif; margin-bottom: 20px; " onclick="choque(a=3)">Pico</button>
+				<!-- pra gabi ou qualquer pessoa q tiver passando aqui pra fazer desenvolvimento de alguma coisa aqui: -->
+
+				<!-- tem um jeito de deixar o accordion aberto qdo vc carrega a pagina, ent oq vc pode fazer eh  -->
+				<!-- mudar suas funcoes "vagoes" e "choque" pra q elas adicionem a tag de deixar o accordion aberto  -->
+				<!-- qdo o cara tiver clicado em algum dos botoes do dropdown OU totalmete mudar esses botoes pra -->
+				<!-- fazer com q eles virem collapses, vc q escolhe -->
+
+				<!-- o jeito de deixar o accordion aberto qdo a pagina carrega eh adicionar "show" dentro da tag da div com id "collapseOne" ou "collapseID". assim a classe ficaria: "accordion-collapse collapse show". -->
+				<!-- tambem n esquece de tirar o "collapsed" do accordion button (o header do item do accordion) pra fazer ele ficar selecionado bonitinho fofinho ai q cuticuti -->
+
+				<!-- pra fazer isso vai no
+
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseID" aria-expanded="true" aria-controls="collapseID">
+
+					e tira o "collapsed" dele, deixando assim:
+
+					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseID" aria-expanded="true" aria-controls="collapseID">
+
+				-->
+
+				<!-- resumindo, tira o "collapsed do header do accordion e adiciona "show" no corpo do item de accordion -->
+
+
+				<!-- HEADER DO ITEM DE ACCORDION (OQ VAI MOSTRAR ANTES DE CLICAR) -->
+				<h2 class="accordion-header">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+					  	Mapas
+					</button>
+				</h2>
+
+				<!-- CORPO DO ITEM DE ACCORDION (OQ VAI MOSTRAR EMBAIXO DO HEADER, DEPOIS DE CLICAR) -->
+				<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+					<div class="accordion-body">
+
+						<!-- DIV PROS DROPDOWNS -->
+						<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+							<div class="btn-toolbar mb-2 mb-md-0">
+
+								<!-- DROPDOWN DE VAGOES -->
+								<div class="dropdown-center btn-group me-2">
+									<!-- TÍTULO DO DROPDOWN -->
+									<button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+										Selecione o Vagão
+									</button>
+
+									<!-- ITENS DO DROPDOWN -->
+									<div class="dropdown-menu">
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='vagoes("E")'>Vagão E</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='vagoes("F")'>Vagão F</button>
+									</div>
+								</div>
+
+
+								<!-- DROPDOWN DE FILTROS DE OCORRENCIAS -->
+								<div class="dropdown-center">
+									<!-- TÍTULO DO DROPDOWN -->
+									<button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+										<span data-feather="plus-circle" class="align-text-bottom">
+										</span>
+										Adicionar Filtro
+									</button>
+
+									<!-- ITENS DO DROPDOWN -->
+									<div class="dropdown-menu">
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="choque(a=1)">Choque 1</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="choque(a=2)">Choque 2</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="choque(a=3)">Pico</button>
+									</div>
+								</div>
+
+							</div>
+
+							<div>
+								<!-- PLACEHOLDER PRA COISAS Q VAO NA DIREITA -->
+								<!-- PODE TESTAR COLOCAR ALGUMA COISA AQ PRA VER AONDE VAI -->
+							</div>
+						</div>
+						<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-0 pb-2 mb-3 border-bottom">
+							<!-- PLACEHOLDER PRA COISAS Q VAO EMBAIXO MAS N FORA DA LINHAZINHA -->
+							<!-- PODE TESTAR COLOCAR ALGUMA COISA AQ PRA VER AONDE VAI -->
+						</div>
+
+						<!-- MAPA -->
+						<div id="map" style="height:520px; width:100%" class="py-3 pt-5"></div>
+
+					</div>
+				</div>
+			</div>
+			<!-- FIM DO ITEM DE ACCORDION -->
+
+			<!-- ITEM DE ACCORDION 2 -->
+			<div class="accordion-item">
+				<!-- HEADER DO ITEM DE ACCORDION (OQ VAI MOSTRAR ANTES DE CLICAR) -->
+				<h2 class="accordion-header">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+						Gráficos
+					</button>
+				</h2>
+
+				<!-- CORPO DO ITEM DE ACCORDION (OQ VAI MOSTRAR EMBAIXO DO HEADER, DEPOIS DE CLICAR) -->
+				<div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+					<div class="accordion-body">
+
+						<!-- PRA QUEM TIVER PASSANDO AQUI E TIVER MEXENDO NESSE CODIGO: -->
+						<!-- varios botoes dos dropdown tao com a funcao "return false" pq eles estavam conectados a funcao -->
+						<!-- choque e vagao da gabi, q era correspondente a parte de mapas. aparentemente n eh pra eu fazer -->
+						<!-- essas funcoes ainda mas se vcs quiserem eu tambem posso fazer. bem, eu coloquei o return false -->
+						<!-- pra nao dar erro no console, mas se vcs quiserem fazer as funcoes podem tirar o return false -->
+
+						<!-- DIV PROS DROPDOWNS -->
+						<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+							<div class="btn-toolbar mb-2 mb-md-0">
+
+								<!-- DROPDOWN DE VAGOES -->
+								<div class="dropdown-center btn-group me-2">
+
+									<!-- TÍTULO DO DROPDOWN -->
+									<button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+										Selecione o Vagão
+									</button>
+
+									<!-- ITENS DO DROPDOWN -->
+									<div class="dropdown-menu">
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='return false'>Vagão E</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='return false'>Vagão F</button>
+									</div>
+
+								</div>
+
+								<!-- DROPDOWN DE FILTROS DE OCORRENCIAS -->
+								<div class="dropdown-center">
+
+									<!-- TÍTULO DO DROPDOWN -->
+									<button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+										Tipo de Ocorrência
+									</button>
+
+									<!-- ITENS DO DROPDOWN -->
+									<div class="dropdown-menu">
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="return false">Choque Tipo 1</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="return false">Choque Tipo 2</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="return false">Pico</button>
+									</div>
+
+								</div>
+							</div>
+
+							<!-- as coisas dentro desse div vao na direitinha -->
+							<div>
+
+								<!-- DROPDOWN PRA SELECIONAR TIPO DE GRAFICO -->
+								<div class="dropdown-center">
+
+									<!-- TÍTULO DO DROPDOWN -->
+									<button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+										Informações à Processar
+									</button>
+
+									<!-- ITENS DO DROPDOWN -->
+									<div class="dropdown-menu">
+										<!-- AQUI VAI TER Q FAZER JAVASCRIPT PRA MUDAR O DROPDOWN DEPENDENDO SE EH CHOQUE OU PICO -->
+										<!-- ITEM DE DROPDOWN DISABLED VC BOTA NA CLASSE: DROPDOWN-ITEM DISABLED -->
+										<!-- ENFASE NO "DISABLED" GNT -->
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="return false">PEG_PSI</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="return false">ACT</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="return false">Força Máxima</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="return false">Velocidade</button>
+										<button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="return false">Engate</button>
+										<button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="return false">ΔT</button>
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+						<!-- DIV PROS GRÁFICOS -->
+						<div style="width:90%; height:450px" class="ms-5 me-3">
+							<!-- o accordion eh mto estranho em alocacao de espaco, ent tem q fazer um div container e definir o tamanho do -->
+							<!-- grafico +- dentro desse div, so pro grafico poder caber dentro desse div, se nao o accordion come o grafico. -->
+							<canvas class="my-4 w-100 pb-5" id="myChart" width="900" height="380"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- DIV PROS DADOS BRUTOS -->
+			<div class="accordion-item">
+
+				<!-- TÍTULO DO ACCORDION -->
+				<h2 class="accordion-header">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+						Dados Brutos
+					</button>
+				</h2>
+
+				<!-- CORPO DO ACCORDION -->
+				<div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+					<!-- aqui dnv eu tive q fazer alocacao de espaco pro accordion n comer as coisas -->
+					<div style="width:90%;" class="table-responsive ms-5 mt-4">
+						<table class="table table-striped table-sm">
+						<thead>
+							<tr>
+							<th scope="col">Id de Ocorrencia</th>
+							<th scope="col">Data/Hora</th>
+							<th scope="col">Latitude</th>
+							<th scope="col">Longitude</th>
+							<th scope="col">Placa Virtual</th>
+							<th scope="col">Trecho</th>
+							<th scope="col">Posicao</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+							<td>---</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							</tr>
+							<tr>
+								<td>---</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>---</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>---</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>---</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>---</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>---</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>---</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>---</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>---</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>---</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>---</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>---</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>---</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>---</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>---</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+							</tr>
+						</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
 		</div>
-			<div id="map" style="height: 40%;" class="py-3 pt-5"></div>
-
-		
-	  	<h2 class="pt-5">Dados Brutos</h2>
-	  <div class="table-responsive">
-		<table class="table table-striped table-sm">
-		  <thead>
-			<tr>
-			  <th scope="col">Id de Ocorrencia</th>
-			  <th scope="col">Data/Hora</th>
-			  <th scope="col">Latitude</th>
-			  <th scope="col">Longitude</th>
-			  <th scope="col">Placa Virtual</th>
-			  <th scope="col">Trecho</th>
-			  <th scope="col">Posicao</th>
-			</tr>
-		  </thead>
-		  <tbody>
-			<tr>
-			  <td>---</td>
-			  <td>-</td>
-			  <td>-</td>
-			  <td>-</td>
-			  <td>-</td>
-			  <td>-</td>
-			  <td>-</td>
-			</tr>
-			<tr>
-				<td>---</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-			</tr>
-			<tr>
-				<td>---</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-			</tr>
-			<tr>
-				<td>---</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-			</tr>
-			<tr>
-				<td>---</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-			</tr>
-			<tr>
-				<td>---</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-			</tr>
-			<tr>
-				<td>---</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-			</tr>
-			<tr>
-				<td>---</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-			</tr>
-			<tr>
-				<td>---</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-			</tr>
-			<tr>
-				<td>---</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-			</tr>
-			<tr>
-				<td>---</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-			</tr>
-			<tr>
-				<td>---</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-			</tr>
-			<tr>
-				<td>---</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-			</tr>
-			<tr>
-				<td>---</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-			</tr>
-			<tr>
-				<td>---</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-			</tr>
-			<tr>
-				<td>---</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-			</tr>
-		  </tbody>
-		</table>
-	  </div>
 	</main>
-	
+
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>

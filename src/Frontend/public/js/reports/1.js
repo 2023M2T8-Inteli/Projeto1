@@ -123,6 +123,7 @@ initMap(false);
 /*              GRÁFICOS               */
 /* /////////////////////////////////// */
 
+
 (() => {
 	'use strict'; // iniciando modo estrito
 

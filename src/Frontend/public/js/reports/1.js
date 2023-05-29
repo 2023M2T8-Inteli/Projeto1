@@ -8,16 +8,18 @@ let map;
 let id = 1;
 let vagao = "E";
 
+
 // De acordo com o input do botão, o mapa recebe pontos diferentes
 function choque(a) {
 	id = a;
+	// recarregar a pagina e iniciar o mapa após o carregamento da pagina
 	fetch(`${window.location.href}`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'text/html'
 		}
 	})
-		.then(response => response.text())
+		.then(response => response.text()) // transformando a resposta em texto
 		.then(data => {
 			document.documentElement.innerHTML = data;
 			initMap(true);
@@ -28,25 +30,29 @@ function choque(a) {
 		});
 }
 
-function vagoes(b){
-	vagao = b;
+// De acordo com o input do botão, o mapa recebe pontos diferentes
+function vagoes(vagaoSelecionado){
+	vagao = vagaoSelecionado;
+	// recarregar a pagina e iniciar o mapa após o carregamento da pagina
 	fetch(window.location.href, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'text/html'
 		}
-	}).then(response => response.text())
+	})
+		.then(response => response.text()) // transformando a resposta em texto
 		.then(data => {
 			document.documentElement.innerHTML = data;
 			initMap(true);
-			//recarregar a pagina e iniciar o mapa após o carregamento da pagina
+			// recarregar a pagina e iniciar o mapa após o carregamento da pagina
 		})
 		.catch(error => {
 			console.error('Erro ao recarregar o conteúdo:', error);
 		});
 }
 
-async function initMap() { //iniciando mapa utilizando api do google maps
+// iniciando mapa utilizando api do google maps
+async function initMap() {
 	const { Map } = await google.maps.importLibrary("maps");
 	map = new Map(document.getElementById("map"), {
 		center: { lat: -11.455206520983609, lng: -34.499763669180325 },
@@ -54,19 +60,22 @@ async function initMap() { //iniciando mapa utilizando api do google maps
 	});
 
 	try {
-		var points = await fetch('/api/path', { //esperando fetch que devolve os pontos do mapa
+		// esperando fetch que devolve os pontos do mapa
+		var points = await fetch('/api/path', {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json'
 			}
-		}).then(response => response.json());
+		}).then(response => response.json()); // transformando a resposta em json
 
 		var path = [];
+		// adicionando os pontos ao caminho
 		for (var i = 0; i < points.length; i++) {
 			path.push(new google.maps.LatLng(points[i].lat, points[i].lon));
 		}
 
-		var polyline = new google.maps.Polyline({//definindo caminho no mapa
+		// definindo caminho no mapa
+		var polyline = new google.maps.Polyline({
 			path: path,
 			geodesic: true,
 			strokeColor: '#FF0000',
@@ -75,22 +84,28 @@ async function initMap() { //iniciando mapa utilizando api do google maps
 		});
 		polyline.setMap(map);
 
+		// definindo marcadores
 		var url = '/api/map' + vagao + "/" + id;
 
+		// esperando fetch que devolve os pontos do mapa
 		var json = await fetch(url, {
 			method: 'GET',
 		}).then(response =>{
 			return response.json()
 		}).then(json => {
-			addMarkersToMap(json);//chamando função de adcionar marcadores no mapa de forma assincrona
+			// chamando função de adcionar marcadores no mapa de forma assincrona
+			addMarkersToMap(json);
 		})
 	} catch (error) {
 		console.error('Erro ao inicializar o mapa:', error);
 	}
 }
 
-function addMarkersToMap(points) {//adcionando marcadores
+// adicionando marcadores no mapa
+function addMarkersToMap(points) {
+	// para cada ponto no array de pontos
 	for (var i = 0; i < points.length; i++) {
+		// criando marcador
 		var marker = new google.maps.Marker({
 			position: { lat: points[i].lat, lng: points[i].lon },
 			map: map,
@@ -100,6 +115,7 @@ function addMarkersToMap(points) {//adcionando marcadores
 	}
 }
 
+// iniciando mapa
 initMap(false);
 
 
@@ -108,15 +124,17 @@ initMap(false);
 /* /////////////////////////////////// */
 
 (() => {
-	'use strict';
+	'use strict'; // iniciando modo estrito
 
-	fetch('/api/graphsE/1/1', {  // requisição para adquirir dados das colunas e linhas
+	// requisição para adquirir dados das colunas e linhas
+	fetch('/api/graphsE/1/1', {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
 		}
 	})
 		.then(response => {
+			// transformando a resposta em json
 			return response.json();
 		})
 		.then(json => {
@@ -125,13 +143,16 @@ initMap(false);
 			const values = [];
 			const columns = [];
 
+			// adicionando os valores e colunas
 			for (let i = 0; i < value.length; i++) {
 				values.push(value[i].f_max);
 				columns.push(value[i].data_hora);
 			}
 
+
 			feather.replace({ 'aria-hidden': 'true' });
 
+			// configurando o gráfico
 			const ctx = document.getElementById('myChart');//Referencia o gráfico
 			const myChart = new Chart(ctx, {
 				type: 'line',

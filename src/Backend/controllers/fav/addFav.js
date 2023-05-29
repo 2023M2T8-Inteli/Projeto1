@@ -5,7 +5,7 @@ function addFav (req, res) {
 
     const rel_num = req.params.rel
     const id = req.user.id
-    
+
 
     // checks if this rel num is already inside the favs table for the user id
     db.all(`SELECT * FROM favs WHERE rel_num = ${rel_num} AND id_user = ${id}`, function(err, rows) {
@@ -29,6 +29,7 @@ function addFav (req, res) {
         }
 
     })
+
 
     require(DB_PATH).db_close(db)
 }

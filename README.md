@@ -1,9 +1,7 @@
-Inteli - Instituto de Tecnologia e Liderança
-Inteli - Instituto de Tecnologia e Liderança
+<h1>Inteli - Instituto de Tecnologia e Liderança</h1>
 
-InPuT
-Nome do grupo
-Integrantes:
+<h1>InPuT</h1>
+<h3>Integrantes:</h3>
 Erik Batista da Silva
 Gabrielle Dias Cartaxo
 Gustavo Wagon Widman
@@ -11,22 +9,89 @@ Luiza Rodrigues Santana
 Murilo de Souza Prianti Silva
 Pedro Faria Santos
 
-📝 Descrição
-O IPT possui um problema relacionado aos seus relatórios, os quais são extremamente grandes e massantes. Com o objetivo de tentar resolver isso apresentamos o InPuT, uma aplicação web para uma visualização mais amigavel dos dados de relatórios de ferrovias do IPT.
+<h1>📝 Descrição</h1>
+O IPT possui alguns problemas relacionados aos seus relatórios evolvendo chqoues nas ferrovias, os quais são extremamente grandes e massantes e publicados de forma menos atualizada (muitas das vezes publicados em formato de PDF contendo mais de 250 páginas). Com isso, o IPT veio em busca do Inteli para tentar resolver essa intempérie. Então nós como um grupo, observando esse problema, apresentamos uma solução para os relatórios massantes afim de transforma-los em relatórios que são mostrados via página WEB, com sistema de login para os diferentes clientes, também contendo gráficos com o intuito de serem mais didáticos e amigáveis.
 
-📁 Estrutura de pastas
-
-T08_G01_V(VERSÃO)_Web_application_document.pdf
-
+<h1>📁 Estrutura de pastas</h1>
+T08_G01_V1_Web_application_document.pdf
 Faça o mesmo para a documentação em formato DOCX.
 |--> documentos
  | --> outros
- | T(NUMERO_DA_TURMA)_G(NUMERO_DO_GRUPO)_V(VERSÃO)_Web_application_document.pdf
- | T(NUMERO_DA_TURMA)_G(NUMERO_DO_GRUPO)_V(VERSÃO)_Web_application_document.docx
+ | T8_G1_V1_Web_application_document.pdf
+ | T8_G1_V1_Web_application_document.docx
+|--> histórico-não considerar
 |--> imagens
 |--> src
  |--> Backend
+  |--> controllers
+    |--> fav
+    |--> login
+    |--> reports
+  |--> databases
+    |--> imports
+    |--> Viagem_1
+      |--> E
+        |--> Choque1
+        |--> Choque2
+        |--> Markov
+        |--> Pico
+      |--> F
+        |--> Choque1
+        |--> Choque2
+        |--> Markov
+        |--> Pico
+    |--> Viagem_2
+      |--> E
+        |--> Choque1
+        |--> Choque2
+        |--> Markov
+        |--> Pico
+      |--> F
+        |--> Choque1
+        |--> Choque2
+        |--> Markov
+        |--> Pico
+    |--> Viagem_3
+      |--> E
+        |--> Choque1
+        |--> Choque2
+        |--> Markov
+        |--> Pico
+      |--> F
+        |--> Choque1
+        |--> Choque2
+        |--> Markov
+        |--> Pico
+    |--> Viagem_4
+      |--> E
+        |--> Choque1
+        |--> Choque2
+        |--> Markov
+        |--> Pico
+      |--> F
+        |--> Choque1
+        |--> Choque2
+        |--> Markov
+        |--> Pico
+    |--> Viagem_5
+      |--> E
+        |--> Choque1
+        |--> Choque2
+        |--> Markov
+        |--> Pico
+      |--> F
+        |--> Choque1
+        |--> Choque2
+        |--> Markov
+        |--> Pico
+  |--> routes
  |--> Frontend
+  |-->public
+    |-->assets
+    |-->css
+    |-->js
+      |-->reports
+    |-->reports
 | readme.md
 | license.txt
 

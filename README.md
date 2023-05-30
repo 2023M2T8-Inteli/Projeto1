@@ -16,82 +16,15 @@ O IPT possui alguns problemas relacionados aos seus relatórios evolvendo chqoue
 T08_G01_V1_Web_application_document.pdf
 Faça o mesmo para a documentação em formato DOCX.
 |--> documentos
- | --> outros
- | T8_G1_V1_Web_application_document.pdf
- | T8_G1_V1_Web_application_document.docx
+  | --> outros
+| T8_G1_V1_Web_application_document.pdf
+| T8_G1_V1_Web_application_document.docx
 |--> histórico-não considerar
 |--> imagens
 |--> src
- |--> Backend
-  |--> controllers
-    |--> fav
-    |--> login
-    |--> reports
-  |--> databases
-    |--> imports
-    |--> Viagem_1
-      |--> E
-        |--> Choque1
-        |--> Choque2
-        |--> Markov
-        |--> Pico
-      |--> F
-        |--> Choque1
-        |--> Choque2
-        |--> Markov
-        |--> Pico
-    |--> Viagem_2
-      |--> E
-        |--> Choque1
-        |--> Choque2
-        |--> Markov
-        |--> Pico
-      |--> F
-        |--> Choque1
-        |--> Choque2
-        |--> Markov
-        |--> Pico
-    |--> Viagem_3
-      |--> E
-        |--> Choque1
-        |--> Choque2
-        |--> Markov
-        |--> Pico
-      |--> F
-        |--> Choque1
-        |--> Choque2
-        |--> Markov
-        |--> Pico
-    |--> Viagem_4
-      |--> E
-        |--> Choque1
-        |--> Choque2
-        |--> Markov
-        |--> Pico
-      |--> F
-        |--> Choque1
-        |--> Choque2
-        |--> Markov
-        |--> Pico
-    |--> Viagem_5
-      |--> E
-        |--> Choque1
-        |--> Choque2
-        |--> Markov
-        |--> Pico
-      |--> F
-        |--> Choque1
-        |--> Choque2
-        |--> Markov
-        |--> Pico
-  |--> routes
- |--> Frontend
-  |-->public
-    |-->assets
-    |-->css
-    |-->js
-      |-->reports
-    |-->reports
+  |--> Backend
+  |--> Frontend
+  |--> node_modules
 | readme.md
 | license.txt
 
@@ -146,8 +79,17 @@ Trabalho em andamento
 
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">InPuT</span> by <span property="cc:attributionName">Erik Batista, Gabrielle Cartaxo, Gustavo Wagon, Luiza Santana, Murilo Prianti e Pedro Faria.</span> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
 
-🎓 Referências
+<h1>🎓 Referências</h1>
 Aqui estão as referências usadas no projeto:
 
 https://www.ipt.br/
+https://www.canva.com/
+https://www.figma.com/
+https://getbootstrap.com/
+https://trello.com/
+https://miro.com/
+
+
+
+
 

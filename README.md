@@ -6,12 +6,12 @@
 
 <h1>InPuT</h1>
 <h3>Integrantes:</h3>
-<a>Erik Batista da Silva</a>
-<a>Gabrielle Dias Cartaxo</a>
-<a>Gustavo Wagon Widman</a>
-<a>Luiza Rodrigues Santana</a>
-<a>Murilo de Souza Prianti Silva</a>
-<a>Pedro Faria Santos
+Erik Batista da Silva<br>
+Gabrielle Dias Cartaxo<br>
+Gustavo Wagon Widman<br>
+Luiza Rodrigues Santana<br>
+Murilo de Souza Prianti Silva<br>
+Pedro Faria Santos
 
 <h1>📝 Descrição</h1>
 O IPT possui alguns problemas relacionados aos seus relatórios evolvendo chqoues nas ferrovias, os quais são extremamente grandes e massantes e publicados de forma menos atualizada (muitas das vezes publicados em formato de PDF contendo mais de 250 páginas). Com isso, o IPT veio em busca do Inteli para tentar resolver essa intempérie. Então nós como um grupo, observando esse problema, apresentamos uma solução para os relatórios massantes afim de transforma-los em relatórios que são mostrados via página WEB, com sistema de login para os diferentes clientes, também contendo gráficos com o intuito de serem mais didáticos e amigáveis.
@@ -91,12 +91,12 @@ Trabalho em andamento
 <h1>🎓 Referências</h1>
 Aqui estão as referências usadas no projeto:
 
-https://www.ipt.br/
-https://www.canva.com/
-https://www.figma.com/
-https://getbootstrap.com/
-https://trello.com/
-https://miro.com/
+1. https://www.ipt.br/
+2. https://www.canva.com/
+3. https://www.figma.com/
+4. https://getbootstrap.com/
+5. https://trello.com/
+6. https://miro.com/
 
 
 

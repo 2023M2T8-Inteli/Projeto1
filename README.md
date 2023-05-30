@@ -4,59 +4,59 @@
 
 # Projeto IPT (Instituto de Pesquisas Tecnológicas)
 
-## InPuT
-
 <h1>InPuT</h1>
 <h3>Integrantes:</h3>
-Erik Batista da Silva
-Gabrielle Dias Cartaxo
-Gustavo Wagon Widman
-Luiza Rodrigues Santana
-Murilo de Souza Prianti Silva
-Pedro Faria Santos
+<a>Erik Batista da Silva</a>
+<a>Gabrielle Dias Cartaxo</a>
+<a>Gustavo Wagon Widman</a>
+<a>Luiza Rodrigues Santana</a>
+<a>Murilo de Souza Prianti Silva</a>
+<a>Pedro Faria Santos
 
 <h1>📝 Descrição</h1>
 O IPT possui alguns problemas relacionados aos seus relatórios evolvendo chqoues nas ferrovias, os quais são extremamente grandes e massantes e publicados de forma menos atualizada (muitas das vezes publicados em formato de PDF contendo mais de 250 páginas). Com isso, o IPT veio em busca do Inteli para tentar resolver essa intempérie. Então nós como um grupo, observando esse problema, apresentamos uma solução para os relatórios massantes afim de transforma-los em relatórios que são mostrados via página WEB, com sistema de login para os diferentes clientes, também contendo gráficos com o intuito de serem mais didáticos e amigáveis.
 
 <h1>📁 Estrutura de pastas</h1>
-T08_G01_V1_Web_application_document.pdf
-Faça o mesmo para a documentação em formato DOCX.
-|--> documentos
-  | --> outros
-| T8_G1_V1_Web_application_document.pdf
-| T8_G1_V1_Web_application_document.docx
-|--> histórico-não considerar
-|--> imagens
-|--> src
-  |--> Backend
-  |--> Frontend
-  |--> node_modules
-| readme.md
-| license.txt
+T08_G01_V1_Web_application_document.pdf<br>
+|--> documentos<br>
+  | --> outros<br>
+| T8_G1_V1_Web_application_document.pdf<br>
+| T8_G1_V1_Web_application_document.docx<br>
+|--> histórico-não considerar<br>
+|--> imagens<br>
+|--> src<br>
+  |--> Backend<br>
+  |--> Frontend<br>
+  |--> node_modules<br>
+| readme.md<br>
+| license.txt<br>
 
 Dentre os arquivos presentes na raiz do projeto, definem-se:
 
-readme.md: arquivo que serve como guia e explicação geral sobre o projeto (o mesmo que você está lendo agora).
+  - <b>readme.md</b>: arquivo que serve como guia e explicação geral sobre o projeto (o mesmo que você está lendo agora).
 
-documentos: aqui estarão todos os documentos do projeto. Há também uma pasta denominada outros onde estão presentes aqueles documentos complementares ao web application document.
+  - <b>documentos:</b> aqui estarão todos os documentos do projeto. Há também uma pasta denominada <b>outros</b> onde estão presentes aqueles documentos complementares ao <b>web application document.</b>
 
-imagens: imagens relacionadas ao projeto como um todo (por exemplo imagens do sistema, do grupo, logotipos e afins).
+  - <b>imagens:</br> imagens relacionadas ao projeto como um todo (por exemplo imagens do sistema, do grupo, logotipos e afins).
 
-src: nesta pasta encontra-se todo o código fonte do sistema (existem duas subpastas backend e frontend que contêm, respectivamente, o código do servidor e o código da página web).
+  - <b>src:</br> nesta pasta encontra-se todo o código fonte do sistema (existem duas subpastas <b>backend</b> e <b>frontend</b> que contêm, respectivamente, o código do servidor e o código da página web).
 
 💻 Configuração para desenvolvimento
 Aqui encontram-se todas as instruções necessárias para a instalação de todos os programas, bibliotecas e ferramentas imprescindíveis para a configuração do ambiente de desenvolvimento.
 
-Baixar e instalar o node.js: https://nodejs.org/pt-br/ (versão 16.15.1 LTS)
-Clone o repositório em questão.
-No modo administrador, abra o "prompt de comando" ou o "terminal" e, após, abra a pasta "src/backend" no diretório raiz do repositório clonado e digite o segundo comando:
+1. Baixar e instalar o node.js:<b>[https://nodejs.org/pt-br/] https://nodejs.org/pt-br/ </b>(versão 16.15.1 LTS)
+2. Clone o repositório em questão.
+3. No modo administrador, abra o "prompt de comando" ou o "terminal" e, após, abra a pasta "src/backend" no diretório raiz do repositório clonado e digite o segundo<br>
+<h3>comando:<h3>
+```sh
 npm install
-Isso instalará todas as dependências definidas no arquivo package.json que são necessárias para rodar o projeto. Agora o projeto já está pronto para ser modificado. Caso ainda deseje iniciar a aplicação, digite o comando abaixo no terminal:
 
+Isso instalará todas as dependências definidas no arquivo package.json que são necessárias para rodar o projeto. Agora o projeto já está pronto para ser modificado. Caso ainda deseje iniciar a aplicação, digite o comando abaixo no terminal:
+```sh
 npm start
-Agora você pode acessar a aplicação através do link http://localhost:3000/
-O servidor está online.
-Alunos inteli (remover essa observação do readme.md após leitura e execução):
+  
+4. Agora você pode acessar a aplicação através do link http://localhost:3000/
+5. O servidor está online.
 
 1. Certifique-se que há um arquivo "package.json" na pasta backend do projeto.
 

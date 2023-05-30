@@ -46,8 +46,7 @@ Aqui encontram-se todas as instruções necessárias para a instalação de todo
 
 1. Baixar e instalar o node.js:<b>https://nodejs.org/pt-br/ </b>(versão 16.15.1 LTS)
 2. Clone o repositório em questão.
-3. No modo administrador, abra o "prompt de comando" ou o "terminal" e, após, abra a pasta "src/backend" no diretório raiz do repositório clonado e digite o segundo<br>
-<h3>Comandos:<h3>
+3. No modo administrador, abra o "prompt de comando" ou o "terminal" e, após, abra a pasta "src/backend" no diretório raiz do repositório clonado e digite o segundo comando:
   
 ```sh
 npm install

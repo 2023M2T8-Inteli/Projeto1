@@ -1,5 +1,11 @@
 <h1>Inteli - Instituto de Tecnologia e Liderança</h1>
 
+<img src= "https://s3.amazonaws.com/gupy5/production/companies/26702/images/jobs/4705461/20230419025526220_socialPicture.jpg">
+
+# Projeto IPT (Instituto de Pesquisas Tecnológicas)
+
+## InPuT
+
 <h1>InPuT</h1>
 <h3>Integrantes:</h3>
 Erik Batista da Silva

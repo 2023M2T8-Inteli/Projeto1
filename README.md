@@ -44,14 +44,16 @@ Dentre os arquivos presentes na raiz do projeto, definem-se:
 💻 Configuração para desenvolvimento
 Aqui encontram-se todas as instruções necessárias para a instalação de todos os programas, bibliotecas e ferramentas imprescindíveis para a configuração do ambiente de desenvolvimento.
 
-1. Baixar e instalar o node.js:<b>[https://nodejs.org/pt-br/] https://nodejs.org/pt-br/ </b>(versão 16.15.1 LTS)
+1. Baixar e instalar o node.js:<b>https://nodejs.org/pt-br/ </b>(versão 16.15.1 LTS)
 2. Clone o repositório em questão.
 3. No modo administrador, abra o "prompt de comando" ou o "terminal" e, após, abra a pasta "src/backend" no diretório raiz do repositório clonado e digite o segundo<br>
-<h3>comando:<h3>
+<h3>Comandos:<h3>
+  
 ```sh
 npm install
 
 Isso instalará todas as dependências definidas no arquivo package.json que são necessárias para rodar o projeto. Agora o projeto já está pronto para ser modificado. Caso ainda deseje iniciar a aplicação, digite o comando abaixo no terminal:
+  
 ```sh
 npm start
   

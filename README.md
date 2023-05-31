@@ -61,7 +61,7 @@ npx nodemon
 4. Agora você pode acessar a aplicação através do link http://localhost:3000/
 5. O servidor está online.
 
-<h1>🗃 Histórico de lançamentos</h1><br>
+<h1>🗃 Histórico de lançamentos</h1>
 * 0.0.1 - 20/04/2023
   * Criação de Wireframes
   * Value Proposition Canvas

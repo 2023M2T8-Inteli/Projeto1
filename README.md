@@ -19,15 +19,15 @@ O IPT possui alguns problemas relacionados aos seus relatórios evolvendo chqoue
 <h1>📁 Estrutura de pastas</h1>
 T08_G01_V1_Web_application_document.pdf<br>
 |--> documentos<br>
-  | --> outros<br>
+&emsp;| --> outros<br>
 | T8_G1_V1_Web_application_document.pdf<br>
 | T8_G1_V1_Web_application_document.docx<br>
 |--> histórico-não considerar<br>
 |--> imagens<br>
 |--> src<br>
-  |--> Backend<br>
-  |--> Frontend<br>
-  |--> node_modules<br>
+&emsp;|--> Backend<br>
+&emsp;|--> Frontend<br>
+&emsp;|--> node_modules<br>
 | readme.md<br>
 | license.txt<br>
 

@@ -19,15 +19,15 @@ O IPT possui alguns problemas relacionados aos seus relatórios evolvendo chqoue
 <h1>📁 Estrutura de pastas</h1>
 T08_G01_V1_Web_application_document.pdf<br>
 |--> documentos<br>
-&emsp;| --> outros<br>
+ &emsp;| --> outros<br>
 | T8_G1_V1_Web_application_document.pdf<br>
 | T8_G1_V1_Web_application_document.docx<br>
 |--> histórico-não considerar<br>
 |--> imagens<br>
 |--> src<br>
-&emsp;|--> Backend<br>
-&emsp;|--> Frontend<br>
-&emsp;|--> node_modules<br>
+ &emsp;|--> Backend<br>
+ &emsp;|--> Frontend<br>
+ &emsp;|--> node_modules<br>
 | readme.md<br>
 | license.txt<br>
 
@@ -41,7 +41,7 @@ Dentre os arquivos presentes na raiz do projeto, definem-se:
 
   - <b>src:</b> nesta pasta encontra-se todo o código fonte do sistema (existem duas subpastas <b>backend</b> e <b>frontend</b> que contêm, respectivamente, o código do servidor e o código da página web).
 
-💻 Configuração para desenvolvimento
+<h1>💻 Configuração para desenvolvimento</h1>
 Aqui encontram-se todas as instruções necessárias para a instalação de todos os programas, bibliotecas e ferramentas imprescindíveis para a configuração do ambiente de desenvolvimento.
 
 1. Baixar e instalar o node.js:<b>https://nodejs.org/pt-br/ </b>(versão 16.15.1 LTS)
@@ -55,36 +55,41 @@ npm install
 Isso instalará todas as dependências definidas no arquivo package.json que são necessárias para rodar o projeto. Agora o projeto já está pronto para ser modificado. Caso ainda deseje iniciar a aplicação, digite o comando abaixo no terminal:
   
 ```sh
-npm start
+npx nodemon
 ```
   
 4. Agora você pode acessar a aplicação através do link http://localhost:3000/
 5. O servidor está online.
 
-1. Certifique-se que há um arquivo "package.json" na pasta backend do projeto.
-
-2. Dentro deste arquivo, encontre a propriedade "scripts", e adicione um atributo de nome "start"
-com o valor "node <CAMINHO_DO_ARQUIVO_DO_SERVIDOR>." Atenção: "<CAMINHO_DO_ARQUIVO_DO_SERVIDOR>" 
-deve ser substituído pelo caminho para o arquivo principal da aplicação, utilizado para subir o
-servidor. Por exemplo, se o arquivo utilizado para subir o servidor é "app.js", o atributo start
-deve possuir o valor "node app.js".
-
-3. No arquivo utilizado para subir a aplicação, defina a porta padrão de execução para "3031".
 🗃 Histórico de lançamentos
-0.2.1 - 25/01/2022
-Atualização de documentos (código do módulo permanece inalterado).
-0.2.0 - 15/01/2022
-Remove setDefaultXYZ()
-Adiciona init()
-0.1.1 - 11/01/2022
-Crash quando chama baz()
-0.1.0 - 10/01/2022
-O primeiro lançamento adequado
-Renomeia foo() para bar()
-0.0.1 - 01/01/2022
-Trabalho em andamento
+0.0.1 - 20/04/2023
+  * Criação de Wireframes
+  * Value Proposition Canvas
+  * Matriz de Risco
+  * Análise SWOT
+  * Planejamento para a apresentação da Sprint 1
+0.1.0 - 08/05/2023
+ * Estruturação do banco de dados
+ * Arquitetura da solução
+ * Documentação da API
+ * Conceito e definição de Endpoints
+ * Modelo físico e relacional do banco de dados
+0.1.1 - 24/05/2023
+ * Comentários dentro do código
+ * Organização do frontend
+ * Implementação de informações no WAD
+ * Elaboração do guia de estilos
+0.2.0 - 06/06/2023
+ * Integração entre back e front
+ * Finalização dos comentários do código
+ * Revisão e aprimoramento do documento "readm.md"
+ * Apresenração de um protótipo para testes
+0.2.1 - 23/06/2023
+ * OverView na documentação e no código
+ * Finalização do MVP
+ * Apresentação final
 
-## 📋 Licença/License
+<h1>📋 Licença/License</h1>
 
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">InPuT</span> by <span property="cc:attributionName">Erik Batista, Gabrielle Cartaxo, Gustavo Wagon, Luiza Santana, Murilo Prianti e Pedro Faria.</span> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
 

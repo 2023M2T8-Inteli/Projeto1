@@ -61,30 +61,30 @@ npx nodemon
 4. Agora você pode acessar a aplicação através do link http://localhost:3000/
 5. O servidor está online.
 
-🗃 Histórico de lançamentos
-0.0.1 - 20/04/2023
+<h1>🗃 Histórico de lançamentos</h1><br>
+*0.0.1 - 20/04/2023
   * Criação de Wireframes
   * Value Proposition Canvas
   * Matriz de Risco
   * Análise SWOT
   * Planejamento para a apresentação da Sprint 1
-0.1.0 - 08/05/2023
+*0.1.0 - 08/05/2023
  * Estruturação do banco de dados
  * Arquitetura da solução
  * Documentação da API
  * Conceito e definição de Endpoints
  * Modelo físico e relacional do banco de dados
-0.1.1 - 24/05/2023
+*0.1.1 - 24/05/2023
  * Comentários dentro do código
  * Organização do frontend
  * Implementação de informações no WAD
  * Elaboração do guia de estilos
-0.2.0 - 06/06/2023
+*0.2.0 - 06/06/2023
  * Integração entre back e front
  * Finalização dos comentários do código
  * Revisão e aprimoramento do documento "readm.md"
  * Apresenração de um protótipo para testes
-0.2.1 - 23/06/2023
+*0.2.1 - 23/06/2023
  * OverView na documentação e no código
  * Finalização do MVP
  * Apresentação final

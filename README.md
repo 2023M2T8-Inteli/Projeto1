@@ -6,12 +6,12 @@
 
 <h1>InPuT</h1>
 <h3>Integrantes:</h3>
-Erik Batista da Silva<br>
-Gabrielle Dias Cartaxo<br>
-Gustavo Wagon Widman<br>
-Luiza Rodrigues Santana<br>
-Murilo de Souza Prianti Silva<br>
-Pedro Faria Santos
+<a href="https://www.linkedin.com/in/erik-batista-da-silva-455612215/">Erik Batista da Silva</a><br>
+<a href="https://www.linkedin.com/in/gabriellediascartaxo/">Gabrielle Dias Cartaxo</a><br>
+<a href="https://www.linkedin.com/in/gustavo-widman/">Gustavo Wagon Widman</a><br>
+<a href="https://www.linkedin.com/in/luiza-santana-30007a264/">Luiza Rodrigues Santana</a><br>
+<a href="https://www.linkedin.com/in/murilo-prianti-0073111a1/">Murilo de Souza Prianti Silva</a><br>
+<a href="https://www.linkedin.com/in/pedro-faria-santos-10b4061b7/">PedroFaria Santos</a>
 
 <h1>📝 Descrição</h1>
 O IPT possui alguns problemas relacionados aos seus relatórios evolvendo chqoues nas ferrovias, os quais são extremamente grandes e massantes e publicados de forma menos atualizada (muitas das vezes publicados em formato de PDF contendo mais de 250 páginas). Com isso, o IPT veio em busca do Inteli para tentar resolver essa intempérie. Então nós como um grupo, observando esse problema, apresentamos uma solução para os relatórios massantes afim de transforma-los em relatórios que são mostrados via página WEB, com sistema de login para os diferentes clientes, também contendo gráficos com o intuito de serem mais didáticos e amigáveis.
@@ -55,7 +55,7 @@ npm install
 Isso instalará todas as dependências definidas no arquivo package.json que são necessárias para rodar o projeto. Agora o projeto já está pronto para ser modificado. Caso ainda deseje iniciar a aplicação, digite o comando abaixo no terminal:
   
 ```sh
-npx nodemon
+nodemon index.js
 ```
   
 4. Agora você pode acessar a aplicação através do link http://localhost:3000/
@@ -94,7 +94,7 @@ npx nodemon
 
 
 * 0.2.1 - 23/06/2023
-  * OverView na documentação e no código
+  * Revisão da documentação e do código
   * Finalização do MVP
   * Apresentação final
 

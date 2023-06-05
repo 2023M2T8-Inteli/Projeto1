@@ -4,6 +4,8 @@
 
 # Projeto IPT (Instituto de Pesquisas Tecnológicas)
 
+<img src="https://github.com/2023M2T8-Inteli/Projeto1/raw/main/imagens/Captura%20de%20tela%202023-04-17%20151016.png" alt="Imagem">
+
 <h1>InPuT</h1>
 <h3>Integrantes:</h3>
 <a href="https://www.linkedin.com/in/erik-batista-da-silva-455612215/">Erik Batista da Silva</a><br>
@@ -12,6 +14,14 @@
 <a href="https://www.linkedin.com/in/luiza-santana-30007a264/">Luiza Rodrigues Santana</a><br>
 <a href="https://www.linkedin.com/in/murilo-prianti-0073111a1/">Murilo de Souza Prianti Silva</a><br>
 <a href="https://www.linkedin.com/in/pedro-faria-santos-10b4061b7/">PedroFaria Santos</a>
+
+<h2>Professores/Orientadores</h2>
+<a href="https://www.linkedin.com/in/fatima-toledo/">Fátima Toledo</a><br>
+<a href="https://www.linkedin.com/in/francisco-escobar/">Francisco Escobar</a><br>
+<a href="https://www.linkedin.com/in/henrique-mohallem-paiva-6854b460/">Henrique Paiva</a><br>
+<a href="https://www.linkedin.com/in/marcelo-gon%C3%A7alves-phd-a550652/">Marcelo Gonçalves</a><br>
+<a href="https://www.linkedin.com/in/victorbarq/">Victor Quiroz</a>
+
 
 <h1>📝 Descrição</h1>
 O IPT possui alguns problemas relacionados aos seus relatórios evolvendo chqoues nas ferrovias, os quais são extremamente grandes e massantes e publicados de forma menos atualizada (muitas das vezes publicados em formato de PDF contendo mais de 250 páginas). Com isso, o IPT veio em busca do Inteli para tentar resolver essa intempérie. Então nós como um grupo, observando esse problema, apresentamos uma solução para os relatórios massantes afim de transforma-los em relatórios que são mostrados via página WEB, com sistema de login para os diferentes clientes, também contendo gráficos com o intuito de serem mais didáticos e amigáveis.

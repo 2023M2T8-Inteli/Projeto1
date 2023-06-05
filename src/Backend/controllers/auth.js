@@ -7,6 +7,13 @@ const quantity = require('./reports/Rels')
 
 // const db = require('../routes/db-config');
 
+///////////////////////
+// PARTE DE DOWNLOAD//
+//////////////////////
+
+const download = require('./down_up/download')
+
+
 /////////////////////
 // PARTE DE LOGIN //
 ////////////////////
@@ -70,6 +77,6 @@ router.get("/seeFav", loggedIn ,seeFav) // Vizualiza os favoritos atuais.
 
 router.delete('/deleteFav/:id', loggedIn, deleteFav) // Deleta o registro de favorito selecionado.
 
-
+router.get('/download/:id', download)
 
 module.exports = router;

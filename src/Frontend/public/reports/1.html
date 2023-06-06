@@ -51,13 +51,8 @@
 			</a>
 		  </li>
 		  <li class="nav-item">
-<<<<<<< Updated upstream
 			<a class="nav-link" href="/relatorios">
 			  <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-=======
-			<a class="nav-link" href="#">
-			  <span data-feather="file-text" class="align-text-bottom"></span>
->>>>>>> Stashed changes
 			  Relatórios
 			</a>
 		  </li>
@@ -143,11 +138,11 @@
 
 									<!-- ITENS DO DROPDOWN -->
 									<div class="dropdown-menu">
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='viagens("1")'>Viagem 1</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='viagens("2")'>Viagem 2</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='viagens("3")'>Viagem 3</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='viagens("4")'>Viagem 4</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='viagens("5")'>Viagem 5</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initMap(1)'>Viagem 1</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initMap(2)'>Viagem 2</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initMap(3)'>Viagem 3</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initMap(4)'>Viagem 4</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initMap(5)'>Viagem 5</button>
 									</div>
 								</div>
 
@@ -161,8 +156,8 @@
 
 									<!-- ITENS DO DROPDOWN -->
 									<div class="dropdown-menu">
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='vagoes("E")'>Vagão E</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='vagoes("F")'>Vagão F</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initMap(undefined, undefined,"E")'>Vagão E</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initMap(undefined, undefined,"F")'>Vagão F</button>
 									</div>
 								</div>
 
@@ -178,9 +173,9 @@
 
 									<!-- ITENS DO DROPDOWN -->
 									<div class="dropdown-menu">
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="choque(a=1)">Choque 1</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="choque(a=2)">Choque 2</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="choque(a=3)">Pico</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initMap(undefined, 1)">Choque 1</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initMap(undefined, 2)">Choque 2</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initMap(undefined, 3)">Pico</button>
 									</div>
 								</div>
 
@@ -254,8 +249,8 @@
 
 									<!-- ITENS DO DROPDOWN -->
 									<div class="dropdown-menu">
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initGraph(vagao="E")'>Vagão E</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initGraph(vagao="F")'>Vagão F</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initGraph(undefined, undefined, "E")'>Vagão E</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initGraph(undefined, undefined, "F")'>Vagão F</button>
 									</div>
 
 								</div>
@@ -270,8 +265,8 @@
 
 									<!-- ITENS DO DROPDOWN -->
 									<div class="dropdown-menu">
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="return false">Choque Tipo 1</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="return false">Choque Tipo 2</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick=" initGraph(undefined, 1)">Choque Tipo 1</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick=" initGraph(undefined, 2)">Choque Tipo 2</button>
 										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="return false">Pico</button>
 									</div>
 
@@ -294,9 +289,9 @@
 										<!-- AQUI VAI TER Q FAZER JAVASCRIPT PRA MUDAR O DROPDOWN DEPENDENDO SE EH CHOQUE OU PICO -->
 										<!-- ITEM DE DROPDOWN DISABLED VC BOTA NA CLASSE: DROPDOWN-ITEM DISABLED -->
 										<!-- ENFASE NO "DISABLED" GNT -->
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(ocur=3)">PEG_PSI</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(ocur=2)">ACT</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(ocur=1)">Força Máxima</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(undefined,undefined, undefined, ocur=3)">PEG_PSI</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(undefined,undefined, undefined, ocur=2)">ACT</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(undefined,undefined, undefined, ocur=1)">Força Máxima</button>
 										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="return false">Velocidade</button>
 										<button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="return false">Engate</button>
 										<button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="return false">ΔT</button>

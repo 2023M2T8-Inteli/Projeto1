@@ -54,7 +54,7 @@ router.get('/tableF/:impact', tableF); // Seleciona todos os dados da tabela F
 
 router.get('/mapE/:viagem/:id', mapE);
 
-router.get('/mapF/:id', mapF);
+router.get('/mapF/:viagem/:id', mapF);
 
 router.get('/path', path);
 

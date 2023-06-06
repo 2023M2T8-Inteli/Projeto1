@@ -6,70 +6,46 @@
 
 let map;
 
-// Esperando automatização
-let id = 1;
-let vagao = "E";
-let viagem = 1;
+//inicializando mapa
+document.onload = (function() {
+	'use strict'; // iniciando modo estrito
 
+	initMap()
+})();
 
-
-// De acordo com o input do botão, o mapa recebe pontos diferentes
-function choque(a) {
-	id = a;
-	// recarregar a pagina e iniciar o mapa após o carregamento da pagina
-	$.ajax({
-		url: window.location.href,
-		type: 'GET',
-		dataType: 'html',
-		success: function(data) {
-			document.documentElement.innerHTML = data;
-			initMap(true);
-			// recarregar a pagina e iniciar o mapa após o carregamento da pagina
-		},
-		error: function(error) {
-			console.error('Erro ao recarregar o conteúdo:', error);
-		}
-	});
-}
-
-// De acordo com o input do botão, o mapa recebe pontos diferentes
-function vagoes(vagaoSelecionado) {
-	vagao = vagaoSelecionado;
-	// recarregar a pagina e iniciar o mapa após o carregamento da pagina
-	$.ajax({
-		url: window.location.href,
-		type: 'GET',
-		dataType: 'html',
-		success: function(data) {
-			document.documentElement.innerHTML = data;
-			initMap(true);
-			// recarregar a pagina e iniciar o mapa após o carregamento da pagina
-		},
-		error: function(error) {
-			console.error('Erro ao recarregar o conteúdo:', error);
-		}
-	});
-}
-
+let initViagem = 1;
+let initChoque = 1;
+let initVagao = 'E';
 // iniciando mapa utilizando api do google maps
-async function initMap() {
+async function initMap(viagem = initViagem, choque = initChoque, vagao = initVagao) {
+	if (viagem != initViagem) {initViagem = viagem}
+	if (vagao != initVagao) {initVagao = vagao}
+	if (choque != initChoque) {initChoque = choque}
+
+	// esperando fetch que devolve os pontos do mapa
+	var points = await fetch('/api/path', {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	}).then(response => response.json());
+
+	// calculando media de lat e lon
+	let mediaLat = points.reduce((total, point) => total + point.lat, 0) / points.length;
+	let mediaLon = points.reduce((total, point) => total + point.lon, 0) / points.length;
+
+	// criando mapa
 	const { Map } = await google.maps.importLibrary("maps");
 	map = new Map(document.getElementById("map"), {
-		center: { lat: -11.455206520983609, lng: -34.499763669180325 },
+		center: { lat: mediaLat, lng: mediaLon },
 		zoom: 6,
 	});
 
 	try {
-		// esperando fetch que devolve os pontos do mapa
-		var points = await fetch('/api/path', {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		}).then(response => response.json()); // transformando a resposta em json
+		 // transformando a resposta em json
 
 		var path = [];
-		// adicionando os pontos ao caminho
+		// adicionando os pontos do caminho
 		for (var i = 0; i < points.length; i++) {
 			path.push(new google.maps.LatLng(points[i].lat, points[i].lon));
 		}
@@ -85,10 +61,10 @@ async function initMap() {
 		polyline.setMap(map);
 
 		// definindo marcadores
-		var url = '/api/map' + vagao + "/" + id;
+		var url = `/api/map${vagao}/${viagem}/${choque}`;//     '/mapE/:viagem/:id',
 
 		// esperando fetch que devolve os pontos do mapa
-		var json = await fetch(url, {
+		var marker = await fetch(url, {
 			method: 'GET',
 		}).then(response =>{
 			return response.json()
@@ -125,7 +101,7 @@ initMap(false);
 
 
 let extViagem = 1
-let extRelnum = 1
+let extType = 1
 let extVagao = "E"
 let extOcur = 1
 
@@ -135,14 +111,15 @@ document.onload = (function() {
 	initGraph(1, 1, "E", 1)
 })();
 
-function initGraph(viagem = extViagem, relnum = extRelnum, vagao = extVagao, ocur = extOcur) {
+function initGraph(viagem = extViagem, type = extType, vagao = extVagao, ocur = extOcur) {
 	if (viagem != extViagem) {extViagem = viagem}
-	if (relnum != extRelnum) {extRelnum = relnum}
+	if (type != extType) {extType = type}
 	if (vagao != extVagao) {extVagao = vagao}
 	if (ocur != extOcur) {extOcur = ocur}
 
+	console.log(`/api/graphs${vagao}/${viagem}/${type}/${ocur}`)
 
-	fetch(`/api/graphs${vagao}/${viagem}/${relnum}/${ocur}`, {
+	fetch(`/api/graphs${vagao}/${viagem}/${type}/${ocur}`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'

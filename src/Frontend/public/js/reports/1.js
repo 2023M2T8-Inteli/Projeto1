@@ -1,3 +1,5 @@
+//Arquivo padrão para gerar outros relatorios, então 1.js, será para o relatorio 1, contudo ele será apenas utilizado como padrão para os outros relatorios!!!!!!
+
 /* //////////////////////////////////// */
 /*                MAPAS                 */
 /* //////////////////////////////////// */
@@ -7,48 +9,46 @@ let map;
 // Esperando automatização
 let id = 1;
 let vagao = "E";
+let viagem = 1;
+
 
 
 // De acordo com o input do botão, o mapa recebe pontos diferentes
 function choque(a) {
 	id = a;
 	// recarregar a pagina e iniciar o mapa após o carregamento da pagina
-	fetch(`${window.location.href}`, {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'text/html'
-		}
-	})
-		.then(response => response.text()) // transformando a resposta em texto
-		.then(data => {
+	$.ajax({
+		url: window.location.href,
+		type: 'GET',
+		dataType: 'html',
+		success: function(data) {
 			document.documentElement.innerHTML = data;
 			initMap(true);
 			// recarregar a pagina e iniciar o mapa após o carregamento da pagina
-		})
-		.catch(error => {
+		},
+		error: function(error) {
 			console.error('Erro ao recarregar o conteúdo:', error);
-		});
+		}
+	});
 }
 
 // De acordo com o input do botão, o mapa recebe pontos diferentes
-function vagoes(vagaoSelecionado){
+function vagoes(vagaoSelecionado) {
 	vagao = vagaoSelecionado;
 	// recarregar a pagina e iniciar o mapa após o carregamento da pagina
-	fetch(window.location.href, {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'text/html'
-		}
-	})
-		.then(response => response.text()) // transformando a resposta em texto
-		.then(data => {
+	$.ajax({
+		url: window.location.href,
+		type: 'GET',
+		dataType: 'html',
+		success: function(data) {
 			document.documentElement.innerHTML = data;
 			initMap(true);
 			// recarregar a pagina e iniciar o mapa após o carregamento da pagina
-		})
-		.catch(error => {
+		},
+		error: function(error) {
 			console.error('Erro ao recarregar o conteúdo:', error);
-		});
+		}
+	});
 }
 
 // iniciando mapa utilizando api do google maps
@@ -124,11 +124,25 @@ initMap(false);
 /* /////////////////////////////////// */
 
 
-(() => {
+let extViagem = 1
+let extRelnum = 1
+let extVagao = "E"
+let extOcur = 1
+
+document.onload = (function() {
 	'use strict'; // iniciando modo estrito
 
-	// requisição para adquirir dados das colunas e linhas
-	fetch('/api/graphsE/1/1', {
+	initGraph(1, 1, "E", 1)
+})();
+
+function initGraph(viagem = extViagem, relnum = extRelnum, vagao = extVagao, ocur = extOcur) {
+	if (viagem != extViagem) {extViagem = viagem}
+	if (relnum != extRelnum) {extRelnum = relnum}
+	if (vagao != extVagao) {extVagao = vagao}
+	if (ocur != extOcur) {extOcur = ocur}
+
+
+	fetch(`/api/graphs${vagao}/${viagem}/${relnum}/${ocur}`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -141,7 +155,7 @@ initMap(false);
 		.then(json => {
 			const value = json;
 
-			const values = [];
+			let values = [];
 			const columns = [];
 
 			// adicionando os valores e colunas
@@ -151,14 +165,25 @@ initMap(false);
 			}
 
 
-			feather.replace({ 'aria-hidden': 'true' });
-
 			// configurando o gráfico
 			const ctx = document.getElementById('myChart');//Referencia o gráfico
-			const myChart = new Chart(ctx, {
+			// deletes the ctx element
+			ctx.remove();
+			// creates a new element as the child of id chartFather (looks like <canvas class="my-4 w-100 pb-5" id="myChart" width="900" height="380"></canvas>)
+			let ctx2 = document.createElement('canvas')
+			ctx2.setAttribute('id', 'myChart')
+			ctx2.setAttribute('width', '900')
+			ctx2.setAttribute('height', '380')
+			ctx2.setAttribute('class', 'my-4 w-100 pb-5');
+
+			document.getElementById('chartFather').appendChild(ctx2);
+
+
+
+			const myChart = new Chart(ctx2, {
 				type: 'line',
 				data: {
-					labels: columns, // inserindo as colunas
+					labels: values, // inserindo as colunas
 					datasets: [
 						{
 							data: values, // inserindo as linhas
@@ -182,5 +207,5 @@ initMap(false);
 				}
 			});
 		});
-})();
+}
 

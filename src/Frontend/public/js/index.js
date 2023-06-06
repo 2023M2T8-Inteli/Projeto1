@@ -3,22 +3,99 @@
 })()
 
 function newFav(a){
-    fetch ("api/addFav/"+a, {
-        method: 'POST'
-    }).then(response =>{
-        return response.json()
+// Pega os favoritos do usuario
+fetch (`/api/seeFav/`, {
+    method: 'GET',
+    headers: { "Content-Type": "application/json" }
+}).then(response => {
+    return response.json() // Transforma a resposta em json
+}).then(json => {
+        favs = json
+        // Verifica se o relatorio já está nos favoritos
+        for(i = 0; i < favs.length; i++){
+            // console.log(favs[i].rel_num, a)
+            if(favs[i].rel_num == a) { // Se o relatorio já estiver nos favoritos
+                alert("Esse relatório já está nos seus favoritos!") // Mostra um alerta
+                return // Sai da função
+            }
+        }
+
+        // Adiciona o relatorio aos favoritos
+        fetch (`api/addFav/${1}`, {
+            method: 'POST'
+        }).then(response =>{
+            return response.json() // Transforma a resposta em json
+        }).catch(console.error())
+
+        let newLi = document.createElement("li")
+        newLi.className = "nav-item"
+        newLi.id = "fav_" + a
+
+        // Cria o elemento div a classe d-flex nav-link justify-content-between remove_link_colour
+        let newDiv = document.createElement("div")
+        newDiv.className = "d-flex nav-link justify-content-between remove_link_colour"
+
+        // Cria o elemento a com o link para o relatorio
+        let newA = document.createElement("a")
+        newA.href = "/reports/" + a
+
+        // Cria o elemento span com o icone do feather
+        let newSpan = document.createElement("span")
+        newSpan.setAttribute("data-feather", "file-text");
+        newSpan.className = "align-text-bottom me-1"
+        newSpan.style = "margin-top: 2.5px"
+
+
+        // Cria o elemento form com o botao de remover
+        let newForm = document.createElement("form")
+        newForm.setAttribute("onsubmit", `fetch('/api/deleteFav/${a}', { method: 'DELETE' }); document.getElementById("fav_" + ${a}).remove(); return false;`);
+
+        // Cria o elemento button com o icone do feather
+        let newButton = document.createElement("button")
+        newButton.type = "submit"
+        newButton.className = "border-0 px-0"
+        newButton.style = "background-color: #f8f9fa;"
+
+        // Cria o elemento span com o icone do feather
+        let newSpan2 = document.createElement("span")
+        newSpan2.setAttribute("data-feather", "minus-circle");
+        newSpan2.className = "align-text-bottom ms-auto"
+        newSpan2.style = "margin-top: 2.5px"
+
+        // Adiciona o elemento newSpan e o texto "Relatório #a" ao elemento newA
+        newA.appendChild(newSpan)
+        newA.innerHTML += " Relatório #" + a + " "
+
+        // Adiciona o elemento newSpan2 ao elemento newButton
+        newButton.appendChild(newSpan2)
+        newForm.appendChild(newButton)
+
+        // Adiciona o elemento newA e o elemento newForm ao elemento newDiv
+        newDiv.appendChild(newA)
+        newDiv.appendChild(newForm)
+
+        // Adiciona o elemento newDiv ao elemento newLi
+        newLi.appendChild(newDiv)
+
+        // Adiciona o elemento newLi ao elemento com o id "fav-bar"
+        document.getElementById("fav-bar").appendChild(newLi)
+
+
+        // Atualiza o feather
+        feather.replace()
+
     }).catch(console.error())
 }
 
 //função para download do relatório
 function downloadZip(rel) {
     const zipUrl = "Rel.zip"; // Substitua pela URL real do arquivo ZIP
-    
+
     fetch(`/api/download/${rel}`)
       .then(response => response.blob())
       .then(blob => {
         const url = window.URL.createObjectURL(blob);
-  
+
         const a = document.createElement("a");
         a.href = url;
         a.download = "Rel.zip"; // Nome do arquivo ZIP
@@ -118,14 +195,14 @@ async function relatorios(){
             buttonElement.setAttribute('onclick', 'newFav(' + rel + ')');
             buttonElement.className = 'btn btn-sm btn-outline-secondary';
             buttonElement.textContent = 'Favoritar';
-            
+
             // teste Cria o elemento button com o texto "Baixar"
             var buttElement = document.createElement('button');
             buttElement.setAttribute('type', 'button');
             buttElement.setAttribute('onclick', `downloadZip(${rel})`);
             buttElement.className = 'btn btn-sm btn-outline-secondary';
             buttElement.textContent = 'Baixar';
-            
+
 
             // Cria o elemento small com o texto "Data do Relatório"
             var smallElement = document.createElement('small');
@@ -246,7 +323,7 @@ async function seeFav(){
             aElement.href = '/reports/'+rel;
             aElement.textContent = 'Ver'
 
-            
+
 
             // Cria o elemento small com o texto "Data do Relatório"
             var smallElement = document.createElement('small');
@@ -279,7 +356,7 @@ async function seeFav(){
             var parentElement = document.getElementById('content-rels'); // Substitua 'id-do-elemento-pai' pelo ID correto do elemento pai
 
             // Adiciona o elemento divElement como filho do elemento pai
-            parentElement.appendChild(divElement);  
+            parentElement.appendChild(divElement);
         }
     })
 }

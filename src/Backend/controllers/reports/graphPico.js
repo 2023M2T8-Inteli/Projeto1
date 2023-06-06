@@ -6,7 +6,7 @@ function graphPico (req,res) {
     const id = req.params.id; // Diferencia o E do F.
     const ocur = req.params.ocur; //Escolhe a ocorrência específica (ACT, PEG_PSI, etc)
 
-    if(id == 1){
+    if(id == 1){ // Se for E
         var table = "OCORRENCIAS_PICO1"
         if(ocur == 1){
             var sql = "SELECT F_MAX FROM " + table + " INNER JOIN E_IDENTIFICACAO ON " + table + ".ID_OCORRENCIA = E_IDENTIFICACAO.ID_IDENTIFICACAO";

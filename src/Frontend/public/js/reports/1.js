@@ -137,9 +137,11 @@ function initGraph(viagem = extViagem, type = extType, vagao = extVagao, ocur = 
 
 			// adicionando os valores e colunas
 			for (let i = 0; i < value.length; i++) {
-				values.push(value[i].f_max);
-				columns.push(value[i].data_hora);
+				if(value[i].f_max){
+					values.push(value[i].f_max);
+					columns.push(value[i].data_hora);}
 			}
+			console.log(value)
 
 
 			// configurando o gráfico
@@ -160,7 +162,7 @@ function initGraph(viagem = extViagem, type = extType, vagao = extVagao, ocur = 
 			const myChart = new Chart(ctx2, {
 				type: 'line',
 				data: {
-					labels: values, // inserindo as colunas
+					labels: columns, // inserindo as colunas
 					datasets: [
 						{
 							data: values, // inserindo as linhas

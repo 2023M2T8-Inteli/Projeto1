@@ -21,7 +21,7 @@ fetch (`/api/seeFav/`, {
         }
 
         // Adiciona o relatorio aos favoritos
-        fetch (`api/addFav/${1}`, {
+        fetch (`/api/addFav/${a}`, {
             method: 'POST'
         }).then(response =>{
             return response.json() // Transforma a resposta em json

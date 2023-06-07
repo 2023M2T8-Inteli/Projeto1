@@ -15,7 +15,7 @@ router.get("/", loggedIn, (req, res) => {
 })
 
 router.get("/login", (req, res) => {
-    res.sendFile('login.html', {root: './Frontend/public'});
+        res.sendFile('login.html', {root: './Frontend/public'});
 })
 
 router.get("/reports/:id", loggedIn, (req, res) => {
@@ -27,7 +27,11 @@ router.get("/reports/:id", loggedIn, (req, res) => {
 })
 
 router.get("/relatorios", (req,res) => {
-    res.sendFile('relatorios.html', {root:'./Frontend/public'})
+    if (req.cookies['remember-login']) {
+        res.sendFile('relatorios.html', {root:'./Frontend/public'})
+    } else {
+        res.redirect("/login")
+    }
 })
 
 module.exports = router

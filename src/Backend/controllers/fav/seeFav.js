@@ -7,6 +7,7 @@ function seeFav (req, res) {
 
     const id = req.user.id; // Seleciona o usuário logado
 
+    // seleciona todos os favoritos de acordo com o user id
     db.all(`SELECT * FROM favs WHERE id_user = ${id}`, function(err, rows) {;
         if(err) {
             res.json({status: "error", text: "Erro interno do servidor"})

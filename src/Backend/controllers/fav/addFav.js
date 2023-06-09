@@ -7,7 +7,7 @@ function addFav (req, res) {
     const id = req.user.id
 
 
-    // checks if this rel num is already inside the favs table for the user id
+    // chear se numero de relatorio ja foi favoritado
     db.all(`SELECT * FROM favs WHERE rel_num = ${rel_num} AND id_user = ${id}`, function(err, rows) {
         if(err) {
             res.json({status: "error", text: "Erro interno do servidor"})
@@ -17,7 +17,7 @@ function addFav (req, res) {
         if(rows.length > 0) {
             res.json({status: "error", text: "Esse relatório já está nos seus favoritos"})
             return
-        } else {
+        } else {  //inserindo novo favorito
             db.all("INSERT INTO favs(id_user, rel_num) VALUES(?, ?)", id, rel_num, function(err) {
                 if(err){
                     res.json({status: "error", text: "Erro interno do servidor"})

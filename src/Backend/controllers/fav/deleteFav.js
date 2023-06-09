@@ -6,7 +6,7 @@ function deleteFav (req, res) {
     const rel = req.params.id; // Seleciona o favorito desejado
     const id = req.user.id; // Seleciona o usuário logado
 
-    // deletes from favoritos where rel_num = rel and id_user = id
+    // deleta fovoritos de acordo com o user id e com o numero do relatorio(por ennquanto temos apenas um usuario)
     db.all(`DELETE FROM favs WHERE rel_num = ${rel} AND id_user = ${id}`, function(err) {
         if(err) {
             res.json({status: "error", text: "Erro interno do servidor"})

@@ -1,17 +1,17 @@
-// HIGHEST PRIORITY
+// MAIOR PRIORIDADE
 require('dotenv').config();
 
-// HIGH PRIORITY
+// ALTA PRIORIDADE
 const express = require('express');
 const app = express();
 const cookie = require('cookie-parser');
 
-// LOW PRIORITY
+// BAIXA PRIORIDADE
 app.use(express.json());
 app.use(cookie());
 
 
-// LOWEST PRIORITY
+// MENOR PRIORIDADE
 app.use('/api', require('./Backend/controllers/auth')); // Pega o auth.js da pasta Backend/controllers\
 app.use('/', require('./Backend/routes/pages'));
 

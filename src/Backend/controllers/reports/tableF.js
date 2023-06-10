@@ -1,5 +1,6 @@
 const DB_PATH = require('path').resolve(__dirname, '../../routes/db-config.js')
 
+// funcao que pega tabela de todas as ocorrências do vagão tipo F
 function tableF (req, res) {
     const db = require(DB_PATH).db();
 

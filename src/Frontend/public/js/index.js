@@ -108,19 +108,21 @@ function downloadZip(rel) {
   }
 
 async function relatorios(){
-    console.log("ola")
+    // console.log("ola")
+    // Pega os relatorios do usuario
     fetch('/api/quantity', {
         method: 'GET'
     }).then(response=>{
-        return response.json()
+        return response.json() // Transforma a resposta em json
     }).then(json=>{
-        var num = json
-        console.log(json)
+        var num = json // Salva os relatorios em uma variavel
+        // console.log(json)
 
+        // Para cada relatorio
         for(i = 0; i < num.length; i++){
-
             let rel = i+1;
 
+            // Cria o elemento li com a classe "nav-item"
             var divElement = document.createElement('div');
             divElement.className = 'row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3';
 
@@ -243,18 +245,21 @@ async function relatorios(){
 }
 
 async function seeFav(){
-    console.log("FOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOI")
+    // console.log("FOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOI")
 
+    // Pega os dados do relatório
     fetch('/api/seeFav', {
         method: 'GET'
     }).then(response =>{
-        return response.json()
+        return response.json() // Transforma a resposta em JSON
     }).then(json=>{
         var data = json
 
+        // Para cada relatório, cria um card
         for (i = 0; i < data.length; i++){
             let rel = data[i].rel_num;
 
+            // Cria o elemento div com as classes "row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"
             var divElement = document.createElement('div');
             divElement.className = 'row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3';
 

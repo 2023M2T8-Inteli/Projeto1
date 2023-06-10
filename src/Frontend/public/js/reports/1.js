@@ -99,7 +99,7 @@ initMap(false);
 /*              GRÁFICOS               */
 /* /////////////////////////////////// */
 
-
+// variaveis globais
 let extViagem = 1
 let extType = 1
 let extVagao = "E"
@@ -108,17 +108,20 @@ let extOcur = 1
 document.onload = (function() {
 	'use strict'; // iniciando modo estrito
 
-	initGraph(1, 1, "E", 1)
+	initGraph(1, 1, "E", 1) // inicializando gráfico
 })();
 
+// inicializando gráfico
 function initGraph(viagem = extViagem, type = extType, vagao = extVagao, ocur = extOcur) {
+	// atualizando variaveis globais caso necessário
 	if (viagem != extViagem) {extViagem = viagem}
 	if (type != extType) {extType = type}
 	if (vagao != extVagao) {extVagao = vagao}
 	if (ocur != extOcur) {extOcur = ocur}
 
-	console.log(`/api/graphs${vagao}/${viagem}/${type}/${ocur}`)
+	// console.log(`/api/graphs${vagao}/${viagem}/${type}/${ocur}`)
 
+	// esperando fetch que devolve os pontos do mapa
 	fetch(`/api/graphs${vagao}/${viagem}/${type}/${ocur}`, {
 		method: 'GET',
 		headers: {
@@ -130,25 +133,26 @@ function initGraph(viagem = extViagem, type = extType, vagao = extVagao, ocur = 
 			return response.json();
 		})
 		.then(json => {
-			const value = json;
+			const value = json; // valor do gráfico
 
-			let values = [];
-			const columns = [];
+			let values = []; // valores do gráfico
+			const columns = []; // colunas do gráfico
 
 			// adicionando os valores e colunas
 			for (let i = 0; i < value.length; i++) {
 				if(value[i].f_max){
-					values.push(value[i].f_max);
-					columns.push(value[i].data_hora);}
+					values.push(value[i].f_max); // adicionando valor
+					columns.push(value[i].data_hora);} // adicionando coluna
 			}
-			console.log(value)
+
+			// console.log(value)
 
 
 			// configurando o gráfico
 			const ctx = document.getElementById('myChart');//Referencia o gráfico
-			// deletes the ctx element
+			// deleta o gráfico anterior
 			ctx.remove();
-			// creates a new element as the child of id chartFather (looks like <canvas class="my-4 w-100 pb-5" id="myChart" width="900" height="380"></canvas>)
+			// cria um novo gráfico
 			let ctx2 = document.createElement('canvas')
 			ctx2.setAttribute('id', 'myChart')
 			ctx2.setAttribute('width', '900')

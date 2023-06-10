@@ -19,7 +19,7 @@ function graphPico (req,res) {
                 res.json(rows)
             })
         }
-        if(ocur == 2){
+        if(ocur == 2){ // Se for ACT
             var sql = "SELECT ACT FROM " + table + " INNER JOIN E_IDENTIFICACAO ON " + table+ ".ID_OCORRENCIA = E_IDENTIFICACAO.ID_IDENTIFICACAO";
             db.all(sql, function(err,rows){
                 if(err){
@@ -29,7 +29,7 @@ function graphPico (req,res) {
                 res.json(rows)
             })
         }
-        if(ocur == 3){
+        if(ocur == 3){ // Se for PEG_PSI
             var sql = "SELECT PEG_PSI FROM " + table + " INNER JOIN E_IDENTIFICACAO ON " + table+ ".ID_OCORRENCIA = E_IDENTIFICACAO.ID_IDENTIFICACAO";
             db.all(sql, function(err,rows){
                 if(err){
@@ -40,7 +40,7 @@ function graphPico (req,res) {
             })
         }
     }
-    if(id == 2){
+    if(id == 2){ // Se for F
         var table = "FROM OCORRENCIAS_PICO2"
         if(ocur == 1){
             var sql = "SELECT F_MAX FROM " + table + " INNER JOIN E_IDENTIFICACAO ON " + table+ ".ID_OCORRENCIA = F_IDENTIFICACAO.ID_IDENTIFICACAO";
@@ -52,7 +52,7 @@ function graphPico (req,res) {
                 res.json(rows)
             })
         }
-        if(ocur == 2){
+        if(ocur == 2){ // Se for ACT
             var sql = "SELECT ACT FROM " + table + " INNER JOIN E_IDENTIFICACAO ON " + table+ ".ID_OCORRENCIA = F_IDENTIFICACAO.ID_IDENTIFICACAO";
             db.all(sql, function(err,rows){
                 if(err){
@@ -61,7 +61,7 @@ function graphPico (req,res) {
                 res.json(rows)
             })
         }
-        if(ocur == 3){
+        if(ocur == 3){ // Se for PEG_PSI
             var sql = "SELECT PEG_PSI FROM " + table + " INNER JOIN E_IDENTIFICACAO ON " + table+ ".ID_OCORRENCIA = F_IDENTIFICACAO.ID_IDENTIFICACAO";
             db.all(sql, function(err,rows){
                 if(err){

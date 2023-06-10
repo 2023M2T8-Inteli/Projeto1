@@ -1,6 +1,7 @@
 // Funcao que roda quando a pagina é carregada
 (() => {
     console.log("insert-favs.js loaded")
+
     // Pega os favoritos do usuario
     fetch("/api/seeFav", {
         method: "GET",

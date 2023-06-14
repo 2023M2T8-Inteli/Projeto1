@@ -160,7 +160,8 @@ function initGraph(viagem = extViagem, type = extType, vagao = extVagao, ocur = 
 			ctx2.setAttribute('class', 'my-4 w-100 pb-5');
 
 			document.getElementById('chartFather').appendChild(ctx2);
-
+			
+			
 
 
 			const myChart = new Chart(ctx2, {
@@ -191,4 +192,8 @@ function initGraph(viagem = extViagem, type = extType, vagao = extVagao, ocur = 
 			});
 		});
 }
-
+//Funçao que muda o nome das opções para o que foi selecionado, nos gráficos e mapa
+function selectOption(option, dropdownId) {
+    var dropdownButton = document.getElementById(dropdownId);
+    dropdownButton.innerText = option.innerText;
+  }

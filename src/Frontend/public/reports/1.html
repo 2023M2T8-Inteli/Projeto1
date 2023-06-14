@@ -133,17 +133,17 @@
 								<!-- DROPDOWN DE VIAGENS -->
 								<div class="dropdown-center btn-group me-2">
 									<!-- TÍTULO DO DROPDOWN -->
-									<button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+									<button id="dropdownViagemMapa" class=" btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 										Selecione a Viagem
 									</button>
 
 									<!-- ITENS DO DROPDOWN -->
 									<div class="dropdown-menu">
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initMap(1)'>Viagem 1</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initMap(2)'>Viagem 2</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initMap(3)'>Viagem 3</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initMap(4)'>Viagem 4</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initMap(5)'>Viagem 5</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initMap(1); selectOption(this, 'dropdownViagemMapa')">Viagem 1</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initMap(2); selectOption(this, 'dropdownViagemMapa')">Viagem 2</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initMap(3); selectOption(this, 'dropdownViagemMapa')">Viagem 3</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initMap(4); selectOption(this, 'dropdownViagemMapa')">Viagem 4</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initMap(5); selectOption(this, 'dropdownViagemMapa')">Viagem 5</button>
 									</div>
 								</div>
 
@@ -151,14 +151,14 @@
 								<!-- DROPDOWN DE VAGOES -->
 								<div class="dropdown-center btn-group me-2">
 									<!-- TÍTULO DO DROPDOWN -->
-									<button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+									<button id="dropdownVagoesMapa" class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 										Selecione o Vagão
 									</button>
 
 									<!-- ITENS DO DROPDOWN -->
 									<div class="dropdown-menu">
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initMap(undefined, undefined,"E")'>Vagão E</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initMap(undefined, undefined,"F")'>Vagão F</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initMap(undefined, undefined,'E'); selectOption(this, 'dropdownVagoesMapa')">Vagão E</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initMap(undefined, undefined,'F'); selectOption(this, 'dropdownVagoesMapa')">Vagão F</button>
 									</div>
 								</div>
 
@@ -166,7 +166,7 @@
 								<!-- DROPDOWN DE FILTROS DE OCORRENCIAS -->
 								<div class="dropdown-center">
 									<!-- TÍTULO DO DROPDOWN -->
-									<button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+									<button id="dropdownOcorrenciaMapa" type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 										<span data-feather="plus-circle" class="align-text-bottom">
 										</span>
 										Adicionar Filtro
@@ -174,9 +174,9 @@
 
 									<!-- ITENS DO DROPDOWN -->
 									<div class="dropdown-menu">
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initMap(undefined, 1)">Choque 1</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initMap(undefined, 2)">Choque 2</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initMap(undefined, 3)">Pico</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initMap(undefined, 1); selectOption(this, 'dropdownOcorrenciaMapa')">Choque 1</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initMap(undefined, 2); selectOption(this, 'dropdownOcorrenciaMapa')">Choque 2</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initMap(undefined, 3); selectOption(this, 'dropdownOcorrenciaMapa')">Pico</button>
 									</div>
 								</div>
 
@@ -226,17 +226,17 @@
 								<!-- DROPDOWN DE VIAGENS -->
 								<div class="dropdown-center btn-group me-2">
 									<!-- TÍTULO DO DROPDOWN -->
-									<button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+									<button id="dropdownViagem" class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 										Selecione a Viagem
 									</button>
 
 									<!-- ITENS DO DROPDOWN -->
 									<div class="dropdown-menu">
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(viagem=1)">Viagem 1</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(viagem=2)">Viagem 2</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(viagem=3)">Viagem 3</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(viagem=4)">Viagem 4</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(viagem=5)">Viagem 5</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(viagem=1); selectOption(this, 'dropdownViagem')">Viagem 1</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(viagem=2); selectOption(this, 'dropdownViagem')">Viagem 2</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(viagem=3); selectOption(this, 'dropdownViagem')">Viagem 3</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(viagem=4); selectOption(this, 'dropdownViagem')">Viagem 4</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(viagem=5); selectOption(this, 'dropdownViagem')">Viagem 5</button>
 									</div>
 								</div>
 
@@ -244,34 +244,33 @@
 								<div class="dropdown-center btn-group me-2">
 
 									<!-- TÍTULO DO DROPDOWN -->
-									<button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+									<button id="dropdownVagao" class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 										Selecione o Vagão
 									</button>
 
 									<!-- ITENS DO DROPDOWN -->
 									<div class="dropdown-menu">
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initGraph(undefined, undefined, "E")'>Vagão E</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initGraph(undefined, undefined, "F")'>Vagão F</button>
-									</div>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initGraph(undefined, undefined, "E"); selectOption(this, "dropdownVagao")'>Vagão E</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initGraph(undefined, undefined, "F"); selectOption(this, "dropdownVagao")'>Vagão F</button>									</div>
 
 								</div>
 
 								<!-- DROPDOWN DE FILTROS DE OCORRENCIAS -->
 								<div class="dropdown-center">
 
-									<!-- TÍTULO DO DROPDOWN -->
-									<button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+									<!-- TÍTULO DO DROPDOWN -->	
+									<button id="dropdownOcorrencia" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 										Tipo de Ocorrência
 									</button>
 
 									<!-- ITENS DO DROPDOWN -->
 									<div class="dropdown-menu">
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick=" initGraph(undefined, 1)">Choque Tipo 1</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick=" initGraph(undefined, 2)">Choque Tipo 2</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="return false">Pico</button>
-									</div>
-
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick=" initGraph(undefined, 1); selectOption(this, 'dropdownOcorrencia')">Choque Tipo 1</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick=" initGraph(undefined, 2); selectOption(this, 'dropdownOcorrencia')">Choque Tipo 2</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(undefined, 3); selectOption(this, 'dropdownOcorrencia')">Pico</button>
+									</div>								
 								</div>
+
 							</div>
 
 							<!-- as coisas dentro desse div vao na direitinha -->
@@ -281,7 +280,7 @@
 								<div class="dropdown-center">
 
 									<!-- TÍTULO DO DROPDOWN -->
-									<button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+									<button id="dropdownInf" type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 										Informações à Processar
 									</button>
 
@@ -290,12 +289,12 @@
 										<!-- AQUI VAI TER Q FAZER JAVASCRIPT PRA MUDAR O DROPDOWN DEPENDENDO SE EH CHOQUE OU PICO -->
 										<!-- ITEM DE DROPDOWN DISABLED VC BOTA NA CLASSE: DROPDOWN-ITEM DISABLED -->
 										<!-- ENFASE NO "DISABLED" GNT -->
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(undefined,undefined, undefined, ocur=3)">PEG_PSI</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(undefined,undefined, undefined, ocur=2)">ACT</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(undefined,undefined, undefined, ocur=1)">Força Máxima</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="return false">Velocidade</button>
-										<button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="return false">Engate</button>
-										<button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="return false">ΔT</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(undefined,undefined, undefined, ocur=3); selectOption(this, 'dropdownInf')">PEG_PSI</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(undefined,undefined, undefined, ocur=2); selectOption(this, 'dropdownInf')">ACT</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(undefined,undefined, undefined, ocur=1); selectOption(this, 'dropdownInf')">Força Máxima</button>
+										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf')">Velocidade</button>
+										<button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="	selectOption(this, 'dropdownInf')">Engate</button>
+										<button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf')">ΔT</button>
 									</div>
 
 								</div>
@@ -308,183 +307,6 @@
 							<!-- grafico +- dentro desse div, so pro grafico poder caber dentro desse div, se nao o accordion come o grafico. -->
 							<canvas class="my-4 w-100 pb-5" id="myChart" width="900" height="380"></canvas>
 						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- DIV PROS DADOS BRUTOS -->
-			<div class="accordion-item">
-
-				<!-- TÍTULO DO ACCORDION -->
-				<h2 class="accordion-header">
-					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-						Dados Brutos
-					</button>
-				</h2>
-
-				<!-- CORPO DO ACCORDION -->
-				<div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-					<!-- aqui dnv eu tive q fazer alocacao de espaco pro accordion n comer as coisas -->
-					<div style="width:90%;" class="table-responsive ms-5 mt-4">
-						<table class="table table-striped table-sm">
-						<thead>
-							<tr>
-							<th scope="col">Id de Ocorrencia</th>
-							<th scope="col">Data/Hora</th>
-							<th scope="col">Latitude</th>
-							<th scope="col">Longitude</th>
-							<th scope="col">Placa Virtual</th>
-							<th scope="col">Trecho</th>
-							<th scope="col">Posicao</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-							<td>---</td>
-							<td>-</td>
-							<td>-</td>
-							<td>-</td>
-							<td>-</td>
-							<td>-</td>
-							<td>-</td>
-							</tr>
-							<tr>
-								<td>---</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-							</tr>
-							<tr>
-								<td>---</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-							</tr>
-							<tr>
-								<td>---</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-							</tr>
-							<tr>
-								<td>---</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-							</tr>
-							<tr>
-								<td>---</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-							</tr>
-							<tr>
-								<td>---</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-							</tr>
-							<tr>
-								<td>---</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-							</tr>
-							<tr>
-								<td>---</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-							</tr>
-							<tr>
-								<td>---</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-							</tr>
-							<tr>
-								<td>---</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-							</tr>
-							<tr>
-								<td>---</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-							</tr>
-							<tr>
-								<td>---</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-							</tr>
-							<tr>
-								<td>---</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-							</tr>
-							<tr>
-								<td>---</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-							</tr>
-							<tr>
-								<td>---</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-							</tr>
-						</tbody>
-						</table>
 					</div>
 				</div>
 			</div>

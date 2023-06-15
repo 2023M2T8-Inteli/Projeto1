@@ -15,7 +15,7 @@ fetch (`/api/seeFav/`, {
         for(i = 0; i < favs.length; i++){
             // console.log(favs[i].rel_num, a)
             if(favs[i].rel_num == a) { // Se o relatorio já estiver nos favoritos
-                alert("Esse relatório já está nos seus favoritos!") // Mostra um alerta
+                toast(1) // Chama o toast de erro
                 return // Sai da função
             }
         }
@@ -83,8 +83,54 @@ fetch (`/api/seeFav/`, {
 
         // Atualiza o feather
         feather.replace()
-
+        toast(0)
     }).catch(console.error())
+}
+
+function toast(success){
+    // Se o relatório já foi adicionado
+    if(success === 1){
+        // Barrinha de carregamento
+        let progress = document.createElement('div');
+        progress.id = "progress"
+        // Criando o toast
+        let toast = document.createElement('div');
+        toast.id = "erro"
+        toast.innerHTML = "Esse relatório já foi favoritado."
+        // Adicionando a barrinha de carregamento no toast
+        toast.appendChild(progress);
+        // Colocando o toast na tela
+        document.getElementById("main").appendChild(toast);
+        // Timer 
+        setTimeout(function() {
+            toast = document.getElementById("erro")
+            toast.remove()
+          }, 3000);
+
+    }
+
+    // Se o relatório ainda não foi adicionado
+    else if(success === 0){
+        // Barrinha de carregamento
+        let progress = document.createElement('div');
+        progress.id = "progress"
+        // Criando o toast
+        let toast = document.createElement('div');
+        toast.id = "sucesso"
+        toast.innerHTML = "Relatório adicionado aos favoritos!"
+        // Adicionando a barrinha de carregamento no toast dentro de uma div
+        toast.appendChild(progress);
+
+        // Colocando o toast na tela
+        document.getElementById("main").appendChild(toast)
+        // Timer
+         setTimeout(function() {
+             toast = document.getElementById("sucesso")
+             toast.remove()
+           }, 3000);
+
+    };
+
 }
 
 //função para download do relatório

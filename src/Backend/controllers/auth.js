@@ -20,9 +20,28 @@ const download = require('./down_up/download')
 
 const login = require('./login/login');
 const logout = require('./login/logout');
+const get_user = require('./login/get_user');
+const get_chan_id = require('./login/get_chan_id');
+const make_cookie_chan = require('./login/make_cookie_chan');
+const renew_cookie_chan = require('./login/renew_cookie_chan');
 
 router.post("/login", login)
 router.get("/logout", logout)
+router.get("/get_user", get_user)
+router.get("/get_chan_id", get_chan_id)
+// router.get("/make_cookie_chan", make_cookie_chan)
+// router.get("/renew_cookie_chan", renew_cookie_chan)
+router.get("/chan_manager", (req, res) => {
+	if (req.cookies['chan_id']) {
+		console.log("Renewing cookie chan")
+		renew_cookie_chan(req, res)
+		console.log("Cookie chan renewed")
+	} else {
+		console.log("Making cookie chan")
+		make_cookie_chan(req, res)
+		console.log("Cookie chan made")
+	}
+})
 
 
 //////////////////////////

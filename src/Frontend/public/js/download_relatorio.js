@@ -1,6 +1,3 @@
-
-
-
 //função para download do relatório
 function downloadZip(rel) {
     const zipUrl = "Rel.zip"; // Substitua pela URL real do arquivo ZIP

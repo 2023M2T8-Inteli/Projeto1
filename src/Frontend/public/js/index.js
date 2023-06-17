@@ -2,6 +2,27 @@
     feather.replace({ 'aria-hidden': 'true' })
 })()
 
+window.onload = async function() {
+    const user = await fetch('/api/get_user', {
+        method: 'GET',
+        headers: { "Content-Type": "application/json" }
+    }).then(response => {
+        if (response.status == 200) {
+            return response.json()
+        } else {
+            return null
+        }
+    }).then(json => {
+        if (json != null) {
+            return json['user']
+        }
+    })
+
+    console.log(user)
+
+    document.getElementById('signout').innerHTML = "Sair da Conta \n\"" + user.username + "\""
+}
+
 function newFav(a){
 // Pega os favoritos do usuario
 fetch (`/api/seeFav/`, {
@@ -101,7 +122,7 @@ function toast(success){
         toast.appendChild(progress);
         // Colocando o toast na tela
         document.getElementById("main").appendChild(toast);
-        // Timer 
+        // Timer
         setTimeout(function() {
             toast = document.getElementById("erro")
             toast.remove()
@@ -155,12 +176,12 @@ function downloadZip(rel) {
 
   function downloadPDF(rel) {
     const pdfUrl = "Relatorio.pdf"; // Substitua pela URL real do arquivo ZIP
-    
+
     fetch(`/api/downloadpdf/${rel}`)
       .then(response => response.blob())
       .then(blob => {
         const url = window.URL.createObjectURL(blob);
-  
+
         const a = document.createElement("a");
         a.href = url;
         a.download = "Relatorio.pdf"; // Nome do arquivo ZIP

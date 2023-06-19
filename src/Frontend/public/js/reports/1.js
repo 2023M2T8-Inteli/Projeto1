@@ -62,6 +62,7 @@ async function initMap(viagem = initViagem, choque = initChoque, vagao = initVag
 
 		// definindo marcadores
 		var url = `/api/map${vagao}/${viagem}/${choque}`;//     '/mapE/:viagem/:id',
+		console.log(url)
 
 		// esperando fetch que devolve os pontos do mapa
 		var marker = await fetch(url, {
@@ -81,6 +82,7 @@ async function initMap(viagem = initViagem, choque = initChoque, vagao = initVag
 function addMarkersToMap(points) {
 	// para cada ponto no array de pontos
 	for (var i = 0; i < points.length; i++) {
+		console.log(points[i])
 		// criando marcador
 		var marker = new google.maps.Marker({
 			position: { lat: points[i].lat, lng: points[i].lon },
@@ -134,7 +136,7 @@ function initGraph(viagem = extViagem, type = extType, vagao = extVagao, ocur = 
 		})
 		.then(json => {
 			const value = json; // valor do gráfico
-
+			console.log(value)
 			let values = []; // valores do gráfico
 			const columns = []; // colunas do gráfico
 
@@ -192,3 +194,7 @@ function initGraph(viagem = extViagem, type = extType, vagao = extVagao, ocur = 
 		});
 }
 
+function selectOption(option, dropdownId) {
+    var dropdownButton = document.getElementById(dropdownId);
+    dropdownButton.innerText = option.innerText;
+}

@@ -9,7 +9,7 @@ function mapF (req,res){
     const viagem = req.params.viagem;
 
     if (id == 1 || id == 2){ // Se for choque
-        sql = "SELECT lat,lon FROM OCORRENCIA AS OC INNER JOIN CHOQUE ON OC.ID_OC = CHOQUE.ID_OC WHERE OC.tipo_oc = 'C' AND OC.tipo_vagao = 'F' AND CHOQUE.tipo_choque = "+id+ " AND OC.viagem = "+viagem;
+        sql = `SELECT lat,lon FROM OCORRENCIA AS OC INNER JOIN CHOQUE ON OC.ID_OC = CHOQUE.ID_OC WHERE OC.tipo_oc = 'C' AND OC.tipo_vagao = 'F' AND CHOQUE.tipo_choque ='${id}' AND OC.viagem ='${viagem}' `;
 
     } else if (id == 3) { // se for pico
         sql = "SELECT lat,lon FROM OCORRENCIA AS OC INNER JOIN PICO ON OC.ID_OC = PICO.ID_OC WHERE OC.tipo_oc = 'P'  AND OC.tipo_vagao = 'F'";

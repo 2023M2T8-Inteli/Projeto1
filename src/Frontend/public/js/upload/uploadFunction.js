@@ -21,18 +21,22 @@ window.onload = async function() {
         console.log(user.username)
         if(user.username == "admin"){
             permission = true
-            let upload = document.createElement('a')
-            upload.setAttribute('href', '/upload')
-            upload.setAttribute('class', 'upload')
+            let upload = document.createElement('li')
+            upload.setAttribute('class', 'nav-item')
+            upload.setAttribute('id', 'upload')
+
+            let link = document.createElement('a')
+            link.setAttribute('class', 'nav-link')
+            link.setAttribute('href', '/upload')
 
             let image = document.createElement('img');
             image.setAttribute('src', './assets/upload.svg');
-            image.setAttribute('width', '50px');
-            image.setAttribute('height', '50px');
+            image.setAttribute('width', '25px');
+            image.setAttribute('height', '25px');
 
-            const header = document.querySelector('header');
-            header.appendChild(upload).appendChild(image);
-        
+            const ul = document.querySelector('ul');
+            ul.appendChild(upload).appendChild(link).appendChild(image);
+            link.innerHTML += " Upload"
         }
     })
 }

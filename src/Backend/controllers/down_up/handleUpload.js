@@ -1,3 +1,5 @@
+const DB_PATH = require('path').resolve(__dirname, '../../routes/db-config.js')
+
 const express = require('express');
 const XLSX = require('xlsx-populate');
 const fs = require('fs');
@@ -29,22 +31,22 @@ async function handleUpload(req, res){
 
 	//verifica se a pasta archives existe, se não existir, cria uma nova
 	try {
-		archives = fs.readdirSync(path.join(__dirname,"Backend", "archives"));
+		archives = fs.readdirSync(path.join(__dirname, "../", "../", "archives"));
 	} catch (err) {
-		fs.mkdirSync(path.join(__dirname,"Backend", "archives"));
-		archives = fs.readdirSync(path.join(__dirname,"Backend", "archives"));
+		fs.mkdirSync(path.join(__dirname, "../", "../", "archives"));
+		archives = fs.readdirSync(path.join(__dirname, "../", "../", "archives"));
 	}
 
 	//verifica o numero de arquivos na pasta archives e cria uma nova pasta com o nome "Rel" + o numero de arquivos + 1
 	const archivesLength = archives.length + 1;
 	var folderName = `Rel${archivesLength}`;
 
-	fs.mkdirSync(path.join(__dirname,"Backend", "archives", folderName));
+	fs.mkdirSync(path.join(__dirname, "../", "../", "archives", folderName));
 
 	//move o arquivo para a pasta archives
 	const zip_rel = req.file
 	console.log(`File Recieved: ${zip_rel.originalname}`)
-	fs.renameSync(path.join(__dirname, "uploads", zip_rel.filename), path.join(__dirname,"Backend", "archives", folderName, zip_rel.originalname), function (err) {
+	fs.renameSync(path.join(__dirname, "../", "../", "../","uploads", zip_rel.filename), path.join(__dirname, "../", "../", "archives", folderName, zip_rel.originalname), function (err) {
 		if (err) {
 			console.log(err)
 		} else {
@@ -54,10 +56,10 @@ async function handleUpload(req, res){
 
 	
 	const fileName = zip_rel.originalname;
-	const filePath = path.join(__dirname,"Backend", "archives", folderName, fileName);
+	const filePath = path.join(__dirname, "../", "../", "archives", folderName, fileName);
 
 	//caminho para extrair o arquivo zipado
-	const extractPath = path.join(__dirname,"Backend", "archives", folderName);
+	const extractPath = path.join(__dirname, "../", "../", "archives", folderName);
 
 	//extrai o arquivo zipado
 	await extractFile(filePath, extractPath);
@@ -71,11 +73,11 @@ async function handleUpload(req, res){
 	//para cada arquivo encontrado, procura os arquivos de choque e pico e chama as funções para extrair os dados, apos isso cria a database e insere os dados necessarios
 	for (let i=0; i < numeroViagens; i++) {
 		//checar se database ja existe
-		if(fs.existsSync(path.join(__dirname, "Backend", "databases", folderName + ".db"))){
+		if(fs.existsSync(path.join(__dirname,"../", "../", "databases", folderName + ".db"))){
 			console.log("Database already exists")
 		}
 		//se a database não existir na pasta databases, cria-se uma nova a partir do numero do relatorio
-		else if(!fs.existsSync(path.join(__dirname, "Backend", "databases", folderName + ".db"))){
+		else if(!fs.existsSync(path.join(__dirname,"../", "../", "databases", folderName + ".db"))){
 			console.log("Creating database...")
 
 			await createDataBase(folderName);
@@ -170,63 +172,68 @@ async function extractFile(filePath, extractPath) {
 };
 // criando banco de dados se ele não existir(função chamada apenas se a database não existir conforme o nome Rel(n))
 async function createDataBase(folderName) {
+	console.log("passou")
 	await new Promise((resolve, reject) => {
-		const db = new sqlite3.Database(path.join(__dirname,"databases",folderName + ".db"), (err) => {
+		console.log("passou2")
+		const db = require(DB_PATH).db(folderName + ".db", (err) => {
 			if (err) {
+				console.error(err.message);
 				reject(err);
-			} else {
-				console.log('Connected to database');
-
-				db.run(`CREATE TABLE IF NOT EXISTS "OCORRENCIA" (
-					"ID_OC" INTEGER,
-					"tipo_oc" NOT NULL,
-					"tipo_vagao"NOT NULL,
-					"viagem" INTEGER NOT NULL,
-					"data_hora" NOT NULL,
-					"lat" NUMERIC NOT NULL,
-					"lon" NUMERIC NOT NULL,
-					"trecho" TEXT NOT NULL,
-					"pos" TEXT NOT NULL,
-					"pv" TEXT NOT NULL,
-					PRIMARY KEY("ID_OC" AUTOINCREMENT)
-				);`);
-
-				db.run(`CREATE TABLE IF NOT EXISTS "PICO" (
-					"ID_OC" INTEGER,
-					"ID" INTEGER,
-					"vel" NOT NULL,
-					"engate" NOT NULL,
-					"delta_t" NOT NULL,
-					"act" NOT NULL,
-					"peg_psi" NOT NULL,
-					PRIMARY KEY("ID" AUTOINCREMENT),
-					FOREIGN KEY("ID_OC") REFERENCES "OCORRENCIA"("ID_OC")
-				);`);
-
-				db.run(`CREATE TABLE IF NOT EXISTS "CHOQUE" (
-					"ID_OC" INTEGER,
-					"ID" INTEGER,
-					"tipo_choque" NOT NULL,
-					"peg_psi" NOT NULL,
-					"act" NOT NULL,
-					"f_max" NOT NULL,
-					"vel" NOT NULL,
-					PRIMARY KEY("ID" AUTOINCREMENT),
-					FOREIGN KEY("ID_OC") REFERENCES "OCORRENCIA"("ID_OC")
-				);`);
-
-
-				db.close();
-				console.log("Database created.")
-				resolve();
-				console.log("resolved.")
+				return;
 			}
 		});
+		
+		console.log('Connected to database');
+
+		db.run(`CREATE TABLE IF NOT EXISTS "OCORRENCIA" (
+			"ID_OC" INTEGER,
+			"tipo_oc" NOT NULL,
+			"tipo_vagao"NOT NULL,
+			"viagem" INTEGER NOT NULL,
+			"data_hora" NOT NULL,
+			"lat" NUMERIC NOT NULL,
+			"lon" NUMERIC NOT NULL,
+			"trecho" TEXT NOT NULL,
+			"pos" TEXT NOT NULL,
+			"pv" TEXT NOT NULL,
+			PRIMARY KEY("ID_OC" AUTOINCREMENT)
+		);`);
+
+		db.run(`CREATE TABLE IF NOT EXISTS "PICO" (
+			"ID_OC" INTEGER,
+			"ID" INTEGER,
+			"vel" NOT NULL,
+			"engate" NOT NULL,
+			"delta_t" NOT NULL,
+			"act" NOT NULL,
+			"peg_psi" NOT NULL,
+			PRIMARY KEY("ID" AUTOINCREMENT),
+			FOREIGN KEY("ID_OC") REFERENCES "OCORRENCIA"("ID_OC")
+		);`);
+
+		db.run(`CREATE TABLE IF NOT EXISTS "CHOQUE" (
+			"ID_OC" INTEGER,
+			"ID" INTEGER,
+			"tipo_choque" NOT NULL,
+			"peg_psi" NOT NULL,
+			"act" NOT NULL,
+			"f_max" NOT NULL,
+			"vel" NOT NULL,
+			PRIMARY KEY("ID" AUTOINCREMENT),
+			FOREIGN KEY("ID_OC") REFERENCES "OCORRENCIA"("ID_OC")
+		);`);
+
+
+		db.close();
+		console.log("Database created.")
+		resolve();
+		console.log("resolved.")
 	});
 }
 
 //inserir choques no banco de dados
 async function dadosChoque(pathChoque, viagem, folderName,tipo_choque, vagao) {
+	console.log("passou choque")
 
 	await new Promise(async (resolve, reject) => {
 		try{
@@ -332,7 +339,7 @@ async function dadosPico(pathPico, viagem, folderName, vagao) {
 
 //inserir choque no banco de dados(começando pela tabela de ocorrencias)
 async function inserirChoque(tipo_choque, data, lat, lon, vel, pos, pv, trecho, fmax, act, peg, vagao, ocorrencia, viagem, folderName) {
-	const db = new sqlite3.Database(path.join(__dirname, "Backend", "databases", folderName + ".db"));
+	const db = require(DB_PATH).db(folderName + ".db");
   
 	let index = 0;
 	//tamanho da tabela de ocorrencias para inserção correta de id_oc
@@ -388,7 +395,7 @@ async function inserirChoque(tipo_choque, data, lat, lon, vel, pos, pv, trecho, 
 
 //inserir pico no banco de dados(começando pela tabela de ocorrencias)
 async function insertPico(data, lat, lon, vel, pos, pv, trecho, engate, delta_t, act, peg, vagao, ocorrencia, viagem, folderName) {
-	const db = new sqlite3.Database(path.join(__dirname, "Backend", "databases", folderName + ".db"));
+	const db = require(DB_PATH).db(folderName + ".db");
   
 	let index = 0;
 

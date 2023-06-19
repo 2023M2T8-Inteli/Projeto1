@@ -20,6 +20,7 @@ window.onload = async function() {
     }).then(user => {
         console.log(user.username)
         if(user.username == "admin"){
+            permission = true
             let upload = document.createElement('a')
             upload.setAttribute('href', '/upload')
             upload.setAttribute('class', 'upload')
@@ -31,13 +32,16 @@ window.onload = async function() {
 
             const header = document.querySelector('header');
             header.appendChild(upload).appendChild(image);
-            permission = true
+        
         }
     })
 }
 
 function upload() {
+    console.log(permission)
+    console.log("Uploading file")
     if(permission){
+        console.log("Uploading file")
         const fileInput = document.querySelector('input[type="file"]');
         const formData = new FormData();
         formData.append('file', fileInput.files[0])

@@ -34,4 +34,12 @@ router.get("/relatorios", (req,res) => {
     }
 })
 
+router.get("/upload", loggedIn, (req, res) => {
+    if (req.cookies['remember-login']) {
+        res.sendFile('upload.html', {root: './Frontend/public'});
+    } else {
+        res.redirect("/login")
+    }
+})
+
 module.exports = router

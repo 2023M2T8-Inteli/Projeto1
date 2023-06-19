@@ -339,7 +339,6 @@ async function relatorios(){
 }
 
 async function seeFav(){
-    // console.log("FOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOI")
 
     // Pega os dados do relatório
     fetch('/api/seeFav', {

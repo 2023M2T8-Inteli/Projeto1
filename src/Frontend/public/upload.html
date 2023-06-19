@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de upload</title>
+
+    <style>
+    body{
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+        #soltarArea{
+    width: 350px;
+    height: 250px;
+    border: 2px dashed #00b4e3;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 250px;
+    font-size: 25px;
+    }
+
+        div:hover{
+    color: #dadcda;
+    cursor: pointer;
+    }
+    </style>
+
+</head>
+<body>
+    <input type="file" name="file" id="soltarArea" placeholder="Solte seu arquivo aqui">
+    <button id="sendFile" type="submit" onclick="upload()">SEND</button>
+</body>
+<script src="./js/upload/uploadFunction.js"></script>
+</html>

@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 
 const quantity = require('./reports/Rels')
 // const bodyParser = require('body-parser')
@@ -13,6 +15,11 @@ const quantity = require('./reports/Rels')
 
 const download = require('./down_up/download')
 
+///////////////////////
+//  PARTE DE UPLOAD //
+//////////////////////
+
+const handleUpload = require('./down_up/handleUpload')
 
 /////////////////////
 // PARTE DE LOGIN //
@@ -79,7 +86,6 @@ router.get('/path', path);
 
 router.get('/quantity', quantity)//retorna o numero de relatórios existentes
 
-
 ////////////////////////
 // PARTE DE FAVORITOS //
 ////////////////////////
@@ -100,5 +106,11 @@ router.delete('/deleteFav/:id', loggedIn, deleteFav) // Deleta o registro de fav
 router.get('/download/:id', download)
 
 router.get('/downloadpdf/:id', downloadpdf)
+
+///////////////////////
+//  PARTE DE UPLOAD //
+//////////////////////
+
+router.post('/uploadRel', upload.single('file'), handleUpload)//upload de relatório(funciona, contudo demora um pouco para terminar de executar)(procurar uma forma de aparecer uma mensagem de sucesso, erro e de loading).
 
 module.exports = router;

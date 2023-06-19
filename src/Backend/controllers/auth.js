@@ -113,4 +113,19 @@ router.get('/downloadpdf/:id', downloadpdf)
 
 router.post('/uploadRel', upload.single('file'), handleUpload)//upload de relatório(funciona, contudo demora um pouco para terminar de executar)(procurar uma forma de aparecer uma mensagem de sucesso, erro e de loading).
 
+////////////////////////
+//  CRUD COMENTARIO  //
+///////////////////////
+
+const comment_update = require('./comment_system_back/comment_update');
+const comment_get = require('./comment_system_back/comment_get');
+const comment_delete = require('./comment_system_back/comment_delete');
+const comment_insert = require('./comment_system_back/comment_insert');
+
+router.put("/comment_update", comment_update)
+router.get("/comment_get", comment_get)
+router.delete("/comment_delete", comment_delete)
+router.post("/comment_insert", comment_insert)
+
+
 module.exports = router;

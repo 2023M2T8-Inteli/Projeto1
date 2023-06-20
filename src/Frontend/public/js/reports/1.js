@@ -10,7 +10,6 @@ let map;
 //inicializando mapa
 document.onload = (function() {
 	'use strict'; // iniciando modo estrito
-
 	initMap()
 })();
 
@@ -116,7 +115,7 @@ document.onload = (function() {
 
 // inicializando gráfico//adcionando gráfico novo
 function initGraph(add = false, graphID, chartFather, viagem = extViagem, type = extType, vagao = extVagao, ocur = extOcur) {
-	
+
 	// atualizando variaveis globais caso necessário
 	if (viagem != extViagem) {extViagem = viagem}
 	if (type != extType) {extType = type}
@@ -188,14 +187,14 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 		// Anexe o botão e o menu do dropdown (Vagão) ao dropdownVagaoDiv
 		dropdownVagaoDiv.appendChild(dropdownVagaoButton);
 		dropdownVagaoDiv.appendChild(dropdownVagaoMenu);
-		
+
 		// Anexe o dropdownVagaoDiv ao elemento div
 		divElement.appendChild(dropdownVagaoDiv);
-		
+
 		// Crie o terceiro dropdown (Tipo de Ocorrência)
 		var dropdownOcorrenciaDiv = document.createElement('div');
 		dropdownOcorrenciaDiv.className = 'dropdown-center';
-		
+
 		// Crie o botão do dropdown (Tipo de Ocorrência)
 		var dropdownOcorrenciaButton = document.createElement('button');
 		dropdownOcorrenciaButton.id = 'dropdownOcorrencia'+graphs;
@@ -203,23 +202,23 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 		dropdownOcorrenciaButton.setAttribute('data-bs-toggle', 'dropdown');
 		dropdownOcorrenciaButton.setAttribute('aria-expanded', 'false');
 		dropdownOcorrenciaButton.textContent = 'Tipo de Ocorrência';
-		
+
 		// Crie o menu do dropdown (Tipo de Ocorrência)
 		var dropdownOcorrenciaMenu = document.createElement('div');
 		dropdownOcorrenciaMenu.className = 'dropdown-menu';
 		dropdownOcorrenciaMenu.innerHTML = `<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, 1); selectOption(this, 'dropdownOcorrencia${graphs}')">Choque Tipo 1</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, 2); selectOption(this, 'dropdownOcorrencia${graphs}')">Choque Tipo 2</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, 3); selectOption(this, 'dropdownOcorrencia${graphs}')">Pico</button>;`
-		
+
 		// Anexe o botão e o menu do dropdown (Tipo de Ocorrência) ao dropdownOcorrenciaDiv
 		dropdownOcorrenciaDiv.appendChild(dropdownOcorrenciaButton);
 		dropdownOcorrenciaDiv.appendChild(dropdownOcorrenciaMenu);
-		
+
 		// Anexe o dropdownOcorrenciaDiv ao elemento div
 		divElement.appendChild(dropdownOcorrenciaDiv);
-		
+
 		// Crie o último dropdown (Informações à Processar)
 		var dropdownInfDiv = document.createElement('div');
 		dropdownInfDiv.className = 'dropdown-center';
-		
+
 		// Crie o botão do dropdown (Informações à Processar)
 		var dropdownInfButton = document.createElement('button');
 		dropdownInfButton.id = 'dropdownInf'+graphs;
@@ -227,19 +226,19 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 		dropdownInfButton.setAttribute('data-bs-toggle', 'dropdown');
 		dropdownInfButton.setAttribute('aria-expanded', 'false');
 		dropdownInfButton.textContent = 'Informações à Processar';
-		
+
 		// Crie o menu do dropdown (Informações à Processar)
 		var dropdownInfMenu = document.createElement('div');
 		dropdownInfMenu.className = 'dropdown-menu';
 		dropdownInfMenu.innerHTML = `<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 3); selectOption(this, 'dropdownInf${graphs}')">PEG_PSI</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 2); selectOption(this, 'dropdownInf${graphs}')">ACT</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 1); selectOption(this, 'dropdownInf${graphs}')">Força Máxima</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}')">Velocidade</button> <button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}')">Engate</button> <button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}')">ΔT</button>;`
-		
+
 		// Anexe o botão e o menu do dropdown (Informações à Processar) ao dropdownInfDiv
 		dropdownInfDiv.appendChild(dropdownInfButton);
 		dropdownInfDiv.appendChild(dropdownInfMenu);
-		
+
 		// Anexe o dropdownInfDiv ao elemento div
 		divElement.appendChild(dropdownInfDiv);
-		
+
 		// Anexe o elemento div ao documento
 		document.getElementById("graphAcordion").appendChild(divElement);
 
@@ -257,8 +256,8 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 
 			divElement.append(chartFather2);
 			document.getElementById('chartFather'+graphs).append(ctx2);
-		
-		
+
+
 
 		const addButton = document.getElementById('addButton');
 		addButton.remove();
@@ -273,9 +272,9 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 		document.getElementById('graphAcordion').append(newAddButton)
 
 		}
-	
+
 		// console.log(`/api/graphs${vagao}/${viagem}/${type}/${ocur}`)
-	
+
 		// esperando fetch que devolve os pontos do mapa
 	fetch(`/api/graphs${vagao}/${viagem}/${type}/${ocur}`, {
 		method: 'GET',
@@ -305,16 +304,16 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 				const valor = parseFloat(columns[i]);
 				const milisegundos = (valor - 25569) * 86400 * 1000;
 				const data = new Date(milisegundos);
-			  
+
 				const dia = String(data.getDate()).padStart(2, '0');
 				const mes = String(data.getMonth() + 1).padStart(2, '0');
 				const ano = data.getFullYear();
-			  
+
 				const dataFormatada = `${dia}/${mes}/${ano}`;
 				novasDatas.push(dataFormatada);
 			}
 			console.log(novasDatas);
-			  
+
 
 			// console.log(value)
 
@@ -329,7 +328,7 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 				ctx2.setAttribute('width', '900')
 				ctx2.setAttribute('height', '380')
 				ctx2.setAttribute('class', 'my-4 w-100 pb-5');
-	
+
 				chartFatherID.append(ctx2);
 			}
 			console.log(ctx2)

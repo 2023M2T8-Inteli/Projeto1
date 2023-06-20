@@ -1,4 +1,6 @@
-function comment_get(req, res) {
+const DB_PATH = require('path').resolve(__dirname, '../../routes/db-config.js')
+
+async function comment_get(req, res) {
 	const { rel_id } = req.body;
 
 	const db = require(DB_PATH).db("userprefs.sqlite");
@@ -14,6 +16,8 @@ function comment_get(req, res) {
 
 		return res.json({status:"success", text:"Comentários retornados com sucesso", data:rows});
 	});
+
+	require(DB_PATH).db_close(db)
 }
 
 module.exports = comment_get;

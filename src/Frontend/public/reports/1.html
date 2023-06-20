@@ -326,30 +326,10 @@
 				<!-- CORPO DO ITEM DE ACCORDION (OQ VAI MOSTRAR EMBAIXO DO HEADER, DEPOIS DE CLICAR) -->
 				<div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
 					<div class="accordion-body" id="comment-loader-target">
-
-						<div class="mb-3">
-							<div class="rounded border border-2 mt-3 mb-1">
-								<div class="py-2 px-4 text-wrap">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-								</div>
-							</div>
-							<button type="button" class="btn btn-primary" onclick="return false">Editar</button>
-							<button type="button" class="btn btn-danger" onclick="return false">Remover</button>
-						</div>
-
-						<!-- <div class="mb-3">
-							<div class="rounded border border-2 mt-3 mb-1">
-								<div class="py-2 px-4 text-wrap">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-								</div>
-							</div>
-							<button type="button" class="btn btn-primary">Editar</button>
-							<button type="button" class="btn btn-danger">Remover</button>
-						</div> -->
-
-
-
 					</div>
+
+
+					<button type="button" class="btn btn-primary mb-2 mx-4">Adicionar Comentário</button>
 				</div>
 			</div>
 
@@ -375,5 +355,23 @@
 
 	<script src="../js/comment_system_front/comment_handler.js"></script>
 	<script src="../js/comment_system_front/comment_loader.js"></script>
+
+	<script type="module">
+		$(document).ready(function(){
+			$('textarea').each(function () {
+				$(this).on('input', function () {
+					this.style.height = 'auto';
+					this.style.height = (this.scrollHeight+3) + 'px';
+				});
+
+				// trigger input on collapsethree open
+				$('#collapseThree').on('shown.bs.collapse', function () {
+					$(this).find('textarea').trigger('input');
+				});
+			});
+		});
+
+
+	</script>
 </body>
 </html>

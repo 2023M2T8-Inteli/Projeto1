@@ -300,6 +300,22 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 					columns.push(value[i].data_hora);} // adicionando coluna
 			}
 
+			let novasDatas = [];
+			for (let i = 0; i < columns.length; i++) {
+				const valor = parseFloat(columns[i]);
+				const milisegundos = (valor - 25569) * 86400 * 1000;
+				const data = new Date(milisegundos);
+			  
+				const dia = String(data.getDate()).padStart(2, '0');
+				const mes = String(data.getMonth() + 1).padStart(2, '0');
+				const ano = data.getFullYear();
+			  
+				const dataFormatada = `${dia}/${mes}/${ano}`;
+				novasDatas.push(dataFormatada);
+			}
+			console.log(novasDatas);
+			  
+
 			// console.log(value)
 
 			if(!add){
@@ -321,7 +337,7 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 			const myChart = new Chart(ctx2, {
 				type: 'line',
 				data: {
-					labels: columns, // inserindo as colunas
+					labels: novasDatas, // inserindo as colunas
 					datasets: [
 						{
 							data: values, // inserindo as linhas

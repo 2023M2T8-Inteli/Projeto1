@@ -366,3 +366,5 @@ function selectOption(option, dropdownId) {
     var dropdownButton = document.getElementById(dropdownId);
     dropdownButton.innerText = option.innerText;
 }
+
+

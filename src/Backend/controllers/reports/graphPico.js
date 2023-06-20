@@ -5,6 +5,7 @@ function graphPico (req,res) {
 
     const id = req.params.id; // Diferencia o E do F.
     const ocur = req.params.ocur; //Escolhe a ocorrência específica (ACT, PEG_PSI, etc)
+    const RelNum = req.params.RelNum; // Escolhe o relatório específico (1, 2, 3, etc)
 
     if(id == 1){ // Se for E
         var table = "OCORRENCIAS_PICO1"

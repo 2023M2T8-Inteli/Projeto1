@@ -4,9 +4,9 @@
 
 # Projeto IPT (Instituto de Pesquisas Tecnológicas)
 
-<img src="https://github.com/2023M2T8-Inteli/Projeto1/raw/main/imagens/Captura%20de%20tela%202023-04-17%20151016.png" alt="Imagem">
-
 <h1>InPuT</h1>
+
+## :student: Integrantes: 
 <h3>Integrantes:</h3>
 <a href="https://www.linkedin.com/in/erik-batista-da-silva-455612215/">Erik Batista da Silva</a><br>
 <a href="https://www.linkedin.com/in/gabriellediascartaxo/">Gabrielle Dias Cartaxo</a><br>
@@ -15,6 +15,7 @@
 <a href="https://www.linkedin.com/in/murilo-prianti-0073111a1/">Murilo de Souza Prianti Silva</a><br>
 <a href="https://www.linkedin.com/in/pedro-faria-santos-10b4061b7/">PedroFaria Santos</a>
 
+## :teacher: Professores:
 <h2>Professores/Orientadores</h2>
 <a href="https://www.linkedin.com/in/fatima-toledo/">Fátima Toledo</a><br>
 <a href="https://www.linkedin.com/in/francisco-escobar/">Francisco Escobar</a><br>
@@ -34,6 +35,7 @@ T08_G01_V1_Web_application_document.pdf<br>
 | T8_G1_V1_Web_application_document.docx<br>
 |--> histórico-não considerar<br>
 |--> imagens<br>
+ &emsp;|--> Vídeo_de_funcionamento<br>
 |--> src<br>
  &emsp;|--> Backend<br>
  &emsp;|--> Frontend<br>
@@ -59,7 +61,7 @@ Aqui encontram-se todas as instruções necessárias para a instalação de todo
 3. No modo administrador, abra o "prompt de comando" ou o "terminal" e, após, abra a pasta "src/backend" no diretório raiz do repositório clonado e digite o segundo comando:
   
 ```sh
-npm install
+npm install nodemon--save-dev
 ```
 
 Isso instalará todas as dependências definidas no arquivo package.json que são necessárias para rodar o projeto. Agora o projeto já está pronto para ser modificado. Caso ainda deseje iniciar a aplicação, digite o comando abaixo no terminal:
@@ -100,7 +102,10 @@ nodemon index.js
   * Integração entre back e front
   * Finalização dos comentários do código
   * Revisão e aprimoramento do documento "readm.md"
+  * Finalização da função "UPload" dos relatórios
   * Apresenração de um protótipo para testes
+  * Criação do botão\função de Donwload do relatório
+  * Criação do botão\função de Dowload do PDF do relatório
 
 
 * 0.2.1 - 23/06/2023
@@ -110,7 +115,7 @@ nodemon index.js
 
 <h1>📋 Licença/License</h1>
 
-<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">InPuT</span> by <span property="cc:attributionName">Erik Batista, Gabrielle Cartaxo, Gustavo Wagon, Luiza Santana, Murilo Prianti e Pedro Faria.</span> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">Intleli, InPuT</span> by <span property="cc:attributionName">Erik Batista, Gabrielle Cartaxo, Gustavo Wagon, Luiza Santana, Murilo Prianti e Pedro Faria.</span> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
 
 <h1>🎓 Referências</h1>
 Aqui estão as referências usadas no projeto:

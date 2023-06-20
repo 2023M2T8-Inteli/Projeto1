@@ -212,103 +212,104 @@
 
 				<!-- CORPO DO ITEM DE ACCORDION (OQ VAI MOSTRAR EMBAIXO DO HEADER, DEPOIS DE CLICAR) -->
 				<div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-					<div class="accordion-body">
+					<div class="accordion-body" id="graphAcordion">
+						<div id="graph1">
 
-						<!-- PRA QUEM TIVER PASSANDO AQUI E TIVER MEXENDO NESSE CODIGO: -->
-						<!-- varios botoes dos dropdown tao com a funcao "return false" pq eles estavam conectados a funcao -->
-						<!-- choque e vagao da gabi, q era correspondente a parte de mapas. aparentemente n eh pra eu fazer -->
-						<!-- essas funcoes ainda mas se vcs quiserem eu tambem posso fazer. bem, eu coloquei o return false -->
-						<!-- pra nao dar erro no console, mas se vcs quiserem fazer as funcoes podem tirar o return false -->
+							<!-- PRA QUEM TIVER PASSANDO AQUI E TIVER MEXENDO NESSE CODIGO: -->
+							<!-- varios botoes dos dropdown tao com a funcao "return false" pq eles estavam conectados a funcao -->
+							<!-- choque e vagao da gabi, q era correspondente a parte de mapas. aparentemente n eh pra eu fazer -->
+							<!-- essas funcoes ainda mas se vcs quiserem eu tambem posso fazer. bem, eu coloquei o return false -->
+							<!-- pra nao dar erro no console, mas se vcs quiserem fazer as funcoes podem tirar o return false -->
 
-						<!-- DIV PROS DROPDOWNS -->
-						<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-							<div class="btn-toolbar mb-2 mb-md-0">
+							<!-- DIV PROS DROPDOWNS -->
+							<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+								<div class="btn-toolbar mb-2 mb-md-0">
 
-								<!-- DROPDOWN DE VIAGENS -->
-								<div class="dropdown-center btn-group me-2">
-									<!-- TÍTULO DO DROPDOWN -->
-									<button id="dropdownViagem" class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-										Selecione a Viagem
-									</button>
+									<!-- DROPDOWN DE VIAGENS -->
+									<div class="dropdown-center btn-group me-2">
+										<!-- TÍTULO DO DROPDOWN -->
+										<button id="dropdownViagem" class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+											Selecione a Viagem
+										</button>
 
-									<!-- ITENS DO DROPDOWN -->
-									<div class="dropdown-menu">
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(viagem=1); selectOption(this, 'dropdownViagem')">Viagem 1</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(viagem=2); selectOption(this, 'dropdownViagem')">Viagem 2</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(viagem=3); selectOption(this, 'dropdownViagem')">Viagem 3</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(viagem=4); selectOption(this, 'dropdownViagem')">Viagem 4</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(viagem=5); selectOption(this, 'dropdownViagem')">Viagem 5</button>
+										<!-- ITENS DO DROPDOWN -->
+										<div class="dropdown-menu">
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', viagem=1); selectOption(this, 'dropdownViagem')">Viagem 1</button>
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', viagem=2); selectOption(this, 'dropdownViagem')">Viagem 2</button>
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', viagem=3); selectOption(this, 'dropdownViagem')">Viagem 3</button>
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', viagem=4); selectOption(this, 'dropdownViagem')">Viagem 4</button>
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', viagem=5); selectOption(this, 'dropdownViagem')">Viagem 5</button>
+										</div>
+									</div>
+
+									<!-- DROPDOWN DE VAGOES -->
+									<div class="dropdown-center btn-group me-2">
+
+										<!-- TÍTULO DO DROPDOWN -->
+										<button id="dropdownVagao" class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+											Selecione o Vagão
+										</button>
+
+										<!-- ITENS DO DROPDOWN -->
+										<div class="dropdown-menu">
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined, undefined, 'E'); selectOption(this, 'dropdownVagao')">Vagão E</button>
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined, undefined, 'F'); selectOption(this, 'dropdownVagao')">Vagão F</button>									</div>
+
+									</div>
+
+									<!-- DROPDOWN DE FILTROS DE OCORRENCIAS -->
+									<div class="dropdown-center">
+
+										<!-- TÍTULO DO DROPDOWN -->
+										<button id="dropdownOcorrencia" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+											Tipo de Ocorrência
+										</button>
+
+										<!-- ITENS DO DROPDOWN -->
+										<div class="dropdown-menu">
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick=" initGraph(add = false, graphID ='myChart', 'chartFather', undefined, 1); selectOption(this, 'dropdownOcorrencia')">Choque Tipo 1</button>
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick=" initGraph(add = false, graphID ='myChart', 'chartFather', undefined, 2); selectOption(this, 'dropdownOcorrencia')">Choque Tipo 2</button>
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined, 3); selectOption(this, 'dropdownOcorrencia')">Pico</button>
+										</div>
+									</div>
+
+								</div>
+
+								<!-- as coisas dentro desse div vao na direitinha -->
+								<div>
+
+									<!-- DROPDOWN PRA SELECIONAR TIPO DE GRAFICO -->
+									<div class="dropdown-center">
+
+										<!-- TÍTULO DO DROPDOWN -->
+										<button id="dropdownInf" type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+											Informações à Processar
+										</button>
+
+										<!-- ITENS DO DROPDOWN -->
+										<div class="dropdown-menu">
+											<!-- AQUI VAI TER Q FAZER JAVASCRIPT PRA MUDAR O DROPDOWN DEPENDENDO SE EH CHOQUE OU PICO -->
+											<!-- ITEM DE DROPDOWN DISABLED VC BOTA NA CLASSE: DROPDOWN-ITEM DISABLED -->
+											<!-- ENFASE NO "DISABLED" GNT -->
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined,undefined, undefined, ocur=3); selectOption(this, 'dropdownInf')">PEG_PSI</button>
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined,undefined, undefined, ocur=2); selectOption(this, 'dropdownInf')">ACT</button>
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined,undefined, undefined, ocur=1); selectOption(this, 'dropdownInf')">Força Máxima</button>
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf')">Velocidade</button>
+											<button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf')">Engate</button>
+											<button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf')">ΔT</button>
+										</div>
 									</div>
 								</div>
-
-								<!-- DROPDOWN DE VAGOES -->
-								<div class="dropdown-center btn-group me-2">
-
-									<!-- TÍTULO DO DROPDOWN -->
-									<button id="dropdownVagao" class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-										Selecione o Vagão
-									</button>
-
-									<!-- ITENS DO DROPDOWN -->
-									<div class="dropdown-menu">
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initGraph(undefined, undefined, "E"); selectOption(this, "dropdownVagao")'>Vagão E</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick='initGraph(undefined, undefined, "F"); selectOption(this, "dropdownVagao")'>Vagão F</button>									</div>
-
-								</div>
-
-								<!-- DROPDOWN DE FILTROS DE OCORRENCIAS -->
-								<div class="dropdown-center">
-
-									<!-- TÍTULO DO DROPDOWN -->
-									<button id="dropdownOcorrencia" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-										Tipo de Ocorrência
-									</button>
-
-									<!-- ITENS DO DROPDOWN -->
-									<div class="dropdown-menu">
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick=" initGraph(undefined, 1); selectOption(this, 'dropdownOcorrencia')">Choque Tipo 1</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick=" initGraph(undefined, 2); selectOption(this, 'dropdownOcorrencia')">Choque Tipo 2</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(undefined, 3); selectOption(this, 'dropdownOcorrencia')">Pico</button>
-									</div>
-								</div>
-
 							</div>
 
-							<!-- as coisas dentro desse div vao na direitinha -->
-							<div>
-
-								<!-- DROPDOWN PRA SELECIONAR TIPO DE GRAFICO -->
-								<div class="dropdown-center">
-
-									<!-- TÍTULO DO DROPDOWN -->
-									<button id="dropdownInf" type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-										Informações à Processar
-									</button>
-
-									<!-- ITENS DO DROPDOWN -->
-									<div class="dropdown-menu">
-										<!-- AQUI VAI TER Q FAZER JAVASCRIPT PRA MUDAR O DROPDOWN DEPENDENDO SE EH CHOQUE OU PICO -->
-										<!-- ITEM DE DROPDOWN DISABLED VC BOTA NA CLASSE: DROPDOWN-ITEM DISABLED -->
-										<!-- ENFASE NO "DISABLED" GNT -->
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(undefined,undefined, undefined, ocur=3); selectOption(this, 'dropdownInf')">PEG_PSI</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(undefined,undefined, undefined, ocur=2); selectOption(this, 'dropdownInf')">ACT</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(undefined,undefined, undefined, ocur=1); selectOption(this, 'dropdownInf')">Força Máxima</button>
-										<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf')">Velocidade</button>
-										<button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf')">Engate</button>
-										<button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf')">ΔT</button>
-									</div>
-									<button type="button" class="btn btn-sm btn-outline-secondary" onclick="addGraph()">Adicionar Gráfico</button>
-
-								</div>
+							<!-- DIV PROS GRÁFICOS -->
+							<div style="width:90%; height:450px" class="ms-5 me-3" id="chartFather">
+								<!-- o accordion eh mto estranho em alocacao de espaco, ent tem q fazer um div container e definir o tamanho do -->
+								<!-- grafico +- dentro desse div, so pro grafico poder caber dentro desse div, se nao o accordion come o grafico. -->
+								<canvas class="my-4 w-100 pb-5" id="myChart" width="900" height="380"></canvas>
 							</div>
 						</div>
-
-						<!-- DIV PROS GRÁFICOS -->
-						<div style="width:90%; height:450px" class="ms-5 me-3" id="chartFather">
-							<!-- o accordion eh mto estranho em alocacao de espaco, ent tem q fazer um div container e definir o tamanho do -->
-							<!-- grafico +- dentro desse div, so pro grafico poder caber dentro desse div, se nao o accordion come o grafico. -->
-							<canvas class="my-4 w-100 pb-5" id="myChart" width="900" height="380"></canvas>
-						</div>
+						<button id="addButton" type="button" onclick="initGraph(true)" class="btn btn-sm btn-outline-secondary">adcionar gráfico</button>
 					</div>
 				</div>
 			</div>

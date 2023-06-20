@@ -114,241 +114,237 @@ document.onload = (function() {
 	initGraph(false, "myChart", 'chartFather', 1, 1, "E", 1) // inicializando gráfico
 })();
 
-// inicializando gráfico
+// inicializando gráfico//adcionando gráfico novo
 function initGraph(add = false, graphID, chartFather, viagem = extViagem, type = extType, vagao = extVagao, ocur = extOcur) {
 	
-	console.log(add, graphID, chartFather, viagem, type, vagao, ocur)
-		// atualizando variaveis globais caso necessário
-		if (viagem != extViagem) {extViagem = viagem}
-		if (type != extType) {extType = type}
-		if (vagao != extVagao) {extVagao = vagao}
-		if (ocur != extOcur) {extOcur = ocur}
+	// atualizando variaveis globais caso necessário
+	if (viagem != extViagem) {extViagem = viagem}
+	if (type != extType) {extType = type}
+	if (vagao != extVagao) {extVagao = vagao}
+	if (ocur != extOcur) {extOcur = ocur}
 
-		ctx2 = "";
-		let chartFatherID  = document.getElementById(chartFather);
-	
-		if(add){
-			graphs ++;
-			graphID = 'myChart'+graphs
+	ctx2 = "";
+	let chartFatherID  = document.getElementById(chartFather);
 
-			// Crie um novo elemento div
-			var divElement = document.createElement('div');
+	if(add){
+		graphs ++;
+		graphID = 'myChart'+graphs
 
-			// Defina as classes para o elemento div
-			divElement.className = 'd-flex justify-content-between flex-wrap flex-md-wrap align-items-center pt-3 pb-2 mb-3';
+		// Crie um novo elemento div
+		var divElement = document.createElement('div');
 
-			// Crie o primeiro dropdown (Viagem)
-			var dropdownViagemDiv = document.createElement('div');
-			dropdownViagemDiv.className = 'dropdown-center btn-group me-2';
+		// Defina as classes para o elemento div
+		divElement.className = 'd-flex justify-content-between flex-wrap flex-md-wrap align-items-center pt-3 pb-2 mb-3';
 
-			// Crie o botão do dropdown (Viagem)
-			var dropdownViagemButton = document.createElement('button');
-			dropdownViagemButton.id = 'dropdownViagem'+graphs;
-			dropdownViagemButton.className = 'btn btn-sm btn-outline-secondary dropdown-toggle';
-			dropdownViagemButton.type = 'button';
-			dropdownViagemButton.setAttribute('data-bs-toggle', 'dropdown');
-			dropdownViagemButton.setAttribute('aria-expanded', 'false');
-			dropdownViagemButton.textContent = 'Selecione a Viagem';
+		// Crie o primeiro dropdown (Viagem)
+		var dropdownViagemDiv = document.createElement('div');
+		dropdownViagemDiv.className = 'dropdown-center btn-group me-2';
 
-			// Crie o menu do dropdown (Viagem)
-			var dropdownViagemMenu = document.createElement('div');
-			dropdownViagemMenu.className = 'dropdown-menu';
-			dropdownViagemMenu.innerHTML = `
-				<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', viagem=1); selectOption(this, 'dropdownViagem${graphs}')">Viagem 1</button>
-				<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', viagem=2); selectOption(this, 'dropdownViagem${graphs}')">Viagem 2</button>
-				<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', viagem=3); selectOption(this, 'dropdownViagem${graphs}')">Viagem 3</button>
-				<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', viagem=4); selectOption(this, 'dropdownViagem${graphs}')">Viagem 4</button>
-				<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', viagem=5); selectOption(this, 'dropdownViagem${graphs}')">Viagem 5</button>
-			`;
+		// Crie o botão do dropdown (Viagem)
+		var dropdownViagemButton = document.createElement('button');
+		dropdownViagemButton.id = 'dropdownViagem'+graphs;
+		dropdownViagemButton.className = 'btn btn-sm btn-outline-secondary dropdown-toggle';
+		dropdownViagemButton.type = 'button';
+		dropdownViagemButton.setAttribute('data-bs-toggle', 'dropdown');
+		dropdownViagemButton.setAttribute('aria-expanded', 'false');
+		dropdownViagemButton.textContent = 'Selecione a Viagem';
 
-				// Anexe o botão e o menu do dropdown (Viagem) ao dropdownViagemDiv
-				dropdownViagemDiv.appendChild(dropdownViagemButton);
-				dropdownViagemDiv.appendChild(dropdownViagemMenu);
+		// Crie o menu do dropdown (Viagem)
+		var dropdownViagemMenu = document.createElement('div');
+		dropdownViagemMenu.className = 'dropdown-menu';
+		dropdownViagemMenu.innerHTML = `
+			<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', viagem=1); selectOption(this, 'dropdownViagem${graphs}')">Viagem 1</button>
+			<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', viagem=2); selectOption(this, 'dropdownViagem${graphs}')">Viagem 2</button>
+			<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', viagem=3); selectOption(this, 'dropdownViagem${graphs}')">Viagem 3</button>
+			<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', viagem=4); selectOption(this, 'dropdownViagem${graphs}')">Viagem 4</button>
+			<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', viagem=5); selectOption(this, 'dropdownViagem${graphs}')">Viagem 5</button>
+		`;
 
-				// Anexe o dropdownViagemDiv ao elemento div
-				divElement.appendChild(dropdownViagemDiv);
+			// Anexe o botão e o menu do dropdown (Viagem) ao dropdownViagemDiv
+		dropdownViagemDiv.appendChild(dropdownViagemButton);
+		dropdownViagemDiv.appendChild(dropdownViagemMenu);
 
-				// Crie o segundo dropdown (Vagão)
-				var dropdownVagaoDiv = document.createElement('div');
-				dropdownVagaoDiv.className = 'dropdown-center btn-group me-2';
+		// Anexe o dropdownViagemDiv ao elemento div
+		divElement.appendChild(dropdownViagemDiv);
 
-				// Crie o botão do dropdown (Vagão)
-				var dropdownVagaoButton = document.createElement('button');
-				dropdownVagaoButton.id = 'dropdownVagao'+graphs;
-				dropdownVagaoButton.className = 'btn btn-sm btn-outline-secondary dropdown-toggle';
-				dropdownVagaoButton.type = 'button';
-				dropdownVagaoButton.setAttribute('data-bs-toggle', 'dropdown');
-				dropdownVagaoButton.setAttribute('aria-expanded', 'false');
-				dropdownVagaoButton.textContent = 'Selecione o Vagão';
+		// Crie o segundo dropdown (Vagão)
+		var dropdownVagaoDiv = document.createElement('div');
+		dropdownVagaoDiv.className = 'dropdown-center btn-group me-2';
 
-				// Crie o menu do dropdown (Vagão)
-				var dropdownVagaoMenu = document.createElement('div');
-				dropdownVagaoMenu.className = 'dropdown-menu';
-				dropdownVagaoMenu.innerHTML = `<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, 'E'); selectOption(this, 'dropdownVagao${graphs}')">Vagão E</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, 'F'); selectOption(this, 'dropdownVagao${graphs}')">Vagão F</button>;`
+		// Crie o botão do dropdown (Vagão)
+		var dropdownVagaoButton = document.createElement('button');
+		dropdownVagaoButton.id = 'dropdownVagao'+graphs;
+		dropdownVagaoButton.className = 'btn btn-sm btn-outline-secondary dropdown-toggle';
+		dropdownVagaoButton.type = 'button';
+		dropdownVagaoButton.setAttribute('data-bs-toggle', 'dropdown');
+		dropdownVagaoButton.setAttribute('aria-expanded', 'false');
+		dropdownVagaoButton.textContent = 'Selecione o Vagão';
 
-				// Anexe o botão e o menu do dropdown (Vagão) ao dropdownVagaoDiv
-				dropdownVagaoDiv.appendChild(dropdownVagaoButton);
-				dropdownVagaoDiv.appendChild(dropdownVagaoMenu);
-				
-				// Anexe o dropdownVagaoDiv ao elemento div
-				divElement.appendChild(dropdownVagaoDiv);
-				
-				// Crie o terceiro dropdown (Tipo de Ocorrência)
-				var dropdownOcorrenciaDiv = document.createElement('div');
-				dropdownOcorrenciaDiv.className = 'dropdown-center';
-				
-				// Crie o botão do dropdown (Tipo de Ocorrência)
-				var dropdownOcorrenciaButton = document.createElement('button');
-				dropdownOcorrenciaButton.id = 'dropdownOcorrencia'+graphs;
-				dropdownOcorrenciaButton.className = 'btn btn-sm btn-outline-secondary dropdown-toggle';
-				dropdownOcorrenciaButton.setAttribute('data-bs-toggle', 'dropdown');
-				dropdownOcorrenciaButton.setAttribute('aria-expanded', 'false');
-				dropdownOcorrenciaButton.textContent = 'Tipo de Ocorrência';
-				
-				// Crie o menu do dropdown (Tipo de Ocorrência)
-				var dropdownOcorrenciaMenu = document.createElement('div');
-				dropdownOcorrenciaMenu.className = 'dropdown-menu';
-				dropdownOcorrenciaMenu.innerHTML = `<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, 1); selectOption(this, 'dropdownOcorrencia${graphs}')">Choque Tipo 1</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, 2); selectOption(this, 'dropdownOcorrencia${graphs}')">Choque Tipo 2</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, 3); selectOption(this, 'dropdownOcorrencia${graphs}')">Pico</button>;`
-				
-				// Anexe o botão e o menu do dropdown (Tipo de Ocorrência) ao dropdownOcorrenciaDiv
-				dropdownOcorrenciaDiv.appendChild(dropdownOcorrenciaButton);
-				dropdownOcorrenciaDiv.appendChild(dropdownOcorrenciaMenu);
-				
-				// Anexe o dropdownOcorrenciaDiv ao elemento div
-				divElement.appendChild(dropdownOcorrenciaDiv);
-				
-				// Crie o último dropdown (Informações à Processar)
-				var dropdownInfDiv = document.createElement('div');
-				dropdownInfDiv.className = 'dropdown-center';
-				
-				// Crie o botão do dropdown (Informações à Processar)
-				var dropdownInfButton = document.createElement('button');
-				dropdownInfButton.id = 'dropdownInf'+graphs;
-				dropdownInfButton.className = 'btn btn-sm btn-outline-secondary dropdown-toggle';
-				dropdownInfButton.setAttribute('data-bs-toggle', 'dropdown');
-				dropdownInfButton.setAttribute('aria-expanded', 'false');
-				dropdownInfButton.textContent = 'Informações à Processar';
-				
-				// Crie o menu do dropdown (Informações à Processar)
-				var dropdownInfMenu = document.createElement('div');
-				dropdownInfMenu.className = 'dropdown-menu';
-				dropdownInfMenu.innerHTML = `<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 3); selectOption(this, 'dropdownInf${graphs}')">PEG_PSI</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 2); selectOption(this, 'dropdownInf${graphs}')">ACT</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 1); selectOption(this, 'dropdownInf${graphs}')">Força Máxima</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}')">Velocidade</button> <button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}')">Engate</button> <button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}')">ΔT</button>;`
-				
-				// Anexe o botão e o menu do dropdown (Informações à Processar) ao dropdownInfDiv
-				dropdownInfDiv.appendChild(dropdownInfButton);
-				dropdownInfDiv.appendChild(dropdownInfMenu);
-				
-				// Anexe o dropdownInfDiv ao elemento div
-				divElement.appendChild(dropdownInfDiv);
-				
-				// Anexe o elemento div ao documento
-				document.getElementById("graphAcordion").appendChild(divElement);
+		// Crie o menu do dropdown (Vagão)
+		var dropdownVagaoMenu = document.createElement('div');
+		dropdownVagaoMenu.className = 'dropdown-menu';
+		dropdownVagaoMenu.innerHTML = `<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, 'E'); selectOption(this, 'dropdownVagao${graphs}')">Vagão E</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, 'F'); selectOption(this, 'dropdownVagao${graphs}')">Vagão F</button>;`
 
-				chartFather2 = document.createElement('div');
-					// Definindo os atributos usando setAttribute
-					chartFather2.setAttribute('style', 'width: 90%; height: 450px;');
-					chartFather2.setAttribute('class', 'ms-5 me-3');
-					chartFather2.setAttribute('id', `chartFather${graphs}`);
-				ctx2 = document.createElement('canvas')
-					ctx2.setAttribute('id', graphID)
-					console.log(ctx2)
-					ctx2.setAttribute('width', '900')
-					ctx2.setAttribute('height', '380')
-					ctx2.setAttribute('class', 'my-4 w-100 pb-5');
+		// Anexe o botão e o menu do dropdown (Vagão) ao dropdownVagaoDiv
+		dropdownVagaoDiv.appendChild(dropdownVagaoButton);
+		dropdownVagaoDiv.appendChild(dropdownVagaoMenu);
 		
-					divElement.append(chartFather2);
-					document.getElementById('chartFather'+graphs).append(ctx2);
-				
-				
+		// Anexe o dropdownVagaoDiv ao elemento div
+		divElement.appendChild(dropdownVagaoDiv);
+		
+		// Crie o terceiro dropdown (Tipo de Ocorrência)
+		var dropdownOcorrenciaDiv = document.createElement('div');
+		dropdownOcorrenciaDiv.className = 'dropdown-center';
+		
+		// Crie o botão do dropdown (Tipo de Ocorrência)
+		var dropdownOcorrenciaButton = document.createElement('button');
+		dropdownOcorrenciaButton.id = 'dropdownOcorrencia'+graphs;
+		dropdownOcorrenciaButton.className = 'btn btn-sm btn-outline-secondary dropdown-toggle';
+		dropdownOcorrenciaButton.setAttribute('data-bs-toggle', 'dropdown');
+		dropdownOcorrenciaButton.setAttribute('aria-expanded', 'false');
+		dropdownOcorrenciaButton.textContent = 'Tipo de Ocorrência';
+		
+		// Crie o menu do dropdown (Tipo de Ocorrência)
+		var dropdownOcorrenciaMenu = document.createElement('div');
+		dropdownOcorrenciaMenu.className = 'dropdown-menu';
+		dropdownOcorrenciaMenu.innerHTML = `<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, 1); selectOption(this, 'dropdownOcorrencia${graphs}')">Choque Tipo 1</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, 2); selectOption(this, 'dropdownOcorrencia${graphs}')">Choque Tipo 2</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, 3); selectOption(this, 'dropdownOcorrencia${graphs}')">Pico</button>;`
+		
+		// Anexe o botão e o menu do dropdown (Tipo de Ocorrência) ao dropdownOcorrenciaDiv
+		dropdownOcorrenciaDiv.appendChild(dropdownOcorrenciaButton);
+		dropdownOcorrenciaDiv.appendChild(dropdownOcorrenciaMenu);
+		
+		// Anexe o dropdownOcorrenciaDiv ao elemento div
+		divElement.appendChild(dropdownOcorrenciaDiv);
+		
+		// Crie o último dropdown (Informações à Processar)
+		var dropdownInfDiv = document.createElement('div');
+		dropdownInfDiv.className = 'dropdown-center';
+		
+		// Crie o botão do dropdown (Informações à Processar)
+		var dropdownInfButton = document.createElement('button');
+		dropdownInfButton.id = 'dropdownInf'+graphs;
+		dropdownInfButton.className = 'btn btn-sm btn-outline-secondary dropdown-toggle';
+		dropdownInfButton.setAttribute('data-bs-toggle', 'dropdown');
+		dropdownInfButton.setAttribute('aria-expanded', 'false');
+		dropdownInfButton.textContent = 'Informações à Processar';
+		
+		// Crie o menu do dropdown (Informações à Processar)
+		var dropdownInfMenu = document.createElement('div');
+		dropdownInfMenu.className = 'dropdown-menu';
+		dropdownInfMenu.innerHTML = `<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 3); selectOption(this, 'dropdownInf${graphs}')">PEG_PSI</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 2); selectOption(this, 'dropdownInf${graphs}')">ACT</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 1); selectOption(this, 'dropdownInf${graphs}')">Força Máxima</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}')">Velocidade</button> <button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}')">Engate</button> <button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}')">ΔT</button>;`
+		
+		// Anexe o botão e o menu do dropdown (Informações à Processar) ao dropdownInfDiv
+		dropdownInfDiv.appendChild(dropdownInfButton);
+		dropdownInfDiv.appendChild(dropdownInfMenu);
+		
+		// Anexe o dropdownInfDiv ao elemento div
+		divElement.appendChild(dropdownInfDiv);
+		
+		// Anexe o elemento div ao documento
+		document.getElementById("graphAcordion").appendChild(divElement);
 
-				const addButton = document.getElementById('addButton');
-				addButton.remove();
+		chartFather2 = document.createElement('div');
+			// Definindo os atributos usando setAttribute
+			chartFather2.setAttribute('style', 'width: 90%; height: 450px;');
+			chartFather2.setAttribute('class', 'ms-5 me-3');
+			chartFather2.setAttribute('id', `chartFather${graphs}`);
+		ctx2 = document.createElement('canvas')
+			ctx2.setAttribute('id', graphID)
+			console.log(ctx2)
+			ctx2.setAttribute('width', '900')
+			ctx2.setAttribute('height', '380')
+			ctx2.setAttribute('class', 'my-4 w-100 pb-5');
 
-				const newAddButton = document.createElement('button');
-				newAddButton.id = 'addButton';
-				newAddButton.className = 'btn btn-sm btn-outline-secondary';
-				newAddButton.type = 'button';
-				newAddButton.setAttribute('onclick', `initGraph(add = true, "myChart${graphs}", 'chartFather${graphs}', undefined, undefined, undefined, undefined)`);
-				newAddButton.textContent = 'Adicionar Gráfico';
+			divElement.append(chartFather2);
+			document.getElementById('chartFather'+graphs).append(ctx2);
+		
+		
 
-				document.getElementById('graphAcordion').append(newAddButton)
+		const addButton = document.getElementById('addButton');
+		addButton.remove();
 
-			}
+		const newAddButton = document.createElement('button');
+		newAddButton.id = 'addButton';
+		newAddButton.className = 'btn btn-sm btn-outline-secondary';
+		newAddButton.type = 'button';
+		newAddButton.setAttribute('onclick', `initGraph(add = true, "myChart${graphs}", 'chartFather${graphs}', undefined, undefined, undefined, undefined)`);
+		newAddButton.textContent = 'Adicionar Gráfico';
+
+		document.getElementById('graphAcordion').append(newAddButton)
+
+		}
 	
 		// console.log(`/api/graphs${vagao}/${viagem}/${type}/${ocur}`)
 	
 		// esperando fetch que devolve os pontos do mapa
-		fetch(`/api/graphs${vagao}/${viagem}/${type}/${ocur}`, {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json'
-			}
+	fetch(`/api/graphs${vagao}/${viagem}/${type}/${ocur}`, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	})
+		.then(response => {
+			// transformando a resposta em json
+			return response.json();
 		})
-			.then(response => {
-				// transformando a resposta em json
-				return response.json();
-			})
-			.then(json => {
-				const value = json; // valor do gráfico
-				console.log(value)
-				let values = []; // valores do gráfico
-				const columns = []; // colunas do gráfico
+		.then(json => {
+			const value = json; // valor do gráfico
+			console.log(value)
+			let values = []; // valores do gráfico
+			const columns = []; // colunas do gráfico
+
+			// adicionando os valores e colunas
+			for (let i = 0; i < value.length; i++) {
+				if(value[i].f_max){
+					values.push(value[i].f_max); // adicionando valor
+					columns.push(value[i].data_hora);} // adicionando coluna
+			}
+
+			// console.log(value)
+
+			if(!add){
+				let ctx = document.getElementById(graphID);//Referencia do gráfico
+				console.log(ctx)
+				// deleta o gráfico anterior
+				ctx.remove();
+				// cria um novo gráfico
+				ctx2 = document.createElement('canvas')
+				ctx2.setAttribute('id', graphID)
+				ctx2.setAttribute('width', '900')
+				ctx2.setAttribute('height', '380')
+				ctx2.setAttribute('class', 'my-4 w-100 pb-5');
 	
-				// adicionando os valores e colunas
-				for (let i = 0; i < value.length; i++) {
-					if(value[i].f_max){
-						values.push(value[i].f_max); // adicionando valor
-						columns.push(value[i].data_hora);} // adicionando coluna
-				}
-	
-				// console.log(value)
-	
-				if(!add){
-					console.log("passou")
-					// configurando o gráfico
-					console.log("passou com " +graphID)
-					let ctx = document.getElementById(graphID);//Referencia o gráfico
-					console.log(ctx)
-					// deleta o gráfico anterior
-					ctx.remove();
-					// cria um novo gráfico
-					ctx2 = document.createElement('canvas')
-					ctx2.setAttribute('id', graphID)
-					ctx2.setAttribute('width', '900')
-					ctx2.setAttribute('height', '380')
-					ctx2.setAttribute('class', 'my-4 w-100 pb-5');
-		
-					chartFatherID.append(ctx2);
-				}
-				console.log(ctx2)
-	
-				const myChart = new Chart(ctx2, {
-					type: 'line',
-					data: {
-						labels: columns, // inserindo as colunas
-						datasets: [
-							{
-								data: values, // inserindo as linhas
-								lineTension: 0,
-								backgroundColor: 'transparent',
-								borderColor: '#007bff',
-								borderWidth: 4,
-								pointBackgroundColor: '#007bff'
-							}
-						]
-					},
-					options: {
-						plugins: { // configurando o gráfico
-							legend: {
-								display: false
-							},
-							tooltip: {
-								boxPadding: 3
-							}
+				chartFatherID.append(ctx2);
+			}
+			console.log(ctx2)
+
+			const myChart = new Chart(ctx2, {
+				type: 'line',
+				data: {
+					labels: columns, // inserindo as colunas
+					datasets: [
+						{
+							data: values, // inserindo as linhas
+							lineTension: 0,
+							backgroundColor: 'transparent',
+							borderColor: '#007bff',
+							borderWidth: 4,
+							pointBackgroundColor: '#007bff'
+						}
+					]
+				},
+				options: {
+					plugins: { // configurando o gráfico
+						legend: {
+							display: false
+						},
+						tooltip: {
+							boxPadding: 3
 						}
 					}
-				});
+				}
 			});
+		});
 }
 
 function selectOption(option, dropdownId) {

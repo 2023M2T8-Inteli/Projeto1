@@ -7,6 +7,7 @@ function mapE (req,res){
     var sql;
     const id = req.params.id;
     const viagem = req.params.viagem;
+    const RelNum = req.params.RelNum; // Escolhe o relatório específico (1, 2, 3, etc)
 
     if (id == 1 || id == 2){ // Se for choque
         sql = `SELECT lat,lon FROM OCORRENCIA AS OC INNER JOIN CHOQUE ON OC.ID_OC = CHOQUE.ID_OC WHERE OC.tipo_oc = 'C' AND OC.tipo_vagao = 'E' AND CHOQUE.tipo_choque ='${id}' AND OC.viagem ='${viagem}'`;

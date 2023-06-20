@@ -68,21 +68,17 @@ const mapF = require('./reports/mapF');
 const path = require('./reports/path');
 
 
-router.get('/graphPico/:viagem/:id/:ocur', graphPico); // Página das informações sobre o pico, podendo ser em relação à tabela E (com o ID 1), e à tabela F(com o ID 2).
+router.get('/graphPico/:viagem/:id/:ocur/:RelNum', graphPico); // Página das informações sobre o pico, podendo ser em relação à tabela E (com o ID 1), e à tabela F(com o ID 2).
 
-router.get('/graphsE/:viagem/:ocur/:id', graphsE); // Pega e mostra dados específicos da Tabela E
+router.get('/graphsE/:viagem/:ocur/:id/:RelNum', graphsE); // Pega e mostra dados específicos da Tabela E
 
-router.get('/graphsF/:viagem/:ocur/:id', graphsF); // Pega e mostra dados específicos da Tabela F
+router.get('/graphsF/:viagem/:ocur/:id/:RelNum', graphsF); // Pega e mostra dados específicos da Tabela F
 
-router.get('/tableE/:impact', tableE); // Mostra todos os dados da tabela E
+router.get('/mapE/:viagem/:id/:RelNum', mapE);
 
-router.get('/tableF/:impact', tableF); // Seleciona todos os dados da tabela F
+router.get('/mapF/:viagem/:id/:RelNum', mapF);
 
-router.get('/mapE/:viagem/:id', mapE);
-
-router.get('/mapF/:viagem/:id', mapF);
-
-router.get('/path', path);
+router.get('/path/:RelNum', path);
 
 router.get('/quantity', quantity)//retorna o numero de relatórios existentes
 

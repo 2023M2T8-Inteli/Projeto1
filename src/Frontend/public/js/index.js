@@ -299,10 +299,10 @@ async function relatorios(){
             // buttonnElement.textContent = 'Gerar PDF';
 
 
-            // Cria o elemento small com o texto "Data do Relatório"
-            var smallElement = document.createElement('small');
-            smallElement.className = 'text-body-secondary';
-            smallElement.textContent = 'Data do Relatório';
+            // // Cria o elemento small com o texto "Data do Relatório"
+            // var smallElement = document.createElement('small');
+            // smallElement.className = 'text-body-secondary';
+            // smallElement.textContent = 'Data do Relatório';
 
             // Adiciona o elemento "a" e o elemento button como filhos do div btnGroupElement
             btnGroupElement.appendChild(aElement);
@@ -312,7 +312,7 @@ async function relatorios(){
 
             // Adiciona o elemento btnGroupElement e o elemento smallElement como filhos do div divGroupElement
             divGroupElement.appendChild(btnGroupElement);
-            divGroupElement.appendChild(smallElement);
+            // divGroupElement.appendChild(smallElement);
 
             // Adiciona o elemento h5Element, o elemento pElement, o elemento divGroupElement e o elemento svgElement como filhos do elemento cardBodyElement
             cardBodyElement.appendChild(h5Element);
@@ -423,17 +423,17 @@ async function seeFav(){
 
 
 
-            // Cria o elemento small com o texto "Data do Relatório"
-            var smallElement = document.createElement('small');
-            smallElement.className = 'text-body-secondary';
-            smallElement.textContent = 'Data do Relatório';
+            // // Cria o elemento small com o texto "Data do Relatório"
+            // var smallElement = document.createElement('small');
+            // smallElement.className = 'text-body-secondary';
+            // smallElement.textContent = 'Data do Relatório';
 
             // Adiciona o elemento "a" e o elemento button como filhos do div btnGroupElement
             btnGroupElement.appendChild(aElement);
 
             // Adiciona o elemento btnGroupElement e o elemento smallElement como filhos do div divGroupElement
             divGroupElement.appendChild(btnGroupElement);
-            divGroupElement.appendChild(smallElement);
+            // divGroupElement.appendChild(smallElement);
 
             // Adiciona o elemento h5Element, o elemento pElement, o elemento divGroupElement e o elemento svgElement como filhos do elemento cardBodyElement
             cardBodyElement.appendChild(h5Element);

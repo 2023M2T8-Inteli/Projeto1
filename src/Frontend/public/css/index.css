@@ -242,3 +242,36 @@
     display: none;
   }
 }
+#loaderConteiner{
+  display: none;
+}
+
+#loaderConteiner-Loading{
+  position: absolute;
+  z-index: 99999;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 7px;
+  display: flex;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+  animation: toastFadeIn 0.5s ease-in-out forwards;
+}
+#loading {
+  animation: is-rotating 1s infinite;
+  border: 6px solid #e5e5e5;
+  border-radius: 50%;
+  border-top-color: #51d4db;
+  height: 50px;
+  width: 50px;
+}
+
+@keyframes is-rotating {
+  to {
+    transform: rotate(1turn);
+  }
+}

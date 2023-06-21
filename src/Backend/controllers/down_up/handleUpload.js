@@ -159,6 +159,18 @@ async function handleUpload(req, res){
 			console.log("arquivo não encontrado")
 		}
 	}
+
+	const db = require(DB_PATH).db("Rels.db");
+	//inserindo dados na tabela de relatorios
+	await new Promise((resolve, reject) => {
+		db.run(`INSERT INTO Relatorios(relatorios) VALUES (${archivesLength})`, (err) => {
+			if (err) {
+				reject(err);
+				return;
+			}
+			resolve();
+		})
+	})
 	
 	res.send("1")
 }

@@ -479,7 +479,7 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 					responsive: true,
 					plugins: { // configurando o gráfico
 						legend: {
-							display: true
+							display: false
 						},
 						tooltip: {
 							boxPadding: 3

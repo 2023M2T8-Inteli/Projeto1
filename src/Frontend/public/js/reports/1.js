@@ -274,7 +274,7 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 		// Crie o menu do dropdown (Informações à Processar)
 		var dropdownInfMenu = document.createElement('div');
 		dropdownInfMenu.className = 'dropdown-menu';
-		dropdownInfMenu.innerHTML = `<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 3); selectOption(this, 'dropdownInf${graphs}')">PEG_PSI</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 2); selectOption(this, 'dropdownInf${graphs}')">ACT</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 1); selectOption(this, 'dropdownInf${graphs}')">Força Máxima</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}')">Velocidade</button> <button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}')">Engate</button> <button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}')">ΔT</button>;`
+		dropdownInfMenu.innerHTML = `<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 3); selectOption(this, 'dropdownInf${graphs}')">PEG_PSI</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 2); selectOption(this, 'dropdownInf${graphs}')">ACT</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 1); selectOption(this, 'dropdownInf${graphs}')">Força Máxima</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined,undefined, undefined, 4);selectOption(this, 'dropdownInf${graphs}')">Velocidade</button> <button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}')">Engate</button> <button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}')">ΔT</button>;`
 
 		// Anexe o botão e o menu do dropdown (Informações à Processar) ao dropdownInfDiv
 		dropdownInfDiv.appendChild(dropdownInfButton);
@@ -317,11 +317,15 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 		document.getElementById('graphAcordion').append(newAddButton)
 
 		}
-
-		// console.log(`/api/graphs${vagao}/${viagem}/${type}/${ocur}`)
-
+	
+	let url = `/api/graphs${vagao}/${viagem}/${type}/${ocur}/${rel_id}`;   //'/mapE/:viagem/:id',
+	if(type == 3){
+		url = `/api/graphsPico/${viagem}/${vagao}/${ocur}/${rel_id}`
+		var parent = document.getElementById('dropdownInf'+graphs);
+	}
+	console.log("url: ", url)
 		// esperando fetch que devolve os pontos do mapa
-	fetch(`/api/graphs${vagao}/${viagem}/${type}/${ocur}/${rel_id}`, {
+	fetch(url, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -360,6 +364,7 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 				}
 
 			}
+			console.log(columns)
 
 			let novasDatas = [];
 			for (let i = 0; i < columns.length; i++) {
@@ -370,8 +375,9 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 				const dia = String(data.getDate()).padStart(2, '0');
 				const mes = String(data.getMonth() + 1).padStart(2, '0');
 				const ano = data.getFullYear();
+				const hora = String(data.getHours()).padStart(2, '0');
 
-				const dataFormatada = `${dia}/${mes}/${ano}`;
+				const dataFormatada = dia + '/' + mes + '/' + ano + ' ' + hora + ':00';
 				novasDatas.push(dataFormatada);
 			}
 			console.log(novasDatas);
@@ -382,7 +388,6 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 			if(!add){
 				console.log('entrou no if, graphID: ', graphID)
 				let ctx = document.getElementById(graphID);//Referencia do gráfico
-				console.log(ctx)
 				// deleta o gráfico anterior
 				ctx.remove();
 				// cria um novo gráfico

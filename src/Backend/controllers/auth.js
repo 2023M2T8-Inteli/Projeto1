@@ -65,7 +65,7 @@ const mapF = require('./reports/mapF');
 const path = require('./reports/path');
 
 
-router.get('/graphPico/:viagem/:id/:ocur/:RelNum', graphPico); // Página das informações sobre o pico, podendo ser em relação à tabela E (com o ID 1), e à tabela F(com o ID 2).
+router.get('/graphsPico/:viagem/:vagao/:ocur/:RelNum', graphPico); // Página das informações sobre o pico, podendo ser em relação à tabela E (com o ID 1), e à tabela F(com o ID 2).
 
 router.get('/graphsE/:viagem/:ocur/:id/:RelNum', graphsE); // Pega e mostra dados específicos da Tabela E
 

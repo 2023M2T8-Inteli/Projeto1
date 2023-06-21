@@ -324,12 +324,12 @@
 											<!-- AQUI VAI TER Q FAZER JAVASCRIPT PRA MUDAR O DROPDOWN DEPENDENDO SE EH CHOQUE OU PICO -->
 											<!-- ITEM DE DROPDOWN DISABLED VC BOTA NA CLASSE: DROPDOWN-ITEM DISABLED -->
 											<!-- ENFASE NO "DISABLED" GNT -->
-											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined,undefined, undefined, ocur=3); selectOption(this, 'dropdownInf')">PEG_PSI</button>
-											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined,undefined, undefined, ocur=2); selectOption(this, 'dropdownInf')">ACT</button>
-											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined,undefined, undefined, ocur=1); selectOption(this, 'dropdownInf')">Força Máxima</button>
-											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf')">Velocidade</button>
-											<button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf')">Engate</button>
-											<button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf')">ΔT</button>
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined,undefined, undefined, 3); selectOption(this, 'dropdownInf')">PEG_PSI</button>
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined,undefined, undefined, 2); selectOption(this, 'dropdownInf')">ACT</button>
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined,undefined, undefined, 1); selectOption(this, 'dropdownInf')">Força Máxima</button>
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined,undefined, undefined, 4);selectOption(this, 'dropdownInf')">Velocidade</button>
+											<button type="button" id="Engate" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf')">Engate</button>
+											<button type="button" id="delta" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf')">ΔT</button>
 										</div>
 									</div>
 								</div>

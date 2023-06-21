@@ -80,6 +80,24 @@ async function initMap(viagem = initViagem, choque = initChoque, vagao = initVag
 		fetch(url, {
 			method: 'GET'
 		}).then(response => response.json()).then(json => {
+			//formatando datas
+			let novasDatas = [];
+
+			for (let i = 0; i < json.length; i++) {
+				const valor = parseFloat(json[i].data_hora);
+				const milisegundos = (valor - 25569) * 86400 * 1000;
+				const data = new Date(milisegundos);
+
+				const dia = String(data.getDate()).padStart(2, '0');
+				const mes = String(data.getMonth() + 1).padStart(2, '0');
+				const ano = data.getFullYear();
+				const hora = String(data.getHours()).padStart(2, '0');
+
+				const dataFormatada = dia + '/' + mes + '/' + ano + ' ' + hora + ':00';
+				novasDatas.push(dataFormatada);
+			}
+			console.log(novasDatas)
+
 			for (var i = 0; i < json.length; i++) {
 				var htmlImaginario = "";
 			  
@@ -92,6 +110,7 @@ async function initMap(viagem = initViagem, choque = initChoque, vagao = initVag
 						<p><b>PEG PSI: </b>  ${json[i].peg_psi}  </p> 
 						<p><b>Velocidade: </b>  ${json[i].vel}  </p> 
 						<p><b>Temperatura: </b>  ${json[i].f_max}  </p>
+						<p><b>Data e hora: </b>  ${novasDatas[i]}  </p> 
 					  </div>
 					</div>`;
 			  
@@ -274,7 +293,7 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 		// Crie o menu do dropdown (Informações à Processar)
 		var dropdownInfMenu = document.createElement('div');
 		dropdownInfMenu.className = 'dropdown-menu';
-		dropdownInfMenu.innerHTML = `<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 3); selectOption(this, 'dropdownInf${graphs}')">PEG_PSI</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 2); selectOption(this, 'dropdownInf${graphs}')">ACT</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 1); selectOption(this, 'dropdownInf${graphs}')">Força Máxima</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined,undefined, undefined, 4);selectOption(this, 'dropdownInf${graphs}')">Velocidade</button> <button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}')">Engate</button> <button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}')">ΔT</button>;`
+		dropdownInfMenu.innerHTML = `<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 3); selectOption(this, 'dropdownInf${graphs}')">PEG_PSI</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 2); selectOption(this, 'dropdownInf${graphs}')">ACT</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 1); selectOption(this, 'dropdownInf${graphs}')">Força Máxima</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart${graphs}', 'chartFather${graphs}', undefined,undefined, undefined, 4);selectOption(this, 'dropdownInf${graphs}')">Velocidade</button> <button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}')">Engate</button> <button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}')">ΔT</button>;`
 
 		// Anexe o botão e o menu do dropdown (Informações à Processar) ao dropdownInfDiv
 		dropdownInfDiv.appendChild(dropdownInfButton);
@@ -321,7 +340,6 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 	let url = `/api/graphs${vagao}/${viagem}/${type}/${ocur}/${rel_id}`;   //'/mapE/:viagem/:id',
 	if(type == 3){
 		url = `/api/graphsPico/${viagem}/${vagao}/${ocur}/${rel_id}`
-		var parent = document.getElementById('dropdownInf'+graphs);
 	}
 	console.log("url: ", url)
 		// esperando fetch que devolve os pontos do mapa
@@ -366,6 +384,7 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 			}
 			console.log(columns)
 
+				// convertendo as colunas para o formato de data
 			let novasDatas = [];
 			for (let i = 0; i < columns.length; i++) {
 				const valor = parseFloat(columns[i]);
@@ -398,36 +417,49 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 			}
 			console.log(ctx2)
 
+			// definindo largura e altura do gráfico inicial
 			const widthStart = 900
-			const heightStart = 380
+			const heightStart = 380 //altura deve ser sempre padrão para permitir o scroll
 
+			// definindo largura e altura do gráfico se ele for maior que 30 dados para evitar que o gráfico fique ilegível
 			if (columns.length > 30) {
+
 				let length = columns.length - 30;
 				let newWidth = 0;
+
 				for (let i = 0; i < length; i++) {
+
 				  newWidth += 19;
+
 				}
+
 				var graphWidth = ctx2
-				console.log('entrou');
-				console.log(newWidth);
+
 				var currentWidth = parseInt(window.getComputedStyle(graphWidth).getPropertyValue('width'), 10);
 				var updatedWidth = currentWidth + newWidth;
+				//atualizando tamanho do parentnode
 				ctx2.parentNode.style.width = updatedWidth + 'px';
 				ctx2.parentNode.style.height = heightStart + 'px';
+				//atualizando tamanho do canvas
 				ctx2.width = updatedWidth + 'px';
 				ctx2.height = heightStart + 'px';
 
 				console.log('parentnode: ',ctx2.parentNode);
 
 			  }else{
+				//retorna grafico para tamanhos padrões
 				var graphWidth = ctx2
 				var currentWidth = parseInt(window.getComputedStyle(graphWidth).getPropertyValue('width'), 10);
 				var updatedWidth = widthStart;
+
 				ctx2.parentNode.style.width = updatedWidth + 'px';
 				ctx2.parentNode.style.height = heightStart + 'px';
+
 				ctx2.height = heightStart + 'px';
 				ctx2.width = updatedWidth + 'px';
 			  }
+
+			  //definição do gráfico
 			const myChart = new Chart(ctx2, {
 				type: 'line',
 				data: {

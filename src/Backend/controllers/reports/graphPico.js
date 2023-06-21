@@ -8,15 +8,6 @@ function graphPico (req,res) {
     const ocur = req.params.ocur; //Escolhe a ocorrência específica (ACT, PEG_PSI, etc)
     const viagem = req.params.viagem; // Escolhe uma viagem (1, 2, 3, etc).]
 
-    if(ocur == 1){ // f_max
-        var sql = `SELECT f_max,data_hora FROM PICO INNER JOIN OCORRENCIA ON PICO.ID_OC = OCORRENCIA.ID_OC WHERE tipo_vagao = "${vagao}" AND viagem = ${viagem}  ORDER BY OCORRENCIA.data_hora ASC`;
-        db.all(sql, function(err,rows){
-            if(err){
-                throw err;
-            }
-            res.json(rows)
-        })
-    }
     if(ocur == 2) {// act
         var sql = `SELECT act,data_hora FROM PICO INNER JOIN OCORRENCIA ON PICO.ID_OC = OCORRENCIA.ID_OC WHERE tipo_vagao = "${vagao}"  AND viagem = ${viagem} ORDER BY OCORRENCIA.data_hora ASC`;
         db.all(sql, function(err,rows){

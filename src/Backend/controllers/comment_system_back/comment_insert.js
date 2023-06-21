@@ -5,12 +5,14 @@ function comment_insert(req, res) {
 
 	const db = require(DB_PATH).db("userprefs.sqlite");
 
-	db.all("INSERT INTO comments (chan_id, rel_id, content) VALUES (?, ?, ?)", [chan_id, rel_id, content], (err, row) => {
+	db.run("INSERT INTO comments (chan_id, rel_id, content) VALUES (?, ?, ?)", [chan_id, rel_id, content], function (err) {
 		if (err) {
 			return res.status(500).json({status:"error", text:"Erro interno do servidor de database"});
 		};
 
-		return res.json({status:"success", text:"Comentário enviado com sucesso"});
+		const comment_id = this.lastID;
+
+		return res.json({status:"success", text:"Comentário enviado com sucesso", comment_id: comment_id});
 	});
 
 	require(DB_PATH).db_close(db)

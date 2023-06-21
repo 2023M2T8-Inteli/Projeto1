@@ -60,8 +60,8 @@ const graphPico = require('./reports/graphPico');
 const graphsE = require('./reports/graphsE');
 const graphsF = require('./reports/graphsF');
 
-const tableE = require('./reports/tableE');
-const tableF = require('./reports/tableF');
+// const tableE = require('./reports/tableE');
+// const tableF = require('./reports/tableF');
 
 const mapE = require('./reports/mapE');
 const mapF = require('./reports/mapF');

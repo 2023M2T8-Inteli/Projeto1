@@ -81,7 +81,7 @@ window.onload = async () => {
 			// adds the edit button and delete button
 			let comment_edit_button = document.createElement("button");
 			comment_edit_button.type = "button";
-			comment_edit_button.classList.add("btn", "btn-primary");
+			comment_edit_button.classList.add("btn", "btn-primary", "me-2");
 			comment_edit_button.id = `${comment.comment_id}-editbutton`;
 			comment_edit_button.innerHTML = "Editar";
 			comment_edit_button.onclick = () => {

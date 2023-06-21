@@ -23,7 +23,7 @@ async function initMap(viagem = initViagem, choque = initChoque, vagao = initVag
 	if (choque != initChoque) {initChoque = choque}
 
 	// esperando fetch que devolve os pontos do mapa
-	var points = await fetch('/api/path', {
+	var points = await fetch('/api/path/1', {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -61,7 +61,7 @@ async function initMap(viagem = initViagem, choque = initChoque, vagao = initVag
 		polyline.setMap(map);
 
 		// definindo marcadores
-		var url = `/api/map${vagao}/${viagem}/${choque}`;//     '/mapE/:viagem/:id',
+		var url = `/api/map${vagao}/${viagem}/${choque}/1`;//     '/mapE/:viagem/:id',
 		console.log(url)
 
 		// esperando fetch que devolve os pontos do mapa
@@ -276,7 +276,7 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 		// console.log(`/api/graphs${vagao}/${viagem}/${type}/${ocur}`)
 
 		// esperando fetch que devolve os pontos do mapa
-	fetch(`/api/graphs${vagao}/${viagem}/${type}/${ocur}`, {
+	fetch(`/api/graphs${vagao}/${viagem}/${type}/${ocur}/1`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'

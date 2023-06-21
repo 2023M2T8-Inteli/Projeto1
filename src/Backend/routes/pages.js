@@ -20,7 +20,7 @@ router.get("/login", (req, res) => {
 
 router.get("/reports/:id", loggedIn, (req, res) => {
     if (req.cookies['remember-login']) {
-        res.sendFile(`${req.params.id}.html`, {root: './Frontend/public/reports'});
+        res.sendFile(`Rel.html`, {root: './Frontend/public/reports'});
     } else {
         res.redirect("/login")
     }

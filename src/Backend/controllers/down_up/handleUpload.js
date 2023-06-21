@@ -159,9 +159,6 @@ async function handleUpload(req, res){
 			console.log("arquivo não encontrado")
 		}
 	}
-	//criando html
-	createHTML(archivesLength)
-	//
 	
 	res.send("1")
 }
@@ -466,18 +463,6 @@ async function pushRowCellData(array, cell, numRows, sheet) {
 			}
 		}
 		resolve(array);
-	});
-}
-
-async function createHTML(relNum){
-	let conteudoJS = 'console.log("Olá, mundo!");';
-
-	fs.writeFile(`${relNum}.js`, conteudoJS, function (err) {
-	if (err) {
-		console.error('Erro ao criar o arquivo JavaScript:', err);
-	} else {
-		console.log('Arquivo JavaScript criado com sucesso!');
-	}
 	});
 }
 

@@ -101,10 +101,6 @@
     .sidebar {
       top: 5rem;
     }
-    canvas{
-      width: 450px;
-      height: 190px;
-    }
   }
 
   .sidebar-sticky {

@@ -1,5 +1,14 @@
 //Arquivo padrão para gerar outros relatorios, então 1.js, será para o relatorio 1, contudo ele será apenas utilizado como padrão para os outros relatorios!!!!!!
 
+const rel_id = window.location.href.split("/").pop();
+
+//assim que a pagina carregar completament
+document.addEventListener('DOMContentLoaded', function() {
+	
+	document.getElementById('title').innerHTML = `Relatório #${rel_id}`
+	
+})
+
 /* //////////////////////////////////// */
 /*                MAPAS                 */
 /* //////////////////////////////////// */
@@ -10,12 +19,14 @@ let map;
 //inicializando mapa
 document.onload = (function() {
 	'use strict'; // iniciando modo estrito
+
 	initMap()
 })();
 
 let initViagem = 1;
 let initChoque = 1;
 let initVagao = 'E';
+
 // iniciando mapa utilizando api do google maps
 async function initMap(viagem = initViagem, choque = initChoque, vagao = initVagao) {
 	if (viagem != initViagem) {initViagem = viagem}
@@ -23,7 +34,7 @@ async function initMap(viagem = initViagem, choque = initChoque, vagao = initVag
 	if (choque != initChoque) {initChoque = choque}
 
 	// esperando fetch que devolve os pontos do mapa
-	var points = await fetch('/api/path/1', {
+	var points = await fetch(`/api/path/${rel_id}`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -61,41 +72,70 @@ async function initMap(viagem = initViagem, choque = initChoque, vagao = initVag
 		polyline.setMap(map);
 
 		// definindo marcadores
-		var url = `/api/map${vagao}/${viagem}/${choque}/1`;//     '/mapE/:viagem/:id',
+		var url = `/api/map${vagao}/${viagem}/${choque}/${rel_id}`;    //'/mapE/:viagem/:id',
 		console.log(url)
 
-		// esperando fetch que devolve os pontos do mapa
-		var marker = await fetch(url, {
-			method: 'GET',
-		}).then(response =>{
-			return response.json()
-		}).then(json => {
-			// chamando função de adcionar marcadores no mapa de forma assincrona
-			addMarkersToMap(json);
-		})
+		// esperando fetch que devolve os marcadores do mapa
+		var markers = []
+		fetch(url, {
+			method: 'GET'
+		}).then(response => response.json()).then(json => {
+			for (var i = 0; i < json.length; i++) {
+				var htmlImaginario = "";
+			  
+				if (choque == 1 || choque == 2) {
+				  htmlImaginario =
+					`<div id="content">
+					  <h4 id="Título" class="firstHeading">Dados</h4> 
+					  <div id="textoDados">
+						<p><b>Act: </b>  ${json[i].act}  </p> 
+						<p><b>PEG PSI: </b>  ${json[i].peg_psi}  </p> 
+						<p><b>Velocidade: </b>  ${json[i].vel}  </p> 
+						<p><b>Temperatura: </b>  ${json[i].f_max}  </p>
+					  </div>
+					</div>`;
+			  
+				} else {
+				  htmlImaginario =
+					`<div id="content"> 
+					  <h4 id="Título" class="firstHeading">Dados</h4> 
+					  <div id="textoDados">
+						<p><b>Act: </b>  ${json[i].act}  </p> 
+						<p><b>PEG PSI: </b>  ${json[i].peg_psi}  </p> 
+						<p><b>Velocidade: </b> ${son[i].vel}  </p> 
+						<p><b>Delta T: </b>  ${json[i].delta_t} </p>
+						<p>Engate: </b>  ${json[i].engate}  </p>
+					  </div>
+					</div>`;
+				}
+			  
+				var marker = new google.maps.Marker({
+				  position: new google.maps.LatLng(json[i].lat, json[i].lon),
+				  map: map,
+				  title: json[i].data_hora,
+				});
+				markers.push(marker);
+			  
+				console.log(markers);
+			  
+				(function (marker, htmlImaginario) {
+				  var infowindow = new google.maps.InfoWindow({
+					content: htmlImaginario,
+				  });
+				  marker.addListener("click", function () {
+					infowindow.open(map, marker);
+				  });
+				})(marker, htmlImaginario);
+			}});
+	  
 	} catch (error) {
 		console.error('Erro ao inicializar o mapa:', error);
 	}
 }
 
-// adicionando marcadores no mapa
-function addMarkersToMap(points) {
-	// para cada ponto no array de pontos
-	for (var i = 0; i < points.length; i++) {
-		console.log(points[i])
-		// criando marcador
-		var marker = new google.maps.Marker({
-			position: { lat: points[i].lat, lng: points[i].lon },
-			map: map,
-			title: 'Posição 1',
-			icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
-		});
-	}
-}
 
 // iniciando mapa
 initMap(false);
-
 
 /* /////////////////////////////////// */
 /*              GRÁFICOS               */
@@ -129,8 +169,12 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 		graphs ++;
 		graphID = 'myChart'+graphs
 
+		var place = document.createElement('div');
+		place.id = 'Place';
+		place.setAttribute('style', 'width: 900px; height: 450px;')
 		// Crie um novo elemento div
 		var divElement = document.createElement('div');
+		divElement.id = 'graph'+graphs;
 
 		// Defina as classes para o elemento div
 		divElement.className = 'd-flex justify-content-between flex-wrap flex-md-wrap align-items-center pt-3 pb-2 mb-3';
@@ -182,7 +226,7 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 		// Crie o menu do dropdown (Vagão)
 		var dropdownVagaoMenu = document.createElement('div');
 		dropdownVagaoMenu.className = 'dropdown-menu';
-		dropdownVagaoMenu.innerHTML = `<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, 'E'); selectOption(this, 'dropdownVagao${graphs}')">Vagão E</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, 'F'); selectOption(this, 'dropdownVagao${graphs}')">Vagão F</button>;`
+		dropdownVagaoMenu.innerHTML = `<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, 'E'); selectOption(this, 'dropdownVagao${graphs}')">Vagão E</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, 'F'); selectOption(this, 'dropdownVagao${graphs}')">Vagão F</button>`
 
 		// Anexe o botão e o menu do dropdown (Vagão) ao dropdownVagaoDiv
 		dropdownVagaoDiv.appendChild(dropdownVagaoButton);
@@ -244,7 +288,7 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 
 		chartFather2 = document.createElement('div');
 			// Definindo os atributos usando setAttribute
-			chartFather2.setAttribute('style', 'width: 90%; height: 450px;');
+			chartFather2.setAttribute('style', 'width: 90%; height: 450px; display: block; overflow-x: scroll;');
 			chartFather2.setAttribute('class', 'ms-5 me-3');
 			chartFather2.setAttribute('id', `chartFather${graphs}`);
 		ctx2 = document.createElement('canvas')
@@ -254,8 +298,9 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 			ctx2.setAttribute('height', '380')
 			ctx2.setAttribute('class', 'my-4 w-100 pb-5');
 
-			divElement.append(chartFather2);
-			document.getElementById('chartFather'+graphs).append(ctx2);
+			console.log("divElement of first append",divElement)
+			
+			document.getElementById('graphAcordion').appendChild(divElement).appendChild(chartFather2).appendChild(place).appendChild(ctx2);
 
 
 
@@ -276,7 +321,7 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 		// console.log(`/api/graphs${vagao}/${viagem}/${type}/${ocur}`)
 
 		// esperando fetch que devolve os pontos do mapa
-	fetch(`/api/graphs${vagao}/${viagem}/${type}/${ocur}/1`, {
+	fetch(`/api/graphs${vagao}/${viagem}/${type}/${ocur}/${rel_id}`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -297,6 +342,23 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 				if(value[i].f_max){
 					values.push(value[i].f_max); // adicionando valor
 					columns.push(value[i].data_hora);} // adicionando coluna
+				else if(value[i].act){
+					values.push(value[i].act); // adicionando valor
+					columns.push(value[i].data_hora);} // adicionando coluna
+				else if(value[i].peg_psi){
+					values.push(value[i].peg_psi); // adicionando valor
+					columns.push(value[i].data_hora);} // adicionando coluna
+				else if(value[i].vel){
+					values.push(value[i].vel); // adicionando valor
+					columns.push(value[i].data_hora);} // adicionando coluna
+				else if(value[i].delta_t){
+					values.push(value[i].delta_t); // adicionando valor
+					columns.push(value[i].data_hora);} // adicionando coluna
+				else if(value[i].engate){
+					values.push(value[i].engate); // adicionando valor
+					columns.push(value[i].data_hora); // adicionando coluna
+				}
+
 			}
 
 			let novasDatas = [];
@@ -318,6 +380,7 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 			// console.log(value)
 
 			if(!add){
+				console.log('entrou no if, graphID: ', graphID)
 				let ctx = document.getElementById(graphID);//Referencia do gráfico
 				console.log(ctx)
 				// deleta o gráfico anterior
@@ -325,14 +388,41 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 				// cria um novo gráfico
 				ctx2 = document.createElement('canvas')
 				ctx2.setAttribute('id', graphID)
-				ctx2.setAttribute('width', '900')
-				ctx2.setAttribute('height', '380')
-				ctx2.setAttribute('class', 'my-4 w-100 pb-5');
 
-				chartFatherID.append(ctx2);
+				chartFatherID.getElementsByTagName('div')[0].append(ctx2);
 			}
 			console.log(ctx2)
 
+			const widthStart = 900
+			const heightStart = 380
+
+			if (columns.length > 30) {
+				let length = columns.length - 30;
+				let newWidth = 0;
+				for (let i = 0; i < length; i++) {
+				  newWidth += 19;
+				}
+				var graphWidth = ctx2
+				console.log('entrou');
+				console.log(newWidth);
+				var currentWidth = parseInt(window.getComputedStyle(graphWidth).getPropertyValue('width'), 10);
+				var updatedWidth = currentWidth + newWidth;
+				ctx2.parentNode.style.width = updatedWidth + 'px';
+				ctx2.parentNode.style.height = heightStart + 'px';
+				ctx2.width = updatedWidth + 'px';
+				ctx2.height = heightStart + 'px';
+
+				console.log('parentnode: ',ctx2.parentNode);
+
+			  }else{
+				var graphWidth = ctx2
+				var currentWidth = parseInt(window.getComputedStyle(graphWidth).getPropertyValue('width'), 10);
+				var updatedWidth = widthStart;
+				ctx2.parentNode.style.width = updatedWidth + 'px';
+				ctx2.parentNode.style.height = heightStart + 'px';
+				ctx2.height = heightStart + 'px';
+				ctx2.width = updatedWidth + 'px';
+			  }
 			const myChart = new Chart(ctx2, {
 				type: 'line',
 				data: {
@@ -349,13 +439,15 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 					]
 				},
 				options: {
+					responsive: true,
 					plugins: { // configurando o gráfico
 						legend: {
-							display: false
+							display: true
 						},
 						tooltip: {
 							boxPadding: 3
 						}
+
 					}
 				}
 			});

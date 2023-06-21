@@ -16,8 +16,34 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+	<style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
 
-	<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        .modal-conteudo {
+            border-radius: 10px;
+            background-color: #fff;
+            width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+        }
+
+        .botao-fechar {
+            float: right;
+            cursor: pointer;
+        }
+
+    </style>
+
+	    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"> 
 
 		<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#" style="display: flex; align-content: center; align-items: center;">
 			<img class="me-2" src="../assets/logo_white.svg" alt="" width="40" height="40">
@@ -28,8 +54,9 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<input class="form-control form-control-dark w-100 rounded-end-10 rounded-start-0" type="text" placeholder="Search" aria-label="Search">
-
+		<!-- <input class="form-control form-control-dark w-100 rounded-end-10 rounded-start-0" type="text" placeholder="Search" aria-label="Search"> -->
+		<button type="button" id="botao-ajuda" class="btn btn-sm btn-outline-secondary">?</button>
+		
 		<div class="navbar-nav">
 			<div class="nav-item text-nowrap">
 				<a class="nav-link px-3" href="/api/logout">
@@ -53,14 +80,14 @@
 		  </li>
 		  <li class="nav-item">
 			<a class="nav-link" href="/relatorios">
-			  <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+			  <span data-feather="file-text" class="align-text-bottom"></span>
 			  Relatórios
 			</a>
 		  </li>
 		</ul>
 
 		<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase me-1">
-			<span style="margin-bottom: 2px">Saved reports</span>
+			<span style="margin-bottom: 2px">Relatórios Favoritos</span>
 			<a class="link-secondary mb-0" href="#" aria-label="Add a new report">
 			  <span data-feather="plus-circle" class="align-text-bottom"></span>
 			</a>
@@ -70,20 +97,26 @@
 	  </div>
 	</nav>
 
+	<div id="modal-ajuda" class="modal">
+		<div class="modal-conteudo">
+			<span id="fechar-modal" class="botao-fechar"><b>x</b></span>
+			<h3>Como usar essa página?</h3> <br>
+			<p> 1 - Selecione os filtros para mudar o mapa ou gráficos de acordo com sua vontade; <br>
+				2 - Ao clicar nas marcadores do mapa aparecerão os dados específicos de cada evento; <br>
+				3 - Caso queria remover um novo gráfico reinicie a página; <br>
+				4 - Os comentários são por máquina, portanto não é possível remover comentários de outras pessoas. </p>
+		</div>
+	</div>
 
 	<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-			<h1 class="h2">Relatório #1</h1>
+			<h1 class="h2" id="title">Relatório #1</h1>
 			<div class="btn-toolbar mb-2 mb-md-0">
 				<div class="btn-group me-2">
 					<button type="button" onclick="newFav(1)" class="btn btn-sm btn-outline-secondary">Adicionar aos Favoritos</button>
 					<button type="button" onclick="downloadZip(1)" class="btn btn-sm btn-outline-secondary">Baixar Relatório</button>
 					<button type="button" onclick="downloadPDF(1)" class="btn btn-sm btn-outline-secondary">PDF Relatório</button>
 				</div>
-				<!-- <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-					<span data-feather="calendar" class="align-text-bottom"></span>
-					This week
-				</button> -->
 			</div>
 		</div>
 
@@ -303,10 +336,12 @@
 							</div>
 
 							<!-- DIV PROS GRÁFICOS -->
-							<div style="width:90%; height:450px" class="ms-5 me-3" id="chartFather">
+							<div style="width:90%; height:450px; display: block; overflow-x: scroll;" class="ms-5 me-3" id="chartFather">
 								<!-- o accordion eh mto estranho em alocacao de espaco, ent tem q fazer um div container e definir o tamanho do -->
 								<!-- grafico +- dentro desse div, so pro grafico poder caber dentro desse div, se nao o accordion come o grafico. -->
-								<canvas class="my-4 w-100 pb-5" id="myChart" width="900" height="380"></canvas>
+								<div id="Place">
+									<canvas id="myChart"></canvas>
+								</div>
 							</div>
 						</div>
 						<button id="addButton" type="button" onclick="initGraph(true)" class="btn btn-sm btn-outline-secondary">adcionar gráfico</button>
@@ -337,6 +372,27 @@
 		</div>
 	</main>
 
+	<script>
+        const botaoAjuda = document.getElementById('botao-ajuda');
+        const modalAjuda = document.getElementById('modal-ajuda');
+        const fecharModal = document.getElementById('fechar-modal'); 
+
+        botaoAjuda.addEventListener('click', function() {
+        modalAjuda.style.display = 'block';
+        });
+
+        fecharModal.addEventListener('click', function() {
+        modalAjuda.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+        if (event.target === modalAjuda) {
+            modalAjuda.style.display = 'none';
+        }
+        });
+
+    </script>
+
 	<script src="../js/download_relatorio.js"></script>
 
 	<script src="../js/download_pdf.js"></script>
@@ -356,6 +412,7 @@
 
 	<script src="../js/comment_system_front/comment_handler.js"></script>
 	<script src="../js/comment_system_front/comment_loader.js"></script>
+	<script src="../js/upload/uploadFunction.js"></script>
 
 	<script type="module">
 		$(document).ready(function(){

@@ -1,4 +1,5 @@
 async function get_comments() {
+	console.log("Getting comments")
 	const rel_id = window.location.href.split("/").pop();
 
 	const body = {

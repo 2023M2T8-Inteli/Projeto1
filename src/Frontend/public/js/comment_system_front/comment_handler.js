@@ -1,5 +1,3 @@
-const { json } = require("body-parser");
-
 function get_chan_id() {
 	fetch(`/api/chan_manager` , {
 		method: 'GET',

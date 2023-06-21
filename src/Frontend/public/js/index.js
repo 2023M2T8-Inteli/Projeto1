@@ -231,11 +231,6 @@ async function relatorios(){
             svgElement.setAttribute('preserveAspectRatio', 'xMidYMid slice');
             svgElement.setAttribute('focusable', 'false');
 
-            // Cria o elemento rect dentro do svg
-            var rectElement = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-            rectElement.setAttribute('width', '100%');
-            rectElement.setAttribute('height', '100%');
-            rectElement.setAttribute('fill', '#55595c');
 
             // Cria o elemento text dentro do svg
             var textElement = document.createElementNS('http://www.w3.org/2000/svg', 'text');
@@ -246,7 +241,7 @@ async function relatorios(){
             textElement.textContent = 'Prévia do Mapa';
 
             // Adiciona o elemento rect e text como filhos do svg
-            svgElement.appendChild(rectElement);
+
             svgElement.appendChild(textElement);
 
             // Cria o elemento div com a classe "card-body"

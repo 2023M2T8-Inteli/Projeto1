@@ -27,13 +27,12 @@ window.onload = async function() {
             link.setAttribute('class', 'nav-link')
             link.setAttribute('href', '/upload')
 
-            let image = document.createElement('img');
-            image.setAttribute('src', './assets/upload.svg');
-            image.setAttribute('width', '25px');
-            image.setAttribute('height', '25px');
+            let span = document.createElement('span');
+            span.setAttribute('data-feather', 'upload');
+            span.setAttribute('class', 'align-text-bottom');
 
             const ul = document.querySelector('ul');
-            ul.appendChild(upload).appendChild(link).appendChild(image);
+            ul.appendChild(upload).appendChild(link).appendChild(span);
             link.innerHTML += " Upload"
         }
     })

@@ -15,6 +15,31 @@
 	<style> body {font-family: 'Wix Madefor Text' !important;}</style>
 </head>
 <body>
+	<style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        .modal-conteudo {
+            border-radius: 10px;
+            background-color: #fff;
+            width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+        }
+
+        .botao-fechar {
+            float: right;
+            cursor: pointer;
+        }
+    </style>
 	<!-- NAVBAR -->
 	<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
 
@@ -28,6 +53,16 @@
 		</button>
 
 		<!-- <input class="form-control form-control-dark w-100 rounded-end-10 rounded-start-0" type="text" placeholder="Search" aria-label="Search" style="background-color:gainsboro ;"> -->
+		<button type="button" id="botao-ajuda" class="btn btn-sm btn-outline-secondary">?</button>
+		<div id="modal-ajuda" class="modal">
+			<div class="modal-conteudo">
+				<span id="fechar-modal" class="botao-fechar"><b>x</b></span>
+				<h4>Como usar essa página?</h4> <br>
+				<p> Esta é a página inicial ,nela você pode acessar a página de relatórios clicando no botão azul escrito "Relatórios", ou no botão de mesmo nome localizado no menu ao lado. <br>
+					Você pode também acessar os seus relatórios favoritados no menu, na sessão "Relatórios Favoritos", podendo adicionar um novo ou retirar algum no menu.
+				</p>
+			</div>
+		</div>
 
 		<div class="navbar-nav">
 			<div class="nav-item text-nowrap">
@@ -39,13 +74,6 @@
 
 	</header>
 	<!-- END NAVBAR -->
-	<div id="modal-ajuda" class="modal">
-        <div class="modal-conteudo">
-            <span id="fechar-modal" class="botao-fechar">x</span>
-            <h2>Olá</h2>
-            <p>blá blá blá ajuda vai aqui <br> mais blá blá blá aqui <br> algumas coisas por aqui <br> e por fim aqui</p>
-        </div>
-    </div>
 	
 		<div class="container-fluid">
 				<div class="row">
@@ -92,7 +120,6 @@
 									<p class="lead text-body-secondary">Nesta página você encontra todos os seus relatórios recentes, ordenados por data. Se você deseja filtrar relatórios, abra nossa ferramenta personalizada de localização de relatórios abaixo!</p>
 									<p>
 									<a href="/relatorios" class="btn btn-primary my-2">Relatórios</a>
-									<button type="button" id="botao-ajuda" class="btn btn-primary my-2">?</button>
 									</p>
 								</div>
 								</div>
@@ -105,7 +132,26 @@
 							</div>
 					</main>
 					<!-- END RELATORIOS -->
-
+				<script>
+					const botaoAjuda = document.getElementById('botao-ajuda');
+					const modalAjuda = document.getElementById('modal-ajuda');
+					const fecharModal = document.getElementById('fechar-modal'); 
+			
+					botaoAjuda.addEventListener('click', function() {
+					modalAjuda.style.display = 'block';
+					});
+				
+					fecharModal.addEventListener('click', function() {
+					modalAjuda.style.display = 'none';
+					});
+				
+					window.addEventListener('click', function(event) {
+					if (event.target === modalAjuda) {
+						modalAjuda.style.display = 'none';
+					}
+					});
+				
+				</script>
 
 				<!-- SCRIPS (PQ Q ELES TAO AQ KKKKKKKKKK) -->
 				<script>document.addEventListener("DOMContentLoaded", function() {seeFav();})</script>

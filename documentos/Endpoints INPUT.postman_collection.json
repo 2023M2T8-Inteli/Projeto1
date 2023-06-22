@@ -1,0 +1,641 @@
+{
+	"info": {
+		"_postman_id": "03beb709-8b84-48ba-b976-4e1a0db4126b",
+		"name": "Endpoints INPUT",
+		"description": "Endpoints do projeto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26950569",
+		"_collection_link": "https://galactic-equinox-507254.postman.co/workspace/3dfe7595-d9e2-474d-8c96-574092d4dd4e/collection/26950569-03beb709-8b84-48ba-b976-4e1a0db4126b?action=share&creator=26950569&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Graficos Vagão E",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/graphsE/1/1/1/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"graphsE",
+						"1",
+						"1",
+						"1",
+						"1"
+					]
+				},
+				"description": "Endpoint para gerar graficos de choque relativos ao vagão E, tedno como parametros Viagem, \"ocur\", sendo esse o tipo de choque, id é o parametro que define o atributo do gráfico, sendo 1 para Força Maxima, 2 para ACT, 3 para PEG_PSI, 4 para Velocidade.Além disso, o ultimo paramentro leva o numero do relatório."
+			},
+			"response": []
+		},
+		{
+			"name": "Graficos Vagão F",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/graphsF/1/1/1/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"graphsF",
+						"1",
+						"1",
+						"1",
+						"1"
+					]
+				},
+				"description": "Endpoint para gerar graficos de choque relativos ao vagão F, tedno como parametros Viagem, \"ocur\", sendo esse o tipo de choque, id é o parametro que define o atributo do gráfico, sendo 1 para Força Maxima, 2 para ACT, 3 para PEG_PSI, 4 para Velocidade."
+			},
+			"response": []
+		},
+		{
+			"name": "Graficos Pico",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/graphsPico/1/E/2/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"graphsPico",
+						"1",
+						"E",
+						"2",
+						"1"
+					]
+				},
+				"description": "Endpoint que retorna dados de pico de acordo com os parametros viagem, vagão, ocur(ACT, velocidade, PEG_PSI, engate, delta T) e o numero do relatorio respectivamente."
+			},
+			"response": []
+		},
+		{
+			"name": "Informações para o mapa do vagão E",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/mapE/1/1/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"mapE",
+						"1",
+						"1",
+						"1"
+					]
+				},
+				"description": "Gera os pontos do mapa, tendo como parametros o numero da viagem, e id que leva o tipo de ocorrencia(choque 1 ou 2 e pico) e o numero do relatório."
+			},
+			"response": []
+		},
+		{
+			"name": "Informações para o mapa do vagão F",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/mapF/1/1/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"mapF",
+						"1",
+						"1",
+						"1"
+					]
+				},
+				"description": "StartFragment\n\nGera os pontos do mapa, tendo como parametros o numero da viagem, e id que leva o tipo de ocorrencia(choque 1 ou 2 e pico) e o numero do relatório.\n\nEndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "Caminho do mapa(gerado apenas com uma viagem)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/path/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"path",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Quantidade de relatórios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/quantity",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"quantity"
+					]
+				},
+				"description": "Retorna o numero de relatórios existentes"
+			},
+			"response": []
+		},
+		{
+			"name": "Adcionar favoritos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "gUjsXykuBEsU6za2wcxjLxVXyezNTxgxPps6MaV3PzBsYNgv6U6vxGiPS5kyfB9ZNXgaJ8upxNbqhETYXxi9z2MV97TSPTnNRPd4fSe2dAa6AK5eupECN4jkj3b6poEW",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3002/api/addFav/1?user=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"addFav",
+						"1"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Adciona favoritos de acordo com o id do usuário(tem que estar logado)."
+			},
+			"response": []
+		},
+		{
+			"name": "Retornar favoritos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/seeFav",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"seeFav"
+					]
+				},
+				"description": "Retorna os favoritos do usuário logado."
+			},
+			"response": []
+		},
+		{
+			"name": "Deleta um favorito",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/deleteFav/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"deleteFav",
+						"1"
+					]
+				},
+				"description": "É a função que tira um relatório dos favoritos, usando um parâmetro numérico que irá especificar qual é o relatório a ser retirado."
+			},
+			"response": []
+		},
+		{
+			"name": "Download zip",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/download/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"download",
+						"1"
+					]
+				},
+				"description": "É a função chamada pelo botão \"download do relatório\", que baixa o arquivo zip com todas as tabelas em excel do relatório escolhido."
+			},
+			"response": []
+		},
+		{
+			"name": "Baixa PdF",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/downloadpdf/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"downloadpdf",
+						"1"
+					]
+				},
+				"description": "É a função chamada pelo botão de \"baixar pdf\", que baixa o arquivo no computador do usuário."
+			},
+			"response": []
+		},
+		{
+			"name": "UPLOAD ZIP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"upload"
+					]
+				},
+				"description": "É a função que sobe o zip recebido para o banco de dados."
+			},
+			"response": []
+		},
+		{
+			"name": "Atualiazndo comentário",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/comment_update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"comment_update"
+					]
+				},
+				"description": "É a função que atualiza o comentário selecionado."
+			},
+			"response": []
+		},
+		{
+			"name": "Get dos comentarios",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"rel_id\": 1\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3002/api/comment_get",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"comment_get"
+					]
+				},
+				"description": "É a função que verifica o id do usuário para mostrar editável apenas os comentários que ele escreveu e tornar visível os comentários dos outros usuários."
+			},
+			"response": []
+		},
+		{
+			"name": "Inserção de comentários",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"chan_id\": 2,\r\n    \"rel_id\": 1,\r\n    \"content\": \"documentação\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3002/api/comment_insert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"comment_insert"
+					]
+				},
+				"description": "É a função que pega o comentário escrito e salva os comentários no banco de dados"
+			},
+			"response": []
+		},
+		{
+			"name": "Deletando comentario",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comment_id\": 1\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3002/api/comment_delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"comment_delete"
+					]
+				},
+				"description": "É a função chamada após apertar o botão de delete na seção de comentários, que irá apagar o comentário selecionado."
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"password\",\r\n    \"remember\": false\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3002/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"login"
+					]
+				},
+				"description": "Faz o login do usuário(backend)."
+			},
+			"response": []
+		},
+		{
+			"name": "Log-out",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"logout"
+					]
+				},
+				"description": "É o endpoint que realiza o logout e retorna para a página de login."
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/get_user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"get_user"
+					]
+				},
+				"description": "É o endpoint que vai verificar o user do login (se é client ou admin)"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Chan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/get_chan_id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"get_chan_id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Chan Manager",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/chan_manager",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"chan_manager"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Página principal",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						""
+					]
+				},
+				"description": "Essa página é o painel de controle: é a primeira página que o usuário vê após fazer o login e recebe as boas-vindas, e também a página onde o usuário consegue visualizar todos os relatórios favoritados."
+			},
+			"response": []
+		},
+		{
+			"name": "Página login",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"login"
+					]
+				},
+				"description": "Essa é a página de login."
+			},
+			"response": []
+		},
+		{
+			"name": "Reports",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/reports/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"reports",
+						"1"
+					]
+				},
+				"description": "Esse endpoint é aberto após um relatório ser clicado para a visualização. Ele recebe um parâmetro numérico que irá indicar qual relatório deverá ser acessado, e mostra todos os gráficos, mapas e comentários a respeito do relatório correspondente."
+			},
+			"response": []
+		},
+		{
+			"name": "Relatorios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/relatorios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"relatorios"
+					]
+				},
+				"description": "A página de relatórios mostra todos os relatórios que estão disponíveis no banco de dados."
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Page",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"upload"
+					]
+				},
+				"description": "A página de upload tem a função de pegar os arquivos enviados (que deverão estar em zip) e transformá-los em relatórios no site."
+			},
+			"response": []
+		}
+	]
+}

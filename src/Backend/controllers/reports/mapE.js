@@ -23,6 +23,7 @@ function mapE (req,res){
             throw err;
         }
         res.json(rows)
+        console.log(rows)
     });
 }
 

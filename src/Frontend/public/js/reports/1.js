@@ -96,7 +96,6 @@ async function initMap(viagem = initViagem, choque = initChoque, vagao = initVag
 				const dataFormatada = dia + '/' + mes + '/' + ano + ' ' + hora + ':00';
 				novasDatas.push(dataFormatada);
 			}
-			console.log(novasDatas)
 
 			for (var i = 0; i < json.length; i++) {
 				var htmlImaginario = "";
@@ -106,6 +105,7 @@ async function initMap(viagem = initViagem, choque = initChoque, vagao = initVag
 					`<div id="content">
 					  <h4 id="Título" class="firstHeading">Dados</h4> 
 					  <div id="textoDados">
+					  	<p><b>Força Máxima: </b> ${json[i].f_max}</p>
 						<p><b>Act: </b>  ${json[i].act}  </p> 
 						<p><b>PEG PSI: </b>  ${json[i].peg_psi}  </p> 
 						<p><b>Velocidade: </b>  ${json[i].vel}  </p> 
@@ -121,21 +121,42 @@ async function initMap(viagem = initViagem, choque = initChoque, vagao = initVag
 					  <div id="textoDados">
 						<p><b>Act: </b>  ${json[i].act}  </p> 
 						<p><b>PEG PSI: </b>  ${json[i].peg_psi}  </p> 
-						<p><b>Velocidade: </b> ${son[i].vel}  </p> 
+						<p><b>Velocidade: </b> ${json[i].vel}  </p> 
 						<p><b>Delta T: </b>  ${json[i].delta_t} </p>
 						<p>Engate: </b>  ${json[i].engate}  </p>
 					  </div>
 					</div>`;
+				}
+
+				let markerIcon = ""
+
+				//definindo cor do marcador(de acordo com a intensidade)
+				if(json[i].f_max > 25){
+					markerIcon = "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+				}else if(json[i].f_max < -25){
+					markerIcon = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+				}else if(json[i].f_max > 0 && json[i].f_max < 25){
+					markerIcon = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+				}else if(!json[i].f_max){
+					if(json[i].act > 25){
+						markerIcon = "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+					}else if(json[i].act < -25){
+						markerIcon = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+					}else if(json[i].act > 0 && json[i].act < 25){
+						markerIcon = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+					}	
 				}
 			  
 				var marker = new google.maps.Marker({
 				  position: new google.maps.LatLng(json[i].lat, json[i].lon),
 				  map: map,
 				  title: json[i].data_hora,
+				  icon:{
+					url: markerIcon,
+				  }
 				});
 				markers.push(marker);
 			  
-				console.log(markers);
 			  
 				(function (marker, htmlImaginario) {
 				  var infowindow = new google.maps.InfoWindow({

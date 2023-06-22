@@ -67,7 +67,7 @@ npm install nodemon--save-dev
 Isso instalará todas as dependências definidas no arquivo package.json que são necessárias para rodar o projeto. Agora o projeto já está pronto para ser modificado. Caso ainda deseje iniciar a aplicação, digite o comando abaixo no terminal:
   
 ```sh
-nodemon index.js
+npx nodemon
 ```
   
 4. Agora você pode acessar a aplicação através do link http://localhost:3000/

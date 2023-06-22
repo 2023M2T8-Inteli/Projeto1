@@ -60,10 +60,10 @@
 			<div class="modal-conteudo">
 				<span id="fechar-modal" class="botao-fechar"><b>x</b></span>
 				<h4>Como usar essa página?</h4> <br>
-				<p> 1 - Selecione os filtros para mudar o mapa ou gráficos de acordo com sua vontade; <br>
-					2 - Ao clicar nas marcadores do mapa aparecerão os dados específicos de cada evento; <br>
-					3 - Caso queria remover um novo gráfico reinicie a página; <br>
-					4 - Os comentários são por máquina, portanto não é possível remover comentários de outras pessoas. </p>
+				<p> Aqui você pode selecionar os filtros para mudar o mapa ou gráficos de acordo com sua vontade.</p>
+				<p>	Ao clicar nos marcadores do mapa, aparecerão os dados específicos de cada evento. </p>
+				<p>	Caso queria remover um novo gráfico reinicie a página. </p> 
+				<p>	Os comentários são por máquina, portanto não é possível editar ou remover comentários de outras pessoas.</p>
 			</div>
 		</div>
 
@@ -94,6 +94,12 @@
 			  Relatórios
 			</a>
 		  </li>
+		  <li class="nav-item" id='upload-div'>
+			<a class="nav-link" href="/upload">
+				<span data-feather="upload-cloud" class="align-text-bottom"></span>
+				Upload
+			</a>
+		</li>
 		</ul>
 
 		<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase me-1">
@@ -299,9 +305,9 @@
 
 										<!-- ITENS DO DROPDOWN -->
 										<div class="dropdown-menu">
-											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick=" initGraph(add = false, graphID ='myChart', 'chartFather', undefined, 1); selectOption(this, 'dropdownOcorrencia')">Choque Tipo 1</button>
-											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick=" initGraph(add = false, graphID ='myChart', 'chartFather', undefined, 2); selectOption(this, 'dropdownOcorrencia')">Choque Tipo 2</button>
-											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined, 3); selectOption(this, 'dropdownOcorrencia')">Pico</button>
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick=" initGraph(add = false, graphID ='myChart', 'chartFather', undefined, 1); selectOption(this, 'dropdownOcorrencia');  disable('engate', 'deltaT', 'fmax')">Choque Tipo 1</button>
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick=" initGraph(add = false, graphID ='myChart', 'chartFather', undefined, 2); selectOption(this, 'dropdownOcorrencia');  disable('engate', 'deltaT', 'fmax')">Choque Tipo 2</button>
+											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined, 3); selectOption(this, 'dropdownOcorrencia'); enable('engate', 'deltaT', 'fmax')">Pico</button>
 										</div>
 									</div>
 
@@ -325,10 +331,10 @@
 											<!-- ENFASE NO "DISABLED" GNT -->
 											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined,undefined, undefined, 3); selectOption(this, 'dropdownInf')">PEG_PSI</button>
 											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined,undefined, undefined, 2); selectOption(this, 'dropdownInf')">ACT</button>
-											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined,undefined, undefined, 1); selectOption(this, 'dropdownInf')">Força Máxima</button>
+											<button type="button" id ="fmax" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined,undefined, undefined, 1); selectOption(this, 'dropdownInf')">Força Máxima</button>
 											<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart', 'chartFather', undefined,undefined, undefined, 4);selectOption(this, 'dropdownInf')">Velocidade</button>
-											<button type="button" id="Engate" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf')">Engate</button>
-											<button type="button" id="delta" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf')">ΔT</button>
+											<button type="button" id="engate" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf'); initGraph(add = false, graphID ='myChart', 'chartFather', undefined,undefined, undefined, 5)">Engate</button>
+											<button type="button" id="deltaT" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf'); initGraph(add = false, graphID ='myChart', 'chartFather', undefined,undefined, undefined, 6)">ΔT</button>
 										</div>
 									</div>
 								</div>
@@ -363,7 +369,7 @@
 					</div>
 
 					<div id="comment-adder-target">
-						<button id="add-comment-button" type="button" class="btn btn-primary mb-3" onclick="start_add_comment()" style="margin-left:20px;">Adicionar Comentário</button>
+						<button id="add-comment-button" type="button" class="btn btn-primary mb-3" onclick="start_add_comment(); toast(2)" style="margin-left:20px;">Adicionar Comentário</button>
 					</div>
 				</div>
 			</div>
@@ -412,6 +418,7 @@
 	<script src="../js/comment_system_front/comment_handler.js"></script>
 	<script src="../js/comment_system_front/comment_loader.js"></script>
 	<script src="../js/upload/uploadFunction.js"></script>
+	<script src="./js/toast.js"></script>
 
 	<script type="module">
 		$(document).ready(function(){

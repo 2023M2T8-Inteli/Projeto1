@@ -1,5 +1,5 @@
 function downloadPDF(rel) {
-  const pdfUrl = "Relatorio.pdf"; // Substitua pela URL real do arquivo ZIP
+ // Substitua pela URL real do arquivo ZIP
   
   fetch(`/api/downloadpdf/${rel}`)
     .then(response => response.blob())

@@ -1,5 +1,7 @@
 // Funcao que roda quando a pagina é carregada
 (() => {
+    const relatorio = window.location.href.split("/").pop();
+
     console.log("insert-favs.js loaded")
 
     // Pega os favoritos do usuario
@@ -21,6 +23,10 @@
             // Cria um novo div com a classe d-flex nav-link justify-content-between remove_link_colour
             let newDiv = document.createElement("div")
             newDiv.className = "d-flex nav-link justify-content-between remove_link_colour"
+            if (item.rel_num == relatorio) {
+                // adiciona a classe "active"
+                newDiv.className += " active"
+            }
 
             // Cria um novo a com o href para o relatorio
             let newA = document.createElement("a")

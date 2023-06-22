@@ -7,7 +7,8 @@ function downloadpdf(req,res){
 
 
     //caminho do arquivo zip(num é o numero do relatorio)
-    const filePath = path.join(__dirname ,"../", "../", 'archives', "Rel"+Num, "Relatorio.pdf");
+    const filePath = path.join(__dirname ,"../", "../", 'archives','Rel'+Num, "Rel", "Relatorio.pdf");
+    console.log(filePath)
 
     
 	console.log(filePath)
@@ -19,12 +20,13 @@ function downloadpdf(req,res){
       }
 
     // baixando o arquivo
-    res.download(filePath, (err) => {
+    res.download(filePath);
+    /*res.download(filePath, (err) => {
         if (err) {
         // Trate os erros adequados aqui
         res.status(404).send('Arquivo não encontrado');
     }
-  });
+  });*/
 }
 
 module.exports = downloadpdf

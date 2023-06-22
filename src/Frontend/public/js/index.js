@@ -121,7 +121,7 @@ function toast(success){
         // Adicionando a barrinha de carregamento no toast
         toast.appendChild(progress);
         // Colocando o toast na tela
-        document.getElementById("main").appendChild(toast);
+        document.getElementsByTagName("main")[0].appendChild(toast);
         // Timer
         setTimeout(function() {
             toast = document.getElementById("erro")
@@ -143,7 +143,7 @@ function toast(success){
         toast.appendChild(progress);
 
         // Colocando o toast na tela
-        document.getElementById("main").appendChild(toast)
+        document.getElementsByTagName("main")[0].appendChild(toast);
         // Timer
          setTimeout(function() {
              toast = document.getElementById("sucesso")
@@ -224,10 +224,10 @@ async function relatorios(){
             var svgElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
             svgElement.setAttribute('class', 'bd-placeholder-img card-img-top');
             svgElement.setAttribute('width', '100%');
-            svgElement.setAttribute('height', '225');
+            svgElement.setAttribute('height', '15');
             svgElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
             svgElement.setAttribute('role', 'img');
-            svgElement.setAttribute('aria-label', 'Placeholder: Prévia do Mapa');
+            // svgElement.setAttribute('aria-label', 'Placeholder: Prévia do Mapa');
             svgElement.setAttribute('preserveAspectRatio', 'xMidYMid slice');
             svgElement.setAttribute('focusable', 'false');
 
@@ -238,7 +238,7 @@ async function relatorios(){
             textElement.setAttribute('y', '50%');
             textElement.setAttribute('fill', '#eceeef');
             textElement.setAttribute('dy', '.3em');
-            textElement.textContent = 'Prévia do Mapa';
+            // textElement.textContent = 'Prévia do Mapa';
 
             // Adiciona o elemento rect e text como filhos do svg
 
@@ -275,7 +275,7 @@ async function relatorios(){
             // Cria o elemento button com o texto "Favoritar"
             var buttonElement = document.createElement('button');
             buttonElement.setAttribute('type', 'button');
-            buttonElement.setAttribute('onclick', 'newFav(' + rel + ')');
+            buttonElement.setAttribute('onclick', 'newFav(' + rel + ');');
             buttonElement.className = 'btn btn-sm btn-outline-secondary';
             buttonElement.textContent = 'Favoritar';
 
@@ -363,10 +363,10 @@ async function seeFav(){
             var svgElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
             svgElement.setAttribute('class', 'bd-placeholder-img card-img-top');
             svgElement.setAttribute('width', '100%');
-            svgElement.setAttribute('height', '225');
+            svgElement.setAttribute('height', '15');
             svgElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
             svgElement.setAttribute('role', 'img');
-            svgElement.setAttribute('aria-label', 'Placeholder: Prévia do Mapa');
+            // svgElement.setAttribute('aria-label', 'Placeholder: Prévia do Mapa');
             svgElement.setAttribute('preserveAspectRatio', 'xMidYMid slice');
             svgElement.setAttribute('focusable', 'false');
 
@@ -374,7 +374,7 @@ async function seeFav(){
             var rectElement = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
             rectElement.setAttribute('width', '100%');
             rectElement.setAttribute('height', '100%');
-            rectElement.setAttribute('fill', '#55595c');
+            rectElement.setAttribute('fill', '#fff');
 
             // Cria o elemento text dentro do svg
             var textElement = document.createElementNS('http://www.w3.org/2000/svg', 'text');
@@ -382,7 +382,7 @@ async function seeFav(){
             textElement.setAttribute('y', '50%');
             textElement.setAttribute('fill', '#eceeef');
             textElement.setAttribute('dy', '.3em');
-            textElement.textContent = 'Prévia do Mapa';
+            // textElement.textContent = 'Prévia do Mapa';
 
             // Adiciona o elemento rect e text como filhos do svg
             svgElement.appendChild(rectElement);

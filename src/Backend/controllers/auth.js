@@ -36,8 +36,7 @@ router.post("/login", login)
 router.get("/logout", logout)
 router.get("/get_user", get_user)
 router.get("/get_chan_id", get_chan_id)
-// router.get("/make_cookie_chan", make_cookie_chan)
-// router.get("/renew_cookie_chan", renew_cookie_chan)
+
 router.get("/chan_manager", (req, res) => {
 	if (req.cookies['chan_id']) {
 		console.log("Renewing cookie chan")

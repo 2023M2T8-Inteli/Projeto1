@@ -50,6 +50,7 @@ async function handleUpload(req, res){
 	fs.renameSync(path.join(__dirname, "../", "../", "../","uploads", zip_rel.filename), path.join(__dirname, "../", "../", "archives", folderName, zip_rel.originalname), function (err) {
 		if (err) {
 			console.log(err)
+			res.send("0");
 		} else {
 			console.log("File Renamed")
 		}
@@ -63,7 +64,11 @@ async function handleUpload(req, res){
 	const extractPath = path.join(__dirname, "../", "../", "archives", folderName);
 
 	//extrai o arquivo zipado
-	await extractFile(filePath, extractPath);
+	try {
+		await extractFile(filePath, extractPath);
+	} catch (err) {
+		res.send("0");
+	}
 
 	//procura todos os arquivos na pasta que contem "Viagem" no nome
 	// searches for all files in the folder that contain "Viagem" in the name
@@ -165,6 +170,7 @@ async function handleUpload(req, res){
 	await new Promise((resolve, reject) => {
 		db.run(`INSERT INTO Relatorios(relatorios) VALUES (${archivesLength})`, (err) => {
 			if (err) {
+				res.send("0");
 				reject(err);
 				return;
 			}
@@ -183,7 +189,7 @@ async function extractFile(filePath, extractPath) {
 		console.log('File extracted');
 		resolve();
 	});
-};
+}
 // criando banco de dados se ele não existir(função chamada apenas se a database não existir conforme o nome Rel(n))
 async function createDataBase(folderName) {
 	console.log("passou")

@@ -58,8 +58,9 @@
 		<div id="modal-ajuda" class="modal">
 			<div class="modal-conteudo">
 				<span id="fechar-modal" class="botao-fechar"><b>x</b></span>
-				<h2>Olá</h2>
-				<p>blá blá blá ajuda vai aqui <br> mais blá blá blá aqui <br> algumas coisas por aqui <br> e por fim aqui</p>
+				<h4>Como usar essa página?</h4> <br>
+				<p>Aqui você pode acessar todos os relatórios disponíveis no site, podendo visualizá-los, favorita-los e até baixá-los.</p>
+				<p>Esse relatórios estão listados abaixo, ordenados por data. </p>
 			</div>
 		</div>
 
@@ -90,6 +91,12 @@
 			  Relatórios
 			</a>
 		  </li>
+		  <li class="nav-item" id='upload-div'>
+			<a class="nav-link" href="/upload">
+				<span data-feather="upload-cloud" class="align-text-bottom"></span>
+				Upload
+			</a>
+		</li>
 		</ul>
 
 		<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase me-1">
@@ -118,16 +125,16 @@
 	<script>
 		const botaoAjuda = document.getElementById('botao-ajuda');
 		const modalAjuda = document.getElementById('modal-ajuda');
-		const fecharModal = document.getElementById('fechar-modal'); 
-			
+		const fecharModal = document.getElementById('fechar-modal');
+
 		botaoAjuda.addEventListener('click', function() {
 		modalAjuda.style.display = 'block';
 		});
-				
+
 		fecharModal.addEventListener('click', function() {
 		modalAjuda.style.display = 'none';
 		});
-				
+
 		window.addEventListener('click', function(event) {
 			if (event.target === modalAjuda) {
 		modalAjuda.style.display = 'none';

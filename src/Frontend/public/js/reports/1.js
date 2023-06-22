@@ -1,12 +1,12 @@
 //Arquivo padrão para gerar outros relatorios, então 1.js, será para o relatorio 1, contudo ele será apenas utilizado como padrão para os outros relatorios!!!!!!
 
-const rel_id = window.location.href.split("/").pop();
+const relNum = window.location.href.split("/").pop();
 
 //assim que a pagina carregar completament
 document.addEventListener('DOMContentLoaded', function() {
-	
-	document.getElementById('title').innerHTML = `Relatório #${rel_id}`
-	
+
+	document.getElementById('title').innerHTML = `Relatório #${relNum}`
+
 })
 
 /* //////////////////////////////////// */
@@ -34,7 +34,7 @@ async function initMap(viagem = initViagem, choque = initChoque, vagao = initVag
 	if (choque != initChoque) {initChoque = choque}
 
 	// esperando fetch que devolve os pontos do mapa
-	var points = await fetch(`/api/path/${rel_id}`, {
+	var points = await fetch(`/api/path/${relNum}`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -72,7 +72,7 @@ async function initMap(viagem = initViagem, choque = initChoque, vagao = initVag
 		polyline.setMap(map);
 
 		// definindo marcadores
-		var url = `/api/map${vagao}/${viagem}/${choque}/${rel_id}`;    //'/mapE/:viagem/:id',
+		var url = `/api/map${vagao}/${viagem}/${choque}/${relNum}`;    //'/mapE/:viagem/:id',
 		console.log(url)
 
 		// esperando fetch que devolve os marcadores do mapa
@@ -99,29 +99,28 @@ async function initMap(viagem = initViagem, choque = initChoque, vagao = initVag
 
 			for (var i = 0; i < json.length; i++) {
 				var htmlImaginario = "";
-			  
+
 				if (choque == 1 || choque == 2) {
 				  htmlImaginario =
 					`<div id="content">
-					  <h4 id="Título" class="firstHeading">Dados</h4> 
+					  <h4 id="Título" class="firstHeading">Dados</h4>
 					  <div id="textoDados">
 					  	<p><b>Força Máxima: </b> ${json[i].f_max}</p>
-						<p><b>Act: </b>  ${json[i].act}  </p> 
-						<p><b>PEG PSI: </b>  ${json[i].peg_psi}  </p> 
-						<p><b>Velocidade: </b>  ${json[i].vel}  </p> 
-						<p><b>Temperatura: </b>  ${json[i].f_max}  </p>
-						<p><b>Data e hora: </b>  ${novasDatas[i]}  </p> 
+						<p><b>Act: </b>  ${json[i].act}  </p>
+						<p><b>PEG PSI: </b>  ${json[i].peg_psi}  </p>
+						<p><b>Velocidade: </b>  ${json[i].vel}  </p>
+						<p><b>Data e hora: </b>  ${novasDatas[i]}  </p>
 					  </div>
 					</div>`;
-			  
+
 				} else {
 				  htmlImaginario =
-					`<div id="content"> 
-					  <h4 id="Título" class="firstHeading">Dados</h4> 
+					`<div id="content">
+					  <h4 id="Título" class="firstHeading">Dados</h4>
 					  <div id="textoDados">
-						<p><b>Act: </b>  ${json[i].act}  </p> 
-						<p><b>PEG PSI: </b>  ${json[i].peg_psi}  </p> 
-						<p><b>Velocidade: </b> ${json[i].vel}  </p> 
+						<p><b>Act: </b>  ${json[i].act}  </p>
+						<p><b>PEG PSI: </b>  ${json[i].peg_psi}  </p>
+						<p><b>Velocidade: </b> ${json[i].vel}  </p>
 						<p><b>Delta T: </b>  ${json[i].delta_t} </p>
 						<p>Engate: </b>  ${json[i].engate}  </p>
 					  </div>
@@ -144,9 +143,9 @@ async function initMap(viagem = initViagem, choque = initChoque, vagao = initVag
 						markerIcon = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
 					}else if(json[i].act > 0 && json[i].act < 25){
 						markerIcon = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
-					}	
+					}
 				}
-			  
+
 				var marker = new google.maps.Marker({
 				  position: new google.maps.LatLng(json[i].lat, json[i].lon),
 				  map: map,
@@ -156,8 +155,8 @@ async function initMap(viagem = initViagem, choque = initChoque, vagao = initVag
 				  }
 				});
 				markers.push(marker);
-			  
-			  
+
+
 				(function (marker, htmlImaginario) {
 				  var infowindow = new google.maps.InfoWindow({
 					content: htmlImaginario,
@@ -167,7 +166,7 @@ async function initMap(viagem = initViagem, choque = initChoque, vagao = initVag
 				  });
 				})(marker, htmlImaginario);
 			}});
-	  
+
 	} catch (error) {
 		console.error('Erro ao inicializar o mapa:', error);
 	}
@@ -290,7 +289,7 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 		// Crie o menu do dropdown (Tipo de Ocorrência)
 		var dropdownOcorrenciaMenu = document.createElement('div');
 		dropdownOcorrenciaMenu.className = 'dropdown-menu';
-		dropdownOcorrenciaMenu.innerHTML = `<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, 1); selectOption(this, 'dropdownOcorrencia${graphs}')">Choque Tipo 1</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, 2); selectOption(this, 'dropdownOcorrencia${graphs}')">Choque Tipo 2</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, 3); selectOption(this, 'dropdownOcorrencia${graphs}')">Pico</button>;`
+		dropdownOcorrenciaMenu.innerHTML = `<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, 1); selectOption(this, 'dropdownOcorrencia${graphs}');  disable('engate${graphs}', 'deltaT${graphs}', 'fmax${graphs}')">Choque Tipo 1</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, 2); selectOption(this, 'dropdownOcorrencia${graphs}'); disable('engate${graphs}', 'deltaT${graphs}', 'fmax${graphs}')">Choque Tipo 2</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, 3); selectOption(this, 'dropdownOcorrencia${graphs}'); enable('engate${graphs}', 'deltaT${graphs}', 'fmax${graphs}')">Pico</button>;`
 
 		// Anexe o botão e o menu do dropdown (Tipo de Ocorrência) ao dropdownOcorrenciaDiv
 		dropdownOcorrenciaDiv.appendChild(dropdownOcorrenciaButton);
@@ -314,7 +313,7 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 		// Crie o menu do dropdown (Informações à Processar)
 		var dropdownInfMenu = document.createElement('div');
 		dropdownInfMenu.className = 'dropdown-menu';
-		dropdownInfMenu.innerHTML = `<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 3); selectOption(this, 'dropdownInf${graphs}')">PEG_PSI</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 2); selectOption(this, 'dropdownInf${graphs}')">ACT</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 1); selectOption(this, 'dropdownInf${graphs}')">Força Máxima</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart${graphs}', 'chartFather${graphs}', undefined,undefined, undefined, 4);selectOption(this, 'dropdownInf${graphs}')">Velocidade</button> <button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}')">Engate</button> <button type="button" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}')">ΔT</button>;`
+		dropdownInfMenu.innerHTML = `<button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 3); selectOption(this, 'dropdownInf${graphs}')">PEG_PSI</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 2); selectOption(this, 'dropdownInf${graphs}')">ACT</button> <button type="button" id="fmax${graphs}" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, 'myChart${graphs}', 'chartFather${graphs}', undefined, undefined, undefined, 1); selectOption(this, 'dropdownInf${graphs}')">Força Máxima</button> <button type="button" class="dropdown-item btn btn-sm btn-outline-secondary" onclick="initGraph(add = false, graphID ='myChart${graphs}', 'chartFather${graphs}', undefined,undefined, undefined, 4);selectOption(this, 'dropdownInf${graphs}')">Velocidade</button> <button type="button" id="engate${graphs}" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}'); initGraph(add = false, graphID ='myChart${graphs}', 'chartFather${graphs}', undefined,undefined, undefined, 5)">Engate</button> <button type="button" id="deltaT${graphs}" class="dropdown-item disabled btn btn-sm btn-outline-secondary" onclick="selectOption(this, 'dropdownInf${graphs}'); initGraph(add = false, graphID ='myChart${graphs}', 'chartFather${graphs}', undefined,undefined, undefined, 6)">ΔT</button>;`
 
 		// Anexe o botão e o menu do dropdown (Informações à Processar) ao dropdownInfDiv
 		dropdownInfDiv.appendChild(dropdownInfButton);
@@ -339,7 +338,7 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 			ctx2.setAttribute('class', 'my-4 w-100 pb-5');
 
 			console.log("divElement of first append",divElement)
-			
+
 			document.getElementById('graphAcordion').appendChild(divElement).appendChild(chartFather2).appendChild(place).appendChild(ctx2);
 
 
@@ -357,10 +356,10 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 		document.getElementById('graphAcordion').append(newAddButton)
 
 		}
-	
-	let url = `/api/graphs${vagao}/${viagem}/${type}/${ocur}/${rel_id}`;   //'/mapE/:viagem/:id',
+
+	let url = `/api/graphs${vagao}/${viagem}/${type}/${ocur}/${relNum}`;   //'/mapE/:viagem/:id',
 	if(type == 3){
-		url = `/api/graphsPico/${viagem}/${vagao}/${ocur}/${rel_id}`
+		url = `/api/graphsPico/${viagem}/${vagao}/${ocur}/${relNum}`
 	}
 	console.log("url: ", url)
 		// esperando fetch que devolve os pontos do mapa
@@ -512,9 +511,22 @@ function initGraph(add = false, graphID, chartFather, viagem = extViagem, type =
 		});
 }
 
+//seleciona opção do dropdown
 function selectOption(option, dropdownId) {
     var dropdownButton = document.getElementById(dropdownId);
     dropdownButton.innerText = option.innerText;
 }
 
+//habilita e desabilita botoes
+function enable(engate, deltaT, fmax){
+	document.getElementById(engate).className = "dropdown-item btn btn-sm btn-outline-secondary"
+	document.getElementById(deltaT).className = "dropdown-item btn btn-sm btn-outline-secondary"
+	document.getElementById(fmax).className = "dropdown-item btn btn-sm btn-outline-secondary disabled"
+}
 
+//desabilita opções que não podem ser selecionadas
+function disable(engate, deltaT, fmax){
+	document.getElementById(engate).className = "dropdown-item btn btn-sm btn-outline-secondary disabled"
+	document.getElementById(deltaT).className = "dropdown-item btn btn-sm btn-outline-secondary disabled"
+	document.getElementById(fmax).className = "dropdown-item btn btn-sm btn-outline-secondary"
+}

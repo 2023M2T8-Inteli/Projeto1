@@ -4,6 +4,7 @@ const DB_PATH = require('path').resolve(__dirname, '../../routes/db-config.js') 
 function addFav (req, res) {
     // importando banco de dados
     const db = require(DB_PATH).db("userprefs.sqlite");
+    console.log(req)
 
     // pegando numero do relatorio e id do usuario
     const rel_num = req.params.rel

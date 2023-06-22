@@ -22,10 +22,10 @@ const get_chan_id = (req, res) => {
 
             // se o usuario nao existir, retorna erro
             if (!row) {
-                return res.status(400).json({status:"error", text:"Nome de usuário ou senha incorretos"}); // erro de usuario ou senha incorretos
+                return res.status(400).json({status:"error", text:"Chan nao existe"});
             };
 
-            req.chan_id = row.chan_id; // usuario logado
+            req.chan_id = row.chan_id;
             return res.status(200).json({status:"success", text:"CHAN", chan_id:row.chan_id});
         });
     }

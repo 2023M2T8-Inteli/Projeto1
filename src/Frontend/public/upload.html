@@ -35,7 +35,7 @@
         button{
             border-color: #00b4e3;
 			background-color: #00b4e3;
-    } 
+    }
 
 		button:hover{
 			background-color: #fff;
@@ -64,7 +64,7 @@
             float: right;
             cursor: pointer;
     }
-    </style> 
+    </style>
 	<div id="loaderConteiner"></div>
 
 	<!-- NAVBAR -->
@@ -84,11 +84,10 @@
 		<div id="modal-ajuda" class="modal">
 			<div class="modal-conteudo">
 				<span id="fechar-modal" class="botao-fechar"><b>x</b></span>
-				<h4>Como fazer o upload de um relatório</h4> <br>
-				<p>Para que o sistema gere um relátorio automaticamente no mesmo modelo que o relatório #1 (de exemplo)
-					deve-se: nomear uma pasta "Rel" e compactá-la em zip, logo dentro de "Rel.zip" deverá ter a pasta "Rel" que se divide em 5 viagens, <br>
-					 sendo essas "Viagem 1", "Viagem 2", e assim por diante, dentro de cada pasta de viagem, mais duas pastas para os engates devem existir,"E" e "F", <br>
-					 e dentro dessas, as pastas que identificam "Choque 1", "Choque 2" e "Pico".</p>
+				<h4>Como usar essa página?</h4> <br>
+				<p> Aqui você pode fazer o upload de algum relatório diretamente para o site. </p>
+				<p>	Para que o sistema gere um relátorio automaticamente no mesmo modelo que o Relatório #1 (de exemplo),
+					deve-se estruturá-lo da seguinte maneira:<br> Rel.zip -> Rel -> Viagens -> E; F -> Choque_1; Choque_2; Pico. </p>
 			</div>
 		</div>
 
@@ -110,7 +109,7 @@
 						<div class="position-sticky pt-3 sidebar-sticky">
 							<ul class="nav flex-column">
 								<li class="nav-item">
-									<a class="nav-link active" aria-current="page" href="#">
+									<a class="nav-link" aria-current="page" href="#">
 										<span data-feather="home" class="align-text-bottom"></span>
 										Painel de Controle
 									</a>
@@ -119,6 +118,12 @@
 									<a class="nav-link" href="/relatorios">
 										<span data-feather="file-text" class="align-text-bottom"></span>
 										Relatórios
+									</a>
+								</li>
+								<li class="nav-item" id='upload-div'>
+									<a class="nav-link active" href="/upload">
+										<span data-feather="upload-cloud" class="align-text-bottom"></span>
+										Upload
 									</a>
 								</li>
 							</ul>
@@ -145,22 +150,22 @@
 				<script>
 					const botaoAjuda = document.getElementById('botao-ajuda');
 					const modalAjuda = document.getElementById('modal-ajuda');
-					const fecharModal = document.getElementById('fechar-modal'); 
-				
+					const fecharModal = document.getElementById('fechar-modal');
+
 					botaoAjuda.addEventListener('click', function() {
 					modalAjuda.style.display = 'block';
 					});
-					
+
 					fecharModal.addEventListener('click', function() {
 		 			modalAjuda.style.display = 'none';
 					});
-					
+
 					window.addEventListener('click', function(event) {
 					if (event.target === modalAjuda) {
 						modalAjuda.style.display = 'none';
 					}
 					});
-					
+
 				</script>
 
 				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
@@ -176,6 +181,8 @@
 				<script src='./js/chan_manager.js'></script>
 
 				<script src="./js/upload/uploadFunction.js"></script>
+
+				<script src="./js/upload/adminChecker.js"></script>
 
 			</body>
 </html>

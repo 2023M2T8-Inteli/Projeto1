@@ -58,15 +58,15 @@
 			<div class="modal-conteudo">
 				<span id="fechar-modal" class="botao-fechar"><b>x</b></span>
 				<h4>Como usar essa página?</h4> <br>
-				<p> Esta é a página inicial ,nela você pode acessar a página de relatórios clicando no botão azul escrito "Relatórios", ou no botão de mesmo nome localizado no menu ao lado. <br>
-					Você pode também acessar os seus relatórios favoritados no menu, na sessão "Relatórios Favoritos", podendo adicionar um novo ou retirar algum no menu.
-				</p>
+				<p> Esta é a página inicial, nela você pode acessar a página de relatórios clicando no botão azul escrito "Relatórios", ou no botão de mesmo nome localizado no menu ao lado. </p>
+				<p>	Você pode também acessar os seus relatórios favoritados no menu, na sessão "Relatórios Favoritos", podendo adicionar um novo ou retirar algum no menu. </p>
+				<p> Além de que uma vez favoritados, esses relatórios também aparecerão aqui, logo abaixo. </p>
 			</div>
 		</div>
 
 		<div class="navbar-nav">
 			<div class="nav-item text-nowrap">
-				<a class="nav-link px-3" id="signout" h ref="/api/logout">
+				<a class="nav-link px-3" id="signout" href="/api/logout">
 					Sign out
 				</a>
 			</div>
@@ -74,7 +74,7 @@
 
 	</header>
 	<!-- END NAVBAR -->
-	
+
 		<div class="container-fluid">
 				<div class="row">
 					<!-- SIDEBAR -->
@@ -93,8 +93,14 @@
 										Relatórios
 									</a>
 								</li>
+								<li class="nav-item" id='upload-div'>
+									<a class="nav-link" href="/upload">
+										<span data-feather="upload-cloud" class="align-text-bottom"></span>
+										Upload
+									</a>
+								</li>
 							</ul>
-						
+
 							<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase me-1">
 								<span style="margin-bottom: 2px">Relatórios Favoritos</span>
 								<a class="link-secondary mb-0" href="#" aria-label="Add a new report">
@@ -125,7 +131,7 @@
 								</div>
 					</section>
 					<!-- END PROMPT PAGINA NICIAL -->
-				
+
 					<!-- RELATORIOS -->
 					<main class="col-md-9 ms-50 sm-auto col-lg-10 px-0">
 							<div class="container" id="content-rels">
@@ -135,25 +141,25 @@
 				<script>
 					const botaoAjuda = document.getElementById('botao-ajuda');
 					const modalAjuda = document.getElementById('modal-ajuda');
-					const fecharModal = document.getElementById('fechar-modal'); 
-			
+					const fecharModal = document.getElementById('fechar-modal');
+
 					botaoAjuda.addEventListener('click', function() {
 					modalAjuda.style.display = 'block';
 					});
-				
+
 					fecharModal.addEventListener('click', function() {
 					modalAjuda.style.display = 'none';
 					});
-				
+
 					window.addEventListener('click', function(event) {
 					if (event.target === modalAjuda) {
 						modalAjuda.style.display = 'none';
 					}
 					});
-				
+
 				</script>
 
-				<!-- SCRIPS (PQ Q ELES TAO AQ KKKKKKKKKK) -->
+				<!-- SCRIPS  -->
 				<script>document.addEventListener("DOMContentLoaded", function() {seeFav();})</script>
 				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
@@ -168,6 +174,8 @@
 				<script src='./js/chan_manager.js'></script>
 
 				<script src="./js/upload/uploadFunction.js"></script>
+
+				
 				<!-- END SCRIPTS -->
 			</body>
 </html>

@@ -220,6 +220,6 @@ function load_comment(content, comment_id) {
 	comment_div.appendChild(comment_edit_button);
 	comment_div.appendChild(comment_delete_button);
 
-
+	
 	document.getElementById("comment-loader-target").appendChild(comment_div);
 }

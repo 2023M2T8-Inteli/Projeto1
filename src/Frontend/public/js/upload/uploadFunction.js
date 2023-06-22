@@ -18,22 +18,9 @@ window.onload = async function() {
         }
     }).then(user => {
         console.log(user.username)
-        if(user.username == "admin"){
-            let upload = document.createElement('li')
-            upload.setAttribute('class', 'nav-item')
-            upload.setAttribute('id', 'upload')
-
-            let link = document.createElement('a')
-            link.setAttribute('class', 'nav-link')
-            link.setAttribute('href', '/upload')
-
-            let span = document.createElement('span');
-            span.setAttribute('data-feather', 'upload');
-            span.setAttribute('class', 'align-text-bottom');
-
-            const ul = document.querySelector('ul');
-            ul.appendChild(upload).appendChild(link).appendChild(span);
-            link.innerHTML += " Upload"
+        if(user.username != "admin"){
+            // deletes div with id= 'upload-div'
+            document.getElementById("upload-div").remove()
         }
     })
 }
@@ -97,7 +84,7 @@ async function upload() {
             //enviando o arquivo
             xhr.send(formData);
         }
-    
+
     }).catch(error => {
         //se der erro, retorna um alerta
         document.getElementById("loading").remove()

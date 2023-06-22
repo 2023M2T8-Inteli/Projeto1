@@ -49,7 +49,9 @@ async function get_chan_id() {
 
 */
 
-window.onload = async () => {
+// on window load (using jquery)
+$(window).on("load", async function() {
+	console.log("LOADING COMMENTS")
 	// gets comments and for each comment, creates a div with the comment content
 	// and a delete button if the comment_id is from that same chan_id
 
@@ -103,4 +105,4 @@ window.onload = async () => {
 
 		document.getElementById("comment-loader-target").appendChild(comment_div);
 	});
-}
+});

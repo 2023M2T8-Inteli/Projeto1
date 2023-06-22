@@ -174,25 +174,6 @@ function downloadZip(rel) {
       });
   }
 
-  function downloadPDF(rel) {
-    const pdfUrl = "Relatorio.pdf"; // Substitua pela URL real do arquivo ZIP
-
-    fetch(`/api/downloadpdf/${rel}`)
-      .then(response => response.blob())
-      .then(blob => {
-        const url = window.URL.createObjectURL(blob);
-
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "Relatorio.pdf"; // Nome do arquivo ZIP
-        // a.style.display = "none";
-        // document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
-      });
-  }
-
 async function relatorios(){
     // console.log("ola")
     // Pega os relatorios do usuario
@@ -238,7 +219,6 @@ async function relatorios(){
             textElement.setAttribute('y', '50%');
             textElement.setAttribute('fill', '#eceeef');
             textElement.setAttribute('dy', '.3em');
-            // textElement.textContent = 'Prévia do Mapa';
 
             // Adiciona o elemento rect e text como filhos do svg
 
@@ -286,24 +266,10 @@ async function relatorios(){
             buttElement.className = 'btn btn-sm btn-outline-secondary';
             buttElement.textContent = 'Baixar';
 
-            // // teste Cria o elemento button com o texto "Gerar PDF"
-            // var buttonnElement = document.createElement('button');
-            // buttonnElement.setAttribute('type', 'button');
-            // buttonnElement.setAttribute('onclick', `downloadPDF(${rel})`);
-            // buttonnElement.className = 'btn btn-sm btn-outline-secondary';
-            // buttonnElement.textContent = 'Gerar PDF';
-
-
-            // // Cria o elemento small com o texto "Data do Relatório"
-            // var smallElement = document.createElement('small');
-            // smallElement.className = 'text-body-secondary';
-            // smallElement.textContent = 'Data do Relatório';
-
             // Adiciona o elemento "a" e o elemento button como filhos do div btnGroupElement
             btnGroupElement.appendChild(aElement);
             btnGroupElement.appendChild(buttonElement);
             btnGroupElement.appendChild(buttElement);
-            // btnGroupElement.appendChild(buttonnElement);
 
             // Adiciona o elemento btnGroupElement e o elemento smallElement como filhos do div divGroupElement
             divGroupElement.appendChild(btnGroupElement);

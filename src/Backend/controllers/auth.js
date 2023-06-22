@@ -87,7 +87,6 @@ const addFav = require('./fav/addFav')
 const seeFav = require('./fav/seeFav')
 
 const loggedIn = require('./login/loggedIn');
-const downloadpdf = require('./down_up/downloadpdf');
 
 router.post("/addFav/:rel", loggedIn , addFav) // Adiciona um relatório aos favoritos
 
@@ -97,7 +96,6 @@ router.delete('/deleteFav/:id', loggedIn, deleteFav) // Deleta o registro de fav
 
 router.get('/download/:id', download)
 
-router.get('/downloadpdf/:id', downloadpdf)
 
 ///////////////////////
 //  PARTE DE UPLOAD //

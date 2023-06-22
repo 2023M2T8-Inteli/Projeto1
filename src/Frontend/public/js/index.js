@@ -219,7 +219,6 @@ async function relatorios(){
             textElement.setAttribute('y', '50%');
             textElement.setAttribute('fill', '#eceeef');
             textElement.setAttribute('dy', '.3em');
-            // textElement.textContent = 'Prévia do Mapa';
 
             // Adiciona o elemento rect e text como filhos do svg
 
@@ -271,7 +270,6 @@ async function relatorios(){
             btnGroupElement.appendChild(aElement);
             btnGroupElement.appendChild(buttonElement);
             btnGroupElement.appendChild(buttElement);
-            // btnGroupElement.appendChild(buttonnElement);
 
             // Adiciona o elemento btnGroupElement e o elemento smallElement como filhos do div divGroupElement
             divGroupElement.appendChild(btnGroupElement);

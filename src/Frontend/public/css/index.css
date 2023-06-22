@@ -275,3 +275,9 @@
     transform: rotate(1turn);
   }
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Wix+Made+For+Text&display=swap');
+
+#content{
+  font-family: 'Wix Made For Text', sans-serif;
+}

@@ -35,7 +35,7 @@ T08_G01_V1_Web_application_document.pdf<br>
 | T8_G1_V1_Web_application_document.docx<br>
 |--> histórico-não considerar<br>
 |--> imagens<br>
- &emsp;|--> Vídeo_de_funcionamento<br>
+ &emsp;|--> <a href="https://youtu.be/_Zk5l_k9TbA">Video_projeto</a><br>
 |--> src<br>
  &emsp;|--> Backend<br>
  &emsp;|--> Frontend<br>

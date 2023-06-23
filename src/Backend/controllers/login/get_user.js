@@ -8,6 +8,7 @@ const loggedIn = (req, res) => {
 
     // se o usuario nao estiver logado, continua
     if (req.cookies['remember-login'] == undefined) {
+        console.log("nao logado (COOKIE UNDEFINED)")
         return res.status(400).json({status:"error", text:"Nome de usuário ou senha incorretos"}); // erro de usuario ou senha incorretos
     } else {
         const token = req.cookies['remember-login']; // token do usuario
@@ -22,6 +23,7 @@ const loggedIn = (req, res) => {
 
             // se o usuario nao existir, retorna erro
             if (!row) {
+                console.log("nao logado (USUARIO NAO EXISTE)")
                 return res.status(400).json({status:"error", text:"Nome de usuário ou senha incorretos"}); // erro de usuario ou senha incorretos
             };
 

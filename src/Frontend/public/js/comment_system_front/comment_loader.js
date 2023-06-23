@@ -28,7 +28,7 @@ async function get_chan_id() {
 		contentType: "application/json",
 		dataType: "json",
 		success: function(response) {
-			return response.chan_id;
+			return response;
 		},
 		error: function(err) {
 			throw err;

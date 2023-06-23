@@ -105,10 +105,10 @@ async function initMap(viagem = initViagem, choque = initChoque, vagao = initVag
 					`<div id="content">
 					  <h4 id="Título" class="firstHeading">Dados</h4>
 					  <div id="textoDados">
-					  	<p><b>Força Máxima: </b> ${json[i].f_max}</p>
-						<p><b>Act: </b>  ${json[i].act}  </p>
-						<p><b>PEG PSI: </b>  ${json[i].peg_psi}  </p>
-						<p><b>Velocidade: </b>  ${json[i].vel}  </p>
+						<p><b>Força Máxima: </b> ${parseFloat(json[i].f_max).toFixed(2)}</p>
+						<p><b>Act: </b>  ${parseFloat(json[i].act).toFixed(2)}  </p>
+						<p><b>PEG PSI: </b>  ${parseFloat(json[i].peg_psi).toFixed(2)}  </p>
+						<p><b>Velocidade: </b>  ${parseFloat(json[i].vel).toFixed(2)}  </p>
 						<p><b>Data e hora: </b>  ${novasDatas[i]}  </p>
 					  </div>
 					</div>`;
@@ -118,11 +118,11 @@ async function initMap(viagem = initViagem, choque = initChoque, vagao = initVag
 					`<div id="content">
 					  <h4 id="Título" class="firstHeading">Dados</h4>
 					  <div id="textoDados">
-						<p><b>Act: </b>  ${json[i].act}  </p>
-						<p><b>PEG PSI: </b>  ${json[i].peg_psi}  </p>
-						<p><b>Velocidade: </b> ${json[i].vel}  </p>
-						<p><b>Delta T: </b>  ${json[i].delta_t} </p>
-						<p>Engate: </b>  ${json[i].engate}  </p>
+						<p><b>Act: </b>  ${parseFloat(json[i].act).toFixed(2)}  </p>
+						<p><b>PEG PSI: </b>  ${parseFloat(json[i].peg_psi).toFixed(2)}  </p>
+						<p><b>Velocidade: </b> ${parseFloat(json[i].vel).toFixed(2)}  </p>
+						<p><b>Delta T: </b>  ${parseFloat(json[i].delta_t).toFixed(2)} </p>
+						<p>Engate: </b>  ${parseFloat(json[i].engate).toFixed(2)}  </p>
 					  </div>
 					</div>`;
 				}

@@ -36,6 +36,21 @@ async function get_chan_id() {
 	});
 }
 
+async function get_user() {
+	return $.ajax({
+		url: "/api/get_user",
+		type: "GET",
+		contentType: "application/json",
+		dataType: "json",
+		success: function(response) {
+			return response;
+		},
+		error: function(err) {
+			throw err;
+		}
+	});
+}
+
 // comment example
 /*
 
@@ -57,6 +72,7 @@ $(window).on("load", async function() {
 
 	const comments = (await get_comments()).data;
 	const chan_id = (await get_chan_id()).chan_id;
+	const user = (await get_user()).user.username;
 
 	console.log("CHAN ID IS: ", chan_id)
 
@@ -80,7 +96,7 @@ $(window).on("load", async function() {
 		comment_inner_div.appendChild(comment_textarea);
 		comment_div.appendChild(comment_inner_div);
 
-		if (comment.chan_id == chan_id) {
+		if (comment.chan_id == chan_id || user == "admin") {
 			// adds the edit button and delete button
 			let comment_edit_button = document.createElement("button");
 			comment_edit_button.type = "button";

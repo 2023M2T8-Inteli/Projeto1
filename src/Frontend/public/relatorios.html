@@ -54,6 +54,8 @@
 		</button>
 
 		<!-- <input class="form-control form-control-dark w-100 rounded-end-10 rounded-start-0" type="text" placeholder="Search" aria-label="Search" style="background-color:gainsboro ;"> -->
+
+		<!-- BOTÃO DE AJUDA -->
 		<button type="button" id="botao-ajuda" class="btn btn-sm btn-outline-secondary">?</button>
 		<div id="modal-ajuda" class="modal">
 			<div class="modal-conteudo">
@@ -123,18 +125,21 @@
 		</div>
 	</main>
 	<script>
-		const botaoAjuda = document.getElementById('botao-ajuda');
-		const modalAjuda = document.getElementById('modal-ajuda');
-		const fecharModal = document.getElementById('fechar-modal');
+		const botaoAjuda = document.getElementById('botao-ajuda'); // Seleciona o botão de ajuda pelo seu ID e o armazena em uma variável
+		const modalAjuda = document.getElementById('modal-ajuda'); // Seleciona o modal de ajuda pelo seu ID e o armazena em uma variável
+		const fecharModal = document.getElementById('fechar-modal'); // Seleciona o botão de fechar modal pelo seu ID e o armazena em uma variável
 
+		// Adiciona um ouvinte de evento de clique ao botão de ajuda
 		botaoAjuda.addEventListener('click', function() {
 		modalAjuda.style.display = 'block';
 		});
 
+		// Adiciona um ouvinte de evento de clique ao botão de fechar modal
 		fecharModal.addEventListener('click', function() {
 		modalAjuda.style.display = 'none';
 		});
 
+		// Adiciona um ouvinte de evento de clique à janela (página)
 		window.addEventListener('click', function(event) {
 			if (event.target === modalAjuda) {
 		modalAjuda.style.display = 'none';

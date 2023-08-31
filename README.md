@@ -70,7 +70,7 @@ Isso instalará todas as dependências definidas no arquivo package.json que sã
 npx nodemon
 ```
   
-4. Agora você pode acessar a aplicação através do link http://localhost:3000/
+4. Agora você pode acessar a aplicação através do link http://localhost:3002/
 5. O servidor está online.
 
 <h1>🗃 Histórico de lançamentos</h1>
